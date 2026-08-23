@@ -1,0 +1,937 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=AW-16454880527"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'AW-16454880527');
+  </script>
+
+  <link rel="icon" href="IMG/Mandarina.png">
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta content="text/html; charset=iso-8859-2" http-equiv="Content-Type">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="description" content="Gestión de redes sociales para tu negocio. Planes Digital, Update y Plus. Facebook, Instagram, TikTok. Precios accesibles.">
+
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <link rel="stylesheet" href="CSS/Bootstrap CSS/bootstrap.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <title>Redes Sociales - ManndarinKT</title>
+  <style>
+    /* Variables de colores */
+    :root {
+      --primary-color: #d32e25;
+      --primary-dark: #b52a22;
+      --whatsapp-green: #25D366;
+      --whatsapp-dark: #808284;
+      --whatsapp-light: #DCF8C6;
+      --text-dark: #333;
+      --text-light: #fff;
+      --bg-light: #f8f9fa;
+      --bg-dark: #282E34;
+    }
+
+    /* Estilos generales */
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      margin: 0;
+      padding: 0;
+      color: var(--text-dark);
+      line-height: 1.6;
+      padding-top: 76px;
+    }
+
+      h1, h2, h3, h4, h5, h6 {
+      font-weight: 700;
+      color: var(--primary-color);
+    }
+
+    p {
+      margin-bottom: 1rem;
+    }
+
+    .container {
+      max-width: 1200px;
+    }
+
+    /* Navegación */
+    .navbar {
+      background-color: var(--text-light) !important;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      padding: 10px 0;
+      position: fixed;
+      width: 100%;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .navbar-brand img {
+      height: 50px;
+      width: auto;
+    }
+
+    .nav-link {
+      color: var(--text-dark) !important;
+      font-weight: 600;
+      margin: 0 10px;
+      transition: color 0.3s;
+    }
+
+    .nav-link:hover,
+      .nav-item.active .nav-link,
+      .nav-link.active {
+      color: #d32e25 !important;
+    }
+
+    .navbar-toggler {
+      border: none;
+    }
+    
+    /* Imágenes de fondo */
+    .bgimg-1, .bgimg-2, .bgimg-3 {
+      position: relative;
+      background-attachment: fixed;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+      min-height: 80vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    .bgimg-1 {
+      background-image: url("IMG/Redes Sociales/social-media-3758364_1920.jpg");
+      min-height: 70vh;
+    }
+
+    .bgimg-2 {
+      background-image: url("IMG/Redes Sociales/icon-2486501_1920.png");
+      min-height: 35vh;
+    }
+
+    .bgimg-3 {
+      background-image: url("IMG/Redes Sociales/tablet-3423712_1920.png");
+      min-height: 30vh;
+    }
+
+    .caption {
+      position: absolute;
+      left: 0;
+      top: 50%;
+      width: 100%;
+      text-align: center;
+      color: #000;
+    }
+
+    .caption span.border {
+      background-color: #111;
+      color: #fff;
+      padding: 18px;
+      font-size: 25px;
+      letter-spacing: 10px;
+    }
+
+    @media only screen and (max-device-width: 1024px) {
+      .bgimg-1, 
+      .bgimg-2, 
+      .bgimg-3 {
+        background-attachment: scroll;
+      }
+    }
+
+    /* Cards de planes */
+    .card {
+      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+      border-radius: 50px;
+      transition: transform 0.3s, box-shadow 0.3s;
+      margin-bottom: 20px;
+      overflow: hidden;
+      height: 100%;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+    }
+
+    .card img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+    }
+
+    .card h2 {
+      color: var(--primary-color);
+      font-size: 1.5rem;
+      margin: 15px 0;
+    }
+
+    .card h4 {
+      font-size: 1rem;
+      margin: 8px 0;
+      color: var(--text-dark);
+    }
+
+    .card button {
+      border: none;
+      outline: 0;
+      padding: 12px;
+      color: white;
+      background-color: var(--primary-color);
+      text-align: center;
+      cursor: pointer;
+      width: 100%;
+      font-size: 18px;
+      transition: background-color 0.3s;
+    }
+
+    .card button:hover {
+      background-color: var(--primary-dark);
+    }
+
+    /* Footer */
+    footer {
+      background-color: var(--text-dark);
+      color: var(--text-light);
+      padding: 3rem 0;
+    }
+
+    footer h2, footer h4 {
+      color: var(--text-light);
+    }
+
+    .social-icons {
+      display: flex;
+      justify-content: center;
+      margin: 1rem 0;
+      flex-wrap: wrap;
+    }
+
+    .social-icons a {
+      margin: 0 10px;
+      transition: transform 0.3s;
+    }
+
+    .social-icons a:hover {
+      transform: translateY(-5px);
+    }
+    
+    /* ========================================== */
+    /* CHAT FLOTANTE CON DEEPSEEK HARNESS       */
+    /* ========================================== */
+    .dsh-chat-widget {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      width: 380px;
+      max-width: 90vw;
+      background: white;
+      border-radius: 20px;
+      box-shadow: 0 10px 40px rgba(0,0,0,0.25);
+      overflow: hidden;
+      transform: translateY(20px) scale(0.95);
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      z-index: 10000;
+      display: flex;
+      flex-direction: column;
+      height: 520px;
+      border: 3px solid #6C63FF;
+    }
+    
+    .dsh-chat-widget.active {
+      transform: translateY(0) scale(1);
+      opacity: 1;
+      visibility: visible;
+    }
+    
+    .dsh-header {
+      background: linear-gradient(135deg, #6C63FF, #5A52D5);
+      color: white;
+      padding: 15px 20px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex-shrink: 0;
+    }
+    
+    .dsh-avatar {
+      width: 45px;
+      height: 45px;
+      border-radius: 50%;
+      background: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      border: 2px solid rgba(255,255,255,0.3);
+    }
+    
+    .dsh-avatar img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    
+    .dsh-info {
+      flex: 1;
+    }
+    
+    .dsh-name {
+      font-weight: 700;
+      font-size: 1rem;
+      line-height: 1.2;
+    }
+    
+    .dsh-name .badge-harness {
+      background: rgba(255,255,255,0.2);
+      font-size: 0.55rem;
+      padding: 2px 8px;
+      border-radius: 10px;
+      margin-left: 6px;
+      font-weight: 600;
+    }
+    
+    .dsh-status {
+      font-size: 0.75rem;
+      opacity: 0.85;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+    
+    .dsh-status-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #4CAF50;
+      display: inline-block;
+      animation: pulse-dot 2s infinite;
+    }
+    
+    @keyframes pulse-dot {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.3; }
+    }
+    
+    .dsh-close {
+      background: rgba(255,255,255,0.2);
+      border: none;
+      color: white;
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.3s;
+    }
+    
+    .dsh-close:hover {
+      background: rgba(255,255,255,0.3);
+    }
+    
+    .dsh-body {
+      flex: 1;
+      background: #f0f2f5;
+      padding: 15px;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    
+    .dsh-message {
+      max-width: 85%;
+      padding: 10px 14px;
+      border-radius: 12px;
+      font-size: 0.9rem;
+      line-height: 1.4;
+      word-wrap: break-word;
+      animation: fadeInUp 0.3s ease;
+    }
+    
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    
+    .dsh-message.user {
+      align-self: flex-end;
+      background: #6C63FF;
+      color: white;
+      border-bottom-right-radius: 4px;
+    }
+    
+    .dsh-message.bot {
+      align-self: flex-start;
+      background: white;
+      color: #333;
+      border-bottom-left-radius: 4px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    }
+    
+    .dsh-message.bot a {
+      color: #6C63FF;
+      text-decoration: underline;
+    }
+    
+    .dsh-message .time {
+      font-size: 0.6rem;
+      opacity: 0.6;
+      float: right;
+      margin-left: 10px;
+      margin-top: 3px;
+    }
+    
+    .dsh-typing {
+      align-self: flex-start;
+      background: white;
+      padding: 12px 16px;
+      border-radius: 12px;
+      border-bottom-left-radius: 4px;
+      display: flex;
+      gap: 5px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    }
+    
+    .dsh-typing span {
+      width: 8px;
+      height: 8px;
+      background: #9ca3af;
+      border-radius: 50%;
+      animation: typingBounce 1.4s infinite ease-in-out;
+    }
+    
+    .dsh-typing span:nth-child(2) { animation-delay: 0.2s; }
+    .dsh-typing span:nth-child(3) { animation-delay: 0.4s; }
+    
+    @keyframes typingBounce {
+      0%, 60%, 100% { transform: translateY(0); }
+      30% { transform: translateY(-6px); }
+    }
+    
+    .dsh-footer {
+      background: white;
+      padding: 12px 15px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      border-top: 1px solid #e5e7eb;
+      flex-shrink: 0;
+    }
+    
+    .dsh-input {
+      flex: 1;
+      padding: 10px 15px;
+      border: 2px solid #e5e7eb;
+      border-radius: 25px;
+      outline: none;
+      font-size: 0.9rem;
+      transition: border-color 0.3s;
+    }
+    
+    .dsh-input:focus {
+      border-color: #6C63FF;
+    }
+    
+    .dsh-send {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #6C63FF, #5A52D5);
+      color: white;
+      border: none;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: transform 0.3s, box-shadow 0.3s;
+      flex-shrink: 0;
+    }
+    
+    .dsh-send:hover {
+      transform: scale(1.05);
+      box-shadow: 0 4px 15px rgba(108, 99, 255, 0.4);
+    }
+    
+    .dsh-send:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+      transform: none;
+    }
+    
+    .dsh-toggle {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      border: none;
+      cursor: pointer;
+      z-index: 9999;
+      box-shadow: 0 4px 20px rgba(108, 99, 255, 0.4);
+      transition: transform 0.3s, box-shadow 0.3s;
+      padding: 0;
+      overflow: hidden;
+      background: white;
+      border: 2px solid #6C63FF;
+    }
+    
+    .dsh-toggle:hover {
+      transform: scale(1.08);
+      box-shadow: 0 6px 30px rgba(108, 99, 255, 0.6);
+    }
+    
+    .dsh-toggle img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    
+    .dsh-badge {
+      position: absolute;
+      top: -4px;
+      right: -4px;
+      background: #ef4444;
+      color: white;
+      border-radius: 50%;
+      width: 22px;
+      height: 22px;
+      font-size: 0.65rem;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      animation: pulse-badge 2s infinite;
+    }
+    
+    @keyframes pulse-badge {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.15); }
+    }
+    
+    @media (max-width: 768px) {
+      .dsh-chat-widget {
+        width: 92vw;
+        right: 4vw;
+        height: 65vh;
+        bottom: 10px;
+      }
+      .dsh-toggle {
+        width: 55px;
+        height: 55px;
+      }
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .navbar-brand img {
+        height: 40px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- CHAT FLOTANTE CON DEEPSEEK HARNESS -->
+  <button class="dsh-toggle" id="dshToggle">
+    <img src="IMG/asistente2.jpg" alt="Aria">
+    <span class="dsh-badge" id="dshBadge">1</span>
+  </button>
+
+  <div class="dsh-chat-widget" id="dshChat">
+    <div class="dsh-header">
+      <div class="dsh-avatar">
+        <img src="IMG/asistente2.jpg" alt="Aria">
+      </div>
+      <div class="dsh-info">
+        <div class="dsh-name">
+          Aria · Asistente IA
+          <span class="badge-harness">🚀 HARNESS</span>
+        </div>
+        <div class="dsh-status">
+          <span class="dsh-status-dot"></span> Online · IA Local
+        </div>
+      </div>
+      <button class="dsh-close" id="dshClose">
+        <i class="fas fa-times"></i>
+      </button>
+    </div>
+    
+    <div class="dsh-body" id="dshBody">
+      <!-- Mensaje de bienvenida -->
+      <div class="dsh-message bot">
+        📱¡Hola! Soy Aria con IA, tu asistente de ManndarinKT.<br>
+        <span class="time">12:00</span>
+      </div>
+    </div>
+    
+    <div class="dsh-footer">
+      <input class="dsh-input" id="dshInput" placeholder="Escribe tu mensaje..." autocomplete="off">
+      <button class="dsh-send" id="dshSend">
+        <i class="fas fa-paper-plane"></i>
+      </button>
+    </div>
+  </div>
+
+  <!-- NAVEGACIÓN -->
+  <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+    <div class="container">
+      <a class="navbar-brand" href="index.html">
+        <img src="IMG/ManndarinKT Digital.png" alt="ManndarinKT" height="50">
+      </a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <i class='fas fa-bars'></i>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="communitymanager.html">COMMUNITY MANAGER</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="automatiza.html">AUTOMATIZA CON IA</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="posicionamientoweb.html">POSICIONAMIENTO WEB</a>
+          </li>
+          <li class="nav-item active">
+            <a class="nav-link" href="redessociales.html">REDES SOCIALES</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="paginaweb.html">PÁGINAS WEB</a>
+          </li>
+          <li class="nav-item">
+            <a href="https://api.whatsapp.com/send?phone=+525539935301&text=Hola,%20quiero%20contratar%20servicios%20de%20redes%20sociales" target="_blank" class="nav-link">
+              <i class="fab fa-whatsapp" style="font-size:34px;color:var(--whatsapp-green)"></i>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO SECTION -->
+  <div class="bgimg-1">
+    <div class="caption">
+    </div>
+  </div>
+
+  <!-- CONTENIDO PRINCIPAL -->
+  <div class="container mt-5 mb-5">
+    <div class="row justify-content-center">
+      <h1 class="text-center mb-4" style="color: var(--primary-color);">Las Redes Sociales</h1>
+    </div>
+    <p class="lead text-justify">
+      Son un medio de comunicación e información entre distintas personas o instituciones, 
+      quienes con un interés en común, crean comunidades o sociedades virtuales. Hoy en día, 
+      son una poderosa arma de información y de promoción para las empresas ya que les permite 
+      tener un contacto directo en tiempo real con su público o audiencia por un bajo costo.
+    </p>
+    
+    <div class="row justify-content-center mt-5">
+      <h2 class="text-center mb-4" style="color: var(--primary-color);">Nuestro Trabajo</h2>
+    </div>
+    
+    <p class="lead text-justify">
+      Consiste en crear una estrategia en redes sociales en la cual puedas elegir las plataformas que 
+      requieres, para comunicar lo que desees en base a tus contenidos para obtener más 
+      clientes y engagement con tu audiencia.
+    </p>
+  </div>
+
+  <!-- SECCIÓN 2 -->
+  <div class="bgimg-2">
+    <div class="caption">
+    </div>
+  </div>
+  
+  <div class="container mt-5 mb-5">
+    <div class="row justify-content-center">
+      <h2 class="text-center mb-4" style="color: var(--primary-color);">Beneficios de tener una Estrategia en Redes Sociales</h2>
+    </div>
+    
+    <p class="lead text-justify">
+      Te podemos ofrecer diferentes redes en las cuales tú puedes elegir como Facebook,
+      WhatsApp, Twitter, Instagram y otras más. Éstas te ayudarán a mejorar tu imagen 
+      y tener una mejor comunicación con tus clientes para que aumentes tus ventas por 
+      medio de publicaciones programadas y estrategias de contenido efectivas.
+    </p>
+  </div>
+
+  <!-- SECCIÓN 3 -->
+  <div class="bgimg-3">
+    <div class="caption">
+    </div>
+  </div>
+  
+  <div class="container mt-5 mb-5">
+    <div class="row justify-content-center">
+      <h2 class="text-center mb-4" style="color: var(--primary-color);">¡¡¡ Elige tu plan !!!</h2>
+    </div>
+
+    <div class="row">
+      <div class="col-md-4">
+        <div class="card">
+          <img src="IMG/Redes Sociales/notebook-614213_1920.jpg" alt="Plan Digital" style="width:100%; height:200px; object-fit:cover;">
+          <div class="card-body">
+            <h3 style="text-align:center">Plan Digital</h3>
+            <div class="container">
+              <h4><i class="fas fa-check-circle" style="color:var(--primary-color);"></i> Facebook</h4>
+              <h4><i class="fas fa-check-circle" style="color:var(--primary-color);"></i> Define tu Objetivo Principal</h4>
+              <h4><i class="fas fa-check-circle" style="color:var(--primary-color);"></i> Atiende y contesta a tus clientes</h4>
+              <h4><i class="fas fa-check-circle" style="color:var(--primary-color);"></i> Ventas posts con enlaces directos</h4> 
+              <h4><i class="fas fa-check-circle" style="color:var(--primary-color);"></i> Hashtags estratégicos</h4>
+              <h4><i class="fas fa-check-circle" style="color:var(--primary-color);"></i> Plan 3, 6, o 12 Meses</h4>
+            </div>
+            <p><button><h4>Posts e Historias en total 8 - Precios en el chat</h4></button></p>
+          </div>
+        </div>
+      </div>
+      
+      <div class="col-md-4">
+        <div class="card">
+          <img src="IMG/Redes Sociales/update-1672346_1920.png" alt="Plan Update" style="width:100%; height:200px; object-fit:cover;">
+          <div class="card-body">
+            <h3 style="text-align:center">Plan Update</h3>
+            <div class="container">
+              <h4><i class="fas fa-check-circle" style="color:var(--primary-color);"></i> Facebook - Instagram</h4>
+              <h4><i class="fas fa-check-circle" style="color:var(--primary-color);"></i> Mejorar tu Imagen</h4>
+              <h4><i class="fas fa-check-circle" style="color:var(--primary-color);"></i> Atender a tus clientes</h4>
+              <h4><i class="fas fa-check-circle" style="color:var(--primary-color);"></i> Catalogo y servicios</h4>
+              <h4><i class="fas fa-check-circle" style="color:var(--primary-color);"></i> Vídeos (15-30 segundos)</h4>
+              <h4><i class="fas fa-check-circle" style="color:var(--primary-color);"></i> Plan 3, 6, o 12 Meses</h4>
+            </div>
+            <p><button><h4>Posts, Historias y Reels en total 16 - Precios en el chat</h4></button></p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="card">
+          <img src="IMG/Redes Sociales/media-998990_1920.jpg" alt="Plan Plus" style="width:100%; height:200px; object-fit:cover;">
+          <div class="card-body">
+            <h3 style="text-align:center">Plan Plus</h3>
+            <div class="container">
+              <h4><i class="fas fa-check-circle" style="color:var(--primary-color);"></i> Facebook - Instagram - TikTok</h4>
+              <h4><i class="fas fa-check-circle" style="color:var(--primary-color);"></i> Códigos QR</h4>
+              <h4><i class="fas fa-check-circle" style="color:var(--primary-color);"></i> Carousel</h4>
+              <h4><i class="fas fa-check-circle" style="color:var(--primary-color);"></i> Mostrar tus productos</h4>
+              <h4><i class="fas fa-check-circle" style="color:var(--primary-color);"></i> Vídeos (15-30 segundos)</h4>
+              <h4><i class="fas fa-check-circle" style="color:var(--primary-color);"></i> Plan 3, 6, o 12 Meses</h4>
+            </div>
+            <p><button><h4>Posts, Historias y Reels en total 24 - Precios en el chat</h4></button></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="bg-dark text-white p-4">
+    <div class="container">
+      <div class="row mb-3">
+        <div class="col-md-12 text-center">
+          <h2>Contáctanos</h2>
+          <h4>Te atendemos solo haz clic en el logo de WhatsApp</h4>
+        </div>
+      </div>
+      
+      <div class="row justify-content-center">
+        <div class="col-auto">
+          <a href="https://api.whatsapp.com/send?phone=+525539935301&text=Hola,%20quiero%20contratar%20servicios%20de%20redes%20sociales" target="_blank" aria-label="WhatsApp">
+            <i class="fab fa-whatsapp" style="font-size:36px;color:var(--whatsapp-green)"></i>
+          </a>
+        </div>
+        <div class="col-auto">
+          <a href="https://www.facebook.com/ManndarinKT/" target="_blank" aria-label="Facebook">
+            <i class="fab fa-facebook-square" style="font-size:36px;color:rgb(24, 119, 242)"></i>
+          </a>
+        </div>
+        <div class="col-auto">
+          <a href="https://www.instagram.com/manndarinkt/" target="_blank" aria-label="Instagram">
+            <i class="fab fa-instagram" style="font-size:36px;color:rgb(235, 21, 21)"></i>
+          </a>
+        </div>
+        <div class="col-auto">
+           <a href="https://x.com/Manndarin_KT" target="_blank">
+              <i class="fab fa-x-twitter" style="font-size:36px;color: #FFFFFF;"></i>
+            </a>
+        </div>
+        <div class="col-auto">
+          <a href="https://www.tiktok.com/@manndarinkt.com/" target="_blank">
+              <i class="fab fa-tiktok" style="font-size:36px;color: #FF00E7;"></i>
+            </a>
+        </div>
+      </div>
+      
+      <div class="row mt-3">
+        <div class="col-md-12 text-center">
+          <p>© ManndarinKT - Especialistas en Redes Sociales · +50 Negocios en México</p>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+  <!-- ========================================== -->
+  <!-- LÓGICA DEL CHAT CON DEEPSEEK HARNESS       -->
+  <!-- ========================================== -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // --- CONFIGURACIÓN ---
+      const API_URL = 'http://localhost:3080/api/chat';
+      
+      // --- ELEMENTOS ---
+      const chat = document.getElementById('dshChat');
+      const toggleBtn = document.getElementById('dshToggle');
+      const closeBtn = document.getElementById('dshClose');
+      const sendBtn = document.getElementById('dshSend');
+      const chatInput = document.getElementById('dshInput');
+      const chatBody = document.getElementById('dshBody');
+      const badge = document.getElementById('dshBadge');
+      
+      let isOpen = false;
+      let isProcessing = false;
+      
+      function getTime() {
+        return new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+      }
+      
+      function addMessage(text, type) {
+        const div = document.createElement('div');
+        div.className = `dsh-message ${type}`;
+        div.innerHTML = text.replace(/\n/g, '<br>') + `<span class="time">${getTime()}</span>`;
+        chatBody.appendChild(div);
+        chatBody.scrollTop = chatBody.scrollHeight;
+      }
+      
+      function showTyping() {
+        const div = document.createElement('div');
+        div.className = 'dsh-typing';
+        div.id = 'dshTyping';
+        div.innerHTML = '<span></span><span></span><span></span>';
+        chatBody.appendChild(div);
+        chatBody.scrollTop = chatBody.scrollHeight;
+      }
+      
+      function removeTyping() {
+        const el = document.getElementById('dshTyping');
+        if (el) el.remove();
+      }
+      
+      async function sendMessageToServer(message) {
+        try {
+          const response = await fetch(API_URL, {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+              messages: [{ role: 'user', content: message }]
+            })
+          });
+          
+          if (!response.ok) {
+            throw new Error('Error en el servidor');
+          }
+          
+          const data = await response.json();
+          return data.reply || data.content || 'Lo siento, no pude procesar tu solicitud.';
+        } catch (error) {
+          console.error('Error:', error);
+          return '⚠️ No puedo conectar con el servidor. Asegúrate de que el servidor esté corriendo.';
+        }
+      }
+      
+      async function processUserMessage(message) {
+        if (!message.trim() || isProcessing) return;
+        
+        isProcessing = true;
+        sendBtn.disabled = true;
+        
+        // Mostrar mensaje del usuario
+        addMessage(message, 'user');
+        chatInput.value = '';
+        
+        // Mostrar indicador de escritura
+        showTyping();
+        
+        try {
+          const response = await sendMessageToServer(message);
+          removeTyping();
+          addMessage(response, 'bot');
+        } catch (error) {
+          removeTyping();
+          addMessage('⚠️ Hubo un error. Por favor, intenta de nuevo.', 'bot');
+        }
+        
+        isProcessing = false;
+        sendBtn.disabled = false;
+        chatInput.focus();
+      }
+      
+      // --- EVENTOS ---
+      toggleBtn.addEventListener('click', function() {
+        isOpen = !isOpen;
+        chat.classList.toggle('active', isOpen);
+        if (badge) badge.style.display = 'none';
+        if (isOpen) {
+          setTimeout(() => chatInput.focus(), 300);
+          chatBody.scrollTop = chatBody.scrollHeight;
+        }
+      });
+      
+      closeBtn.addEventListener('click', function() {
+        isOpen = false;
+        chat.classList.remove('active');
+      });
+      
+      sendBtn.addEventListener('click', function() {
+        processUserMessage(chatInput.value);
+      });
+      
+      chatInput.addEventListener('keydown', function(e) {
+        if (e.key === 'Enter') {
+          e.preventDefault();
+          processUserMessage(chatInput.value);
+        }
+      });
+      
+      // Notificación inicial
+      setTimeout(() => {
+        if (badge) badge.style.display = 'flex';
+      }, 3000);
+      
+      // Cerrar con Escape
+      document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && isOpen) {
+          isOpen = false;
+          chat.classList.remove('active');
+        }
+      });
+      
+      console.log('🚀 Chat con DeepSeek Harness cargado correctamente');
+      console.log('📡 Conectando a:', API_URL);
+    });
+  </script>
+
+</body>
+</html>
