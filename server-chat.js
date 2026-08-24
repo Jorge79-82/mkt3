@@ -80,3 +80,4 @@ server.listen(3080, () => {
     console.log('🚀 Servidor con IA corriendo en http://localhost:3080');
     console.log('🧠 Usando Ollama con Mistral');
 });
+ 
