@@ -1,0 +1,10 @@
+{
+  "name": "mkt3",
+  "version": "1.0.0",
+  "description": "Chatbot para ManndarinKT",
+  "main": "server-chat.js",
+  "scripts": {
+    "start": "node server-chat.js"
+  },
+  "dependencies": {}
+}
