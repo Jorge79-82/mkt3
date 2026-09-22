@@ -20,8 +20,7 @@
   <meta name="description" content="Gestión de redes sociales para tu negocio. Planes Digital, Update y Plus. Facebook, Instagram, TikTok. Precios accesibles.">
 
   <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-  <link rel="stylesheet" href="CSS/Bootstrap CSS/bootstrap.min.css">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   <title>Redes Sociales - ManndarinKT</title>
   <style>
@@ -66,10 +65,6 @@
       background-color: var(--text-light) !important;
       box-shadow: 0 2px 10px rgba(0,0,0,0.1);
       padding: 10px 0;
-      position: fixed;
-      width: 100%;
-      top: 0;
-      z-index: 1000;
     }
 
     .navbar-brand img {
@@ -224,319 +219,287 @@
       transform: translateY(-5px);
     }
     
-    /* ========================================== */
-    /* CHAT FLOTANTE CON DEEPSEEK HARNESS       */
-    /* ========================================== */
-    .dsh-chat-widget {
+    /* ===== CHAT FLOTANTE CON IA - CON TUS TAMAÑOS ORIGINALES (1.5rem) ===== */
+    .whatsapp-chat {
       position: fixed;
       bottom: 20px;
       right: 20px;
-      width: 380px;
+      width: 350px;
       max-width: 90vw;
       background: white;
-      border-radius: 20px;
-      box-shadow: 0 10px 40px rgba(0,0,0,0.25);
+      border-radius: 15px;
+      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
       overflow: hidden;
-      transform: translateY(20px) scale(0.95);
+      transform: translateY(20px);
       opacity: 0;
       visibility: hidden;
-      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-      z-index: 10000;
+      transition: all 0.3s ease;
+      z-index: 1000;
       display: flex;
       flex-direction: column;
-      height: 520px;
-      border: 3px solid #6C63FF;
+      height: 480px;
     }
     
-    .dsh-chat-widget.active {
-      transform: translateY(0) scale(1);
+    .whatsapp-chat.active {
+      transform: translateY(0);
       opacity: 1;
       visibility: visible;
     }
     
-    .dsh-header {
-      background: linear-gradient(135deg, #6C63FF, #5A52D5);
-      color: white;
-      padding: 15px 20px;
+    .whatsapp-header {
+      background: var(--whatsapp-dark);
+      color: var(--text-light);
+      padding: 15px;
       display: flex;
       align-items: center;
-      gap: 12px;
-      flex-shrink: 0;
+      gap: 10px;
     }
     
-    .dsh-avatar {
+    .whatsapp-avatar {
       width: 45px;
       height: 45px;
       border-radius: 50%;
-      background: white;
+      background: var(--primary-color);
       display: flex;
       align-items: center;
       justify-content: center;
       overflow: hidden;
-      border: 2px solid rgba(255,255,255,0.3);
     }
     
-    .dsh-avatar img {
+    .whatsapp-avatar img {
       width: 100%;
       height: 100%;
       object-fit: cover;
     }
     
-    .dsh-info {
+    .whatsapp-info {
       flex: 1;
     }
     
-    .dsh-name {
-      font-weight: 700;
-      font-size: 1rem;
-      line-height: 1.2;
+    .whatsapp-name {
+      font-weight: bold;
+      font-size: 1.5rem;
     }
     
-    .dsh-name .badge-harness {
-      background: rgba(255,255,255,0.2);
-      font-size: 0.55rem;
-      padding: 2px 8px;
-      border-radius: 10px;
-      margin-left: 6px;
-      font-weight: 600;
+    .whatsapp-status {
+      font-size: 1.5rem;
+      opacity: 0.8;
     }
     
-    .dsh-status {
-      font-size: 0.75rem;
-      opacity: 0.85;
+    .whatsapp-actions {
       display: flex;
-      align-items: center;
-      gap: 5px;
+      gap: 15px;
     }
     
-    .dsh-status-dot {
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
-      background: #4CAF50;
-      display: inline-block;
-      animation: pulse-dot 2s infinite;
-    }
-    
-    @keyframes pulse-dot {
-      0%, 100% { opacity: 1; }
-      50% { opacity: 0.3; }
-    }
-    
-    .dsh-close {
-      background: rgba(255,255,255,0.2);
+    .whatsapp-btn {
+      background: none;
       border: none;
-      color: white;
-      width: 30px;
-      height: 30px;
-      border-radius: 50%;
+      color: var(--text-light);
+      font-size: 1.2rem;
       cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: background 0.3s;
     }
     
-    .dsh-close:hover {
-      background: rgba(255,255,255,0.3);
-    }
-    
-    .dsh-body {
+    .whatsapp-body {
       flex: 1;
-      background: #f0f2f5;
-      padding: 15px;
+      background: #e5ddd5;
+      background-image: url("https://web.whatsapp.com/img/bg-chat-tile-light_a4be512e7195b6b733d9110b408f075d.png");
+      padding: 10px;
       overflow-y: auto;
       display: flex;
       flex-direction: column;
-      gap: 8px;
     }
     
-    .dsh-message {
-      max-width: 85%;
-      padding: 10px 14px;
-      border-radius: 12px;
-      font-size: 0.9rem;
+    .whatsapp-message {
+      max-width: 80%;
+      padding: 8px 12px;
+      border-radius: 7.5px;
+      margin-bottom: 10px;
+      position: relative;
+      animation: fadeIn 0.3s ease;
+      font-size: 1.5rem;
       line-height: 1.4;
       word-wrap: break-word;
-      animation: fadeInUp 0.3s ease;
     }
     
-    @keyframes fadeInUp {
+    .welcome-message {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      background: white;
+      padding: 10px 15px;
+      border-radius: 15px;
+      margin-bottom: 15px;
+      align-self: flex-start;
+      max-width: 85%;
+      box-shadow: 0 1px 0.5px rgba(0, 0, 0, 0.1);
+    }
+    
+    .welcome-avatar {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+    
+    .welcome-message p {
+      margin: 0;
+      font-size: 1.5rem;
+    }
+    
+    @keyframes fadeIn {
       from { opacity: 0; transform: translateY(10px); }
       to { opacity: 1; transform: translateY(0); }
     }
     
-    .dsh-message.user {
-      align-self: flex-end;
-      background: #6C63FF;
-      color: white;
-      border-bottom-right-radius: 4px;
-    }
-    
-    .dsh-message.bot {
+    .received {
       align-self: flex-start;
       background: white;
-      color: #333;
-      border-bottom-left-radius: 4px;
-      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+      border-top-left-radius: 0;
+      box-shadow: 0 1px 0.5px rgba(0, 0, 0, 0.1);
     }
     
-    .dsh-message.bot a {
-      color: #6C63FF;
-      text-decoration: underline;
+    .sent {
+      align-self: flex-end;
+      background: var(--whatsapp-light);
+      border-top-right-radius: 0;
+      box-shadow: 0 1px 0.5px rgba(0, 0, 0, 0.1);
     }
     
-    .dsh-message .time {
-      font-size: 0.6rem;
-      opacity: 0.6;
+    .message-time {
       float: right;
-      margin-left: 10px;
+      font-size: 0.65rem;
+      color: #667781;
+      margin-left: 8px;
       margin-top: 3px;
     }
     
-    .dsh-typing {
-      align-self: flex-start;
-      background: white;
-      padding: 12px 16px;
-      border-radius: 12px;
-      border-bottom-left-radius: 4px;
-      display: flex;
-      gap: 5px;
-      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
-    }
-    
-    .dsh-typing span {
-      width: 8px;
-      height: 8px;
-      background: #9ca3af;
-      border-radius: 50%;
-      animation: typingBounce 1.4s infinite ease-in-out;
-    }
-    
-    .dsh-typing span:nth-child(2) { animation-delay: 0.2s; }
-    .dsh-typing span:nth-child(3) { animation-delay: 0.4s; }
-    
-    @keyframes typingBounce {
-      0%, 60%, 100% { transform: translateY(0); }
-      30% { transform: translateY(-6px); }
-    }
-    
-    .dsh-footer {
-      background: white;
-      padding: 12px 15px;
+    .whatsapp-footer {
+      background: #f0f2f5;
+      padding: 10px;
       display: flex;
       align-items: center;
       gap: 10px;
-      border-top: 1px solid #e5e7eb;
-      flex-shrink: 0;
     }
     
-    .dsh-input {
+    .whatsapp-input {
       flex: 1;
       padding: 10px 15px;
-      border: 2px solid #e5e7eb;
-      border-radius: 25px;
-      outline: none;
-      font-size: 0.9rem;
-      transition: border-color 0.3s;
-    }
-    
-    .dsh-input:focus {
-      border-color: #6C63FF;
-    }
-    
-    .dsh-send {
-      width: 44px;
-      height: 44px;
-      border-radius: 50%;
-      background: linear-gradient(135deg, #6C63FF, #5A52D5);
-      color: white;
       border: none;
-      cursor: pointer;
+      border-radius: 20px;
+      outline: none;
+      font-size: 1.5rem;
+    }
+    
+    .whatsapp-send {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: var(--whatsapp-green);
+      color: var(--text-light);
+      border: none;
       display: flex;
       align-items: center;
       justify-content: center;
-      transition: transform 0.3s, box-shadow 0.3s;
-      flex-shrink: 0;
+      cursor: pointer;
+      transition: background 0.3s;
     }
     
-    .dsh-send:hover {
-      transform: scale(1.05);
-      box-shadow: 0 4px 15px rgba(108, 99, 255, 0.4);
+    .whatsapp-send:hover {
+      background: #128C7E;
     }
     
-    .dsh-send:disabled {
-      opacity: 0.5;
-      cursor: not-allowed;
-      transform: none;
-    }
-    
-    .dsh-toggle {
+    .whatsapp-toggle {
       position: fixed;
       bottom: 20px;
       right: 20px;
       width: 60px;
       height: 60px;
       border-radius: 50%;
+      background: var(--whatsapp-green);
       border: none;
+      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
       cursor: pointer;
-      z-index: 9999;
-      box-shadow: 0 4px 20px rgba(108, 99, 255, 0.4);
-      transition: transform 0.3s, box-shadow 0.3s;
-      padding: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 999;
+      transition: all 0.3s ease;
       overflow: hidden;
-      background: white;
-      border: 2px solid #6C63FF;
+      padding: 0;
     }
     
-    .dsh-toggle:hover {
-      transform: scale(1.08);
-      box-shadow: 0 6px 30px rgba(108, 99, 255, 0.6);
-    }
-    
-    .dsh-toggle img {
+    .whatsapp-toggle img {
       width: 100%;
       height: 100%;
       object-fit: cover;
     }
     
-    .dsh-badge {
+    .typing-indicator {
+      display: flex;
+      padding: 8px 12px;
+      background: white;
+      border-radius: 7.5px;
+      align-self: flex-start;
+      box-shadow: 0 1px 0.5px rgba(0, 0, 0, 0.1);
+      margin-bottom: 10px;
+      gap: 5px;
+    }
+    
+    .typing-dot {
+      width: 8px;
+      height: 8px;
+      background: #9ca3af;
+      border-radius: 50%;
+      animation: typingAnimation 1.4s infinite ease-in-out;
+    }
+    
+    .typing-dot:nth-child(1) { animation-delay: 0s; }
+    .typing-dot:nth-child(2) { animation-delay: 0.2s; }
+    .typing-dot:nth-child(3) { animation-delay: 0.4s; }
+    
+    @keyframes typingAnimation {
+      0%, 60%, 100% { transform: translateY(0); }
+      30% { transform: translateY(-5px); }
+    }
+
+    .notification {
       position: absolute;
-      top: -4px;
-      right: -4px;
-      background: #ef4444;
+      top: -5px;
+      right: -5px;
+      background: red;
       color: white;
       border-radius: 50%;
-      width: 22px;
-      height: 22px;
-      font-size: 0.65rem;
+      width: 20px;
+      height: 20px;
       display: none;
       align-items: center;
       justify-content: center;
-      font-weight: 700;
-      animation: pulse-badge 2s infinite;
+      font-size: 1rem;
+      animation: pulse 1.5s infinite;
     }
     
-    @keyframes pulse-badge {
-      0%, 100% { transform: scale(1); }
-      50% { transform: scale(1.15); }
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.2); }
+      100% { transform: scale(1); }
     }
     
-    @media (max-width: 768px) {
-      .dsh-chat-widget {
-        width: 92vw;
-        right: 4vw;
-        height: 65vh;
-        bottom: 10px;
-      }
-      .dsh-toggle {
-        width: 55px;
-        height: 55px;
-      }
-    }
-
     /* Responsive */
     @media (max-width: 768px) {
+      .whatsapp-chat {
+        width: 90vw;
+        right: 5vw;
+        height: 70vh;
+        bottom: 10px;
+      }
+      
+      .whatsapp-toggle {
+        width: 50px !important;
+        height: 50px !important;
+        bottom: 10px !important;
+        right: 10px !important;
+      }
+      
       .navbar-brand img {
         height: 40px;
       }
@@ -545,61 +508,46 @@
 </head>
 
 <body>
-
-  <!-- CHAT FLOTANTE CON DEEPSEEK HARNESS -->
-  <button class="dsh-toggle" id="dshToggle">
-    <img src="IMG/asistente2.jpg" alt="Aria">
-    <span class="dsh-badge" id="dshBadge">1</span>
-  </button>
-
-  <div class="dsh-chat-widget" id="dshChat">
-    <div class="dsh-header">
-      <div class="dsh-avatar">
-        <img src="IMG/asistente2.jpg" alt="Aria">
+  <!-- CHAT FLOTANTE CON IA -->
+  <div class="whatsapp-chat">
+    <div class="whatsapp-header">
+      <div class="whatsapp-avatar">
+        <img src="IMG/asistente2.jpg" alt="Aria - Asesora IA">
       </div>
-      <div class="dsh-info">
-        <div class="dsh-name">
-          Aria · Asistente IA
-          <span class="badge-harness">🚀 HARNESS</span>
-        </div>
-        <div class="dsh-status">
-          <span class="dsh-status-dot"></span> Online · IA Local
-        </div>
+      <div class="whatsapp-info">
+        <div class="whatsapp-name">Aria · Asistente</div>
+        <div class="whatsapp-status">● Online ·</div>
       </div>
-      <button class="dsh-close" id="dshClose">
-        <i class="fas fa-times"></i>
-      </button>
-    </div>
-    
-    <div class="dsh-body" id="dshBody">
-      <!-- Mensaje de bienvenida -->
-      <div class="dsh-message bot">
-        📱¡Hola! Soy Aria con IA, tu asistente de ManndarinKT.<br>
-        <span class="time">12:00</span>
+      <div class="whatsapp-actions">
+        <button class="whatsapp-btn close-btn" type="button"><i class="fas fa-times"></i></button>
       </div>
     </div>
-    
-    <div class="dsh-footer">
-      <input class="dsh-input" id="dshInput" placeholder="Escribe tu mensaje..." autocomplete="off">
-      <button class="dsh-send" id="dshSend">
-        <i class="fas fa-paper-plane"></i>
-      </button>
+    <div class="whatsapp-body">
+    </div>
+    <div class="whatsapp-footer">
+      <input type="text" class="whatsapp-input" placeholder="Escribe tu mensaje...">
+      <button class="whatsapp-send send-btn" type="button"><i class="fas fa-paper-plane"></i></button>
     </div>
   </div>
+  
+  <!-- BOTÓN FLOTANTE CON IMAGEN -->
+  <button class="whatsapp-toggle">
+    <img src="IMG/asistente2.jpg" alt="Aria">
+    <span class="notification">1</span>
+  </button>
 
-  <!-- NAVEGACIÓN -->
   <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
     <div class="container">
       <a class="navbar-brand" href="index.html">
         <img src="IMG/ManndarinKT Digital.png" alt="ManndarinKT" height="50">
       </a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
         aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <i class='fas fa-bars'></i>
       </button>
 
       <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav ml-auto">
+        <ul class="navbar-nav ms-auto">
           <li class="nav-item">
             <a class="nav-link" href="communitymanager.html">COMMUNITY MANAGER</a>
           </li>
@@ -625,13 +573,11 @@
     </div>
   </nav>
 
-  <!-- HERO SECTION -->
   <div class="bgimg-1">
     <div class="caption">
     </div>
   </div>
 
-  <!-- CONTENIDO PRINCIPAL -->
   <div class="container mt-5 mb-5">
     <div class="row justify-content-center">
       <h1 class="text-center mb-4" style="color: var(--primary-color);">Las Redes Sociales</h1>
@@ -654,7 +600,6 @@
     </p>
   </div>
 
-  <!-- SECCIÓN 2 -->
   <div class="bgimg-2">
     <div class="caption">
     </div>
@@ -673,7 +618,6 @@
     </p>
   </div>
 
-  <!-- SECCIÓN 3 -->
   <div class="bgimg-3">
     <div class="caption">
     </div>
@@ -681,7 +625,7 @@
   
   <div class="container mt-5 mb-5">
     <div class="row justify-content-center">
-      <h2 class="text-center mb-4" style="color: var(--primary-color);">¡¡¡ Elige tu plan !!!</h2>
+      <h2 class="text-center mb-4" style="color: var(--primary-color);">¡¡¡ Elige tu plan!!!</h2>
     </div>
 
     <div class="row">
@@ -741,7 +685,6 @@
     </div>
   </div>
 
-  <!-- FOOTER -->
   <footer class="bg-dark text-white p-4">
     <div class="container">
       <div class="row mb-3">
@@ -787,151 +730,330 @@
     </div>
   </footer>
 
-  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+  <!-- Bootstrap 5 JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
-  <!-- ========================================== -->
-  <!-- LÓGICA DEL CHAT CON DEEPSEEK HARNESS       -->
-  <!-- ========================================== -->
   <script>
-    document.addEventListener('DOMContentLoaded', function() {
-      // --- CONFIGURACIÓN ---
-      const API_URL = 'http://localhost:3080/api/chat';
-      
-      // --- ELEMENTOS ---
-      const chat = document.getElementById('dshChat');
-      const toggleBtn = document.getElementById('dshToggle');
-      const closeBtn = document.getElementById('dshClose');
-      const sendBtn = document.getElementById('dshSend');
-      const chatInput = document.getElementById('dshInput');
-      const chatBody = document.getElementById('dshBody');
-      const badge = document.getElementById('dshBadge');
-      
-      let isOpen = false;
-      let isProcessing = false;
-      
-      function getTime() {
-        return new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
-      }
-      
-      function addMessage(text, type) {
-        const div = document.createElement('div');
-        div.className = `dsh-message ${type}`;
-        div.innerHTML = text.replace(/\n/g, '<br>') + `<span class="time">${getTime()}</span>`;
-        chatBody.appendChild(div);
-        chatBody.scrollTop = chatBody.scrollHeight;
-      }
-      
-      function showTyping() {
-        const div = document.createElement('div');
-        div.className = 'dsh-typing';
-        div.id = 'dshTyping';
-        div.innerHTML = '<span></span><span></span><span></span>';
-        chatBody.appendChild(div);
-        chatBody.scrollTop = chatBody.scrollHeight;
-      }
-      
-      function removeTyping() {
-        const el = document.getElementById('dshTyping');
-        if (el) el.remove();
-      }
-      
-      async function sendMessageToServer(message) {
-        try {
-          const response = await fetch(API_URL, {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({
-              messages: [{ role: 'user', content: message }]
-            })
-          });
-          
-          if (!response.ok) {
-            throw new Error('Error en el servidor');
-          }
-          
-          const data = await response.json();
-          return data.reply || data.content || 'Lo siento, no pude procesar tu solicitud.';
-        } catch (error) {
-          console.error('Error:', error);
-          return '⚠️ No puedo conectar con el servidor. Asegúrate de que el servidor esté corriendo.';
-        }
-      }
-      
-      async function processUserMessage(message) {
-        if (!message.trim() || isProcessing) return;
-        
-        isProcessing = true;
-        sendBtn.disabled = true;
-        
-        // Mostrar mensaje del usuario
-        addMessage(message, 'user');
-        chatInput.value = '';
-        
-        // Mostrar indicador de escritura
-        showTyping();
-        
-        try {
-          const response = await sendMessageToServer(message);
-          removeTyping();
-          addMessage(response, 'bot');
-        } catch (error) {
-          removeTyping();
-          addMessage('⚠️ Hubo un error. Por favor, intenta de nuevo.', 'bot');
-        }
-        
-        isProcessing = false;
-        sendBtn.disabled = false;
-        chatInput.focus();
-      }
-      
-      // --- EVENTOS ---
-      toggleBtn.addEventListener('click', function() {
-        isOpen = !isOpen;
-        chat.classList.toggle('active', isOpen);
-        if (badge) badge.style.display = 'none';
-        if (isOpen) {
-          setTimeout(() => chatInput.focus(), 300);
-          chatBody.scrollTop = chatBody.scrollHeight;
-        }
-      });
-      
-      closeBtn.addEventListener('click', function() {
-        isOpen = false;
-        chat.classList.remove('active');
-      });
-      
-      sendBtn.addEventListener('click', function() {
-        processUserMessage(chatInput.value);
-      });
-      
-      chatInput.addEventListener('keydown', function(e) {
-        if (e.key === 'Enter') {
-          e.preventDefault();
-          processUserMessage(chatInput.value);
-        }
-      });
-      
-      // Notificación inicial
-      setTimeout(() => {
-        if (badge) badge.style.display = 'flex';
-      }, 3000);
-      
-      // Cerrar con Escape
-      document.addEventListener('keydown', function(e) {
-        if (e.key === 'Escape' && isOpen) {
-          isOpen = false;
-          chat.classList.remove('active');
-        }
-      });
-      
-      console.log('🚀 Chat con DeepSeek Harness cargado correctamente');
-      console.log('📡 Conectando a:', API_URL);
-    });
-  </script>
+   // ============================================
+// CHATBOT ARIA CON GEMINI API
+// Especializado en REDES SOCIALES - ManndarinKT
+// ============================================
+document.addEventListener('DOMContentLoaded', function() {
 
+  // 🚨 API KEY
+  const GEMINI_API_KEY = 'TU_API_KEY_AQUI';
+  const GEMINI_MODEL = 'gemini-3.5-flash';
+  const GEMINI_URL = `https://generativelanguage.googleapis.com/v1beta/models/${GEMINI_MODEL}:generateContent`;
+
+  // ---------- RESPUESTAS LOCALES ----------
+  const RESPUESTAS_LOCALES = {
+    saludo: `¡Hola! 👋 Soy **Aria**, tu asesora de ManndarinKT.\n\n¿Buscas gestionar tus **redes sociales**? Cuéntame, ¿qué red te interesa más: Facebook, Instagram o TikTok?`,
+
+    planes: `Tenemos 3 planes 📱\n\n• **Digital** → Facebook\n• **Update** → Facebook + Instagram\n• **Plus** → Facebook + Instagram + TikTok\n\n¿Cuál te llama más la atención?`,
+
+    precios: `Los precios varían según el **plan** y la **duración** del contrato.\n\nPara darte el mejor precio, primero dime: ¿qué red social quieres gestionar? 📱`,
+
+    digital: `¡Excelente! El **Plan Digital** es para **Facebook** 📱\n\n💰 **Precios:**\n• 12 meses: $750/mes\n• 6 meses: $950/mes\n• 3 meses: $1,200/mes\n\n¿Qué duración te interesa?\n\n👉 <a href="https://api.whatsapp.com/send?phone=+525539935301&text=Hola,%20quiero%20el%20Plan%20Digital" target="_blank">📲 Cotizar por WhatsApp</a>`,
+
+    update: `¡Excelente! El **Plan Update** incluye **Facebook + Instagram** 📱\n\n💰 **Precios:**\n• 12 meses: $975/mes\n• 6 meses: $1,200/mes\n• 3 meses: $1,400/mes\n\n¿Qué duración te interesa?\n\n👉 <a href="https://api.whatsapp.com/send?phone=+525539935301&text=Hola,%20quiero%20el%20Plan%20Update" target="_blank">📲 Cotizar por WhatsApp</a>`,
+
+    plus: `¡Excelente! El **Plan Plus** incluye **Facebook + Instagram + TikTok** 📱\n\n💰 **Precios:**\n• 12 meses: $1,270/mes\n• 6 meses: $1,500/mes\n• 3 meses: $1,800/mes\n\n¿Qué duración te interesa?\n\n👉 <a href="https://api.whatsapp.com/send?phone=+525539935301&text=Hola,%20quiero%20el%20Plan%20Plus" target="_blank">📲 Cotizar por WhatsApp</a>`,
+
+    contacto: `📱 **Contáctanos por WhatsApp:**\n\n👉 <a href="https://api.whatsapp.com/send?phone=+525539935301&text=Hola,%20quiero%20contratar%20servicios%20de%20redes%20sociales" target="_blank">📲 Contactar por WhatsApp</a>\n\nHorario: Lunes a Viernes 9am - 7pm y Sábado 10am - 4pm.`,
+
+    horario: `🕐 **Horario:**\n\n• Lunes a Viernes: 9am - 7pm\n• Sábado: 10am - 4pm\n• Domingo: Cerrado`,
+
+    noEntiendo: `🤔 No entiendo bien tu pregunta. ¿Podrías reformularla?\n\nPor ejemplo, puedes preguntarme sobre:\n\n📱 Digital (Facebook) · $750/mes\n📱 Update (FB+IG) · $975/mes\n📱 Plus (FB+IG+TikTok) · $1,270/mes\n\nO si prefieres, escríbenos por WhatsApp:\n\n👉 <a href="https://api.whatsapp.com/send?phone=+525539935301&text=Hola,%20quiero%20contratar%20servicios%20de%20redes%20sociales" target="_blank">📲 Contactar por WhatsApp</a>`
+  };
+
+  // ---------- SYSTEM PROMPT ----------
+  const SYSTEM_PROMPT = `Eres Aria, asesora virtual de ManndarinKT, agencia mexicana especializada en redes sociales y marketing digital.
+
+NOTA IMPORTANTE: "Digital", "Update" y "Plus" son NOMBRES DE PLANES de ManndarinKT. Cuando el usuario escriba alguna de estas palabras (solas o dentro de una frase), SIEMPRE interpreta que se refiere al plan correspondiente y responde con sus precios completos.
+
+SERVICIO PRINCIPAL: Gestión profesional de Redes Sociales.
+
+PLANES DISPONIBLES:
+
+📱 PLAN DIGITAL: Facebook · 8 publicaciones/mes
+   - 12 meses $750/mes | 6 meses $950/mes | 3 meses $1,200/mes
+
+📱 PLAN UPDATE: Facebook + Instagram · 16 publicaciones/mes
+   - 12 meses $975/mes | 6 meses $1,200/mes | 3 meses $1,400/mes
+
+📱 PLAN PLUS: Facebook + Instagram + TikTok · 24 publicaciones/mes
+   - 12 meses $1,270/mes | 6 meses $1,500/mes | 3 meses $1,800/mes
+
+BENEFICIOS: mayor visibilidad, conexión con clientes, aumento de ventas, fidelización, contenido profesional.
+OFERTA: Diagnóstico de Redes Sociales gratuito (5 plazas por semana).
+
+Link de contacto: https://api.whatsapp.com/send?phone=+525539935301&text=Hola,%20quiero%20contratar%20servicios%20de%20redes%20sociales
+
+═══════════════════════════════════════════════
+HORARIO DE ATENCIÓN:
+═══════════════════════════════════════════════
+
+Lunes a Viernes: 9am - 7pm
+Sábado: 10am - 4pm
+Domingo: Cerrado
+
+═══════════════════════════════════════════════
+REGLAS DE CONVERSACIÓN (MUY IMPORTANTE):
+═══════════════════════════════════════════════
+
+1. Responde SIEMPRE en español, tono amable, cercano y profesional.
+2. Sé BREVE: máximo 2-3 frases cortas por mensaje.
+3. HAZ PREGUNTAS: guía al usuario paso a paso.
+4. Cuando el usuario mencione un PLAN ESPECÍFICO (Digital, Update o Plus), responde así:
+   - Confirma el plan con una frase.
+   - Da LOS 3 PRECIOS según duración (3, 6 y 12 meses).
+   - Termina preguntando qué duración prefiere.
+   - Añade SIEMPRE un link de WhatsApp al final.
+
+   Ejemplo si dice "Update" (copia EXACTAMENTE este formato):
+   "¡Excelente! El Plan Update incluye Facebook + Instagram 📱
+
+   💰 Precios:
+   • 12 meses: $975/mes
+   • 6 meses: $1,200/mes
+   • 3 meses: $1,400/mes
+
+   ¿Qué duración te interesa?
+
+   👉 <a href="https://api.whatsapp.com/send?phone=+525539935301&text=Hola,%20quiero%20el%20Plan%20Update" target="_blank">📲 Cotizar por WhatsApp</a>"
+
+5. Si el usuario menciona un plan con palabra clave:
+   - "digital" o "facebook solo" → Plan Digital
+   - "update", "instagram", "fb + ig" → Plan Update
+   - "plus", "tiktok", "completo", "todo" → Plan Plus
+
+6. Si preguntan por precios SIN mencionar plan, pregunta primero qué red social quiere.
+7. Si preguntan "¿qué planes tienen?", lista SOLO los nombres:
+   "📱 Digital (Facebook) · 📱 Update (FB+IG) · 📱 Plus (FB+IG+TikTok). ¿Cuál te llama más la atención?"
+8. Si muestran interés, invítalos al diagnóstico gratis o a WhatsApp.
+9. Usa emojis con moderación (1-2 por mensaje).
+10. Nunca inventes información fuera de este contexto.
+11. SIEMPRE que des información de un plan con precios, termina con un link de WhatsApp.
+    Usa EXACTAMENTE este formato HTML:
+    👉 <a href="https://api.whatsapp.com/send?phone=+525539935301&text=Hola,%20quiero%20el%20Plan%20[NOMBRE]" target="_blank">📲 Cotizar por WhatsApp</a>
+    Donde [NOMBRE] es Digital, Update o Plus según corresponda.
+    NO uses Markdown para links, usa SIEMPRE la etiqueta <a> HTML.
+12. NUNCA escribas el número de teléfono "+52 55 3993 5301" en el chat. Siempre usa el link de WhatsApp.
+13. Si preguntan por el horario, di: "Lunes a Viernes 9am - 7pm y Sábado 10am - 4pm".
+14. Si el cliente pregunta algo que no entiendes, o quiere hablar con un asesor humano, invítalo a contactar por WhatsApp:
+    👉 <a href="https://api.whatsapp.com/send?phone=+525539935301&text=Hola,%20quiero%20contratar%20servicios%20de%20redes%20sociales" target="_blank">📲 Contactar por WhatsApp</a>
+15. MEMORIA: Recuerda lo que el cliente dijo antes. Si dice "sí" u "ok", responde a la pregunta anterior. NUNCA repitas el saludo.
+16. Si NO entiendes la pregunta del cliente y ya hay conversación previa, pídele amablemente que la reformule. NUNCA repitas el saludo si ya hay conversación.`;
+
+  // ---------- HISTORIAL ----------
+  let historialConversacion = [];
+
+  // ---------- ELEMENTOS DEL CHAT ----------
+  const chat = document.querySelector('.whatsapp-chat');
+  const toggleBtn = document.querySelector('.whatsapp-toggle');
+  const closeBtn = document.querySelector('.close-btn');
+  const sendBtn = document.querySelector('.send-btn');
+  const chatInput = document.querySelector('.whatsapp-input');
+  const chatBody = document.querySelector('.whatsapp-body');
+  const notification = document.querySelector('.notification');
+
+  // ---------- UTILIDADES ----------
+  function getCurrentTime() {
+    return new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+  }
+
+  function addMessage(text, type) {
+    const messageDiv = document.createElement('div');
+    messageDiv.className = `whatsapp-message ${type}`;
+
+    let safe = text
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;');
+
+    safe = safe
+      .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+      .replace(/\n/g, '<br>')
+      .replace(/&lt;a href="(.*?)"(.*?)&gt;(.*?)&lt;\/a&gt;/g,
+               '<a href="$1"$2>$3</a>');
+
+    messageDiv.innerHTML = safe + `<span class="message-time">${getCurrentTime()}</span>`;
+    chatBody.appendChild(messageDiv);
+    scrollToBottom();
+  }
+
+  function scrollToBottom() {
+    chatBody.scrollTop = chatBody.scrollHeight;
+  }
+
+  function showTyping() {
+    const typingIndicator = document.createElement('div');
+    typingIndicator.className = 'typing-indicator';
+    typingIndicator.id = 'aria-typing';
+    typingIndicator.innerHTML = `<div class="typing-dot"></div><div class="typing-dot"></div><div class="typing-dot"></div>`;
+    chatBody.appendChild(typingIndicator);
+    scrollToBottom();
+    return typingIndicator;
+  }
+
+  // ---------- FALLBACK LOCAL ----------
+  function respuestaLocal(mensaje) {
+    const t = mensaje.toLowerCase().trim();
+
+    // AFIRMACIONES
+    if (/^(si|sí|claro|ok|vale|adelante|perfecto)/.test(t)) {
+      return RESPUESTAS_LOCALES.planes;
+    }
+
+    // PLANES ESPECÍFICOS
+    if (/digital/.test(t)) return RESPUESTAS_LOCALES.digital;
+    if (/update/.test(t)) return RESPUESTAS_LOCALES.update;
+    if (/plus|tiktok/.test(t)) return RESPUESTAS_LOCALES.plus;
+
+    // SERVICIOS GENERALES
+    if (/horario|a qué hora|abierto/.test(t)) return RESPUESTAS_LOCALES.horario;
+    if (/contacto|whatsapp|telefono|teléfono|llamar|asesor|humano/.test(t)) return RESPUESTAS_LOCALES.contacto;
+    if (/precio|costo|cuesta|cuanto|cuánto|tarifa/.test(t)) return RESPUESTAS_LOCALES.precios;
+    if (/plan|paquete/.test(t)) return RESPUESTAS_LOCALES.planes;
+    if (/^(hola|buenas|hey|qué tal|que tal)/.test(t)) return RESPUESTAS_LOCALES.saludo;
+
+    // CATCH-ALL: Si hay historial, pedir reformular
+    if (historialConversacion.length > 1) {
+      return RESPUESTAS_LOCALES.noEntiendo;
+    }
+
+    // Primer mensaje
+    return RESPUESTAS_LOCALES.saludo;
+  }
+
+  // ---------- LLAMADA A GEMINI ----------
+  async function llamarGemini(mensajeUsuario) {
+    if (!GEMINI_API_KEY || GEMINI_API_KEY === 'TU_API_KEY_AQUI') {
+      console.warn('⚠️ API Key de Gemini no configurada. Usando respuestas locales.');
+      return respuestaLocal(mensajeUsuario);
+    }
+
+    historialConversacion.push({
+      role: 'user',
+      parts: [{ text: mensajeUsuario }]
+    });
+
+    if (historialConversacion.length > 10) {
+      historialConversacion = historialConversacion.slice(-10);
+    }
+
+    const payload = {
+      system_instruction: {
+        parts: [{ text: SYSTEM_PROMPT }]
+      },
+      contents: historialConversacion,
+      generationConfig: {
+        temperature: 0.3,
+        maxOutputTokens: 400,
+        topP: 0.95
+      }
+    };
+
+    const controller = new AbortController();
+    const timeoutId = setTimeout(() => controller.abort(), 15000);
+
+    try {
+      const response = await fetch(`${GEMINI_URL}?key=${GEMINI_API_KEY}`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload),
+        signal: controller.signal
+      });
+
+      clearTimeout(timeoutId);
+
+      if (!response.ok) {
+        const errorData = await response.json().catch(() => ({}));
+        console.error('❌ Error Gemini API:', response.status);
+        console.error('Detalle:', JSON.stringify(errorData, null, 2));
+        throw new Error(`HTTP ${response.status}`);
+      }
+
+      const data = await response.json();
+      const respuestaTexto = data?.candidates?.[0]?.content?.parts?.[0]?.text;
+
+      if (!respuestaTexto) {
+        console.warn('⚠️ Gemini devolvió respuesta vacía.');
+        throw new Error('Respuesta vacía');
+      }
+
+      historialConversacion.push({
+        role: 'model',
+        parts: [{ text: respuestaTexto }]
+      });
+
+      return respuestaTexto;
+
+    } catch (error) {
+      clearTimeout(timeoutId);
+      if (error.name === 'AbortError') {
+        console.error('❌ Timeout: Gemini tardó más de 15 segundos.');
+      } else {
+        console.error('❌ Error Gemini:', error.message);
+      }
+      return respuestaLocal(mensajeUsuario);
+    }
+  }
+
+  // ---------- PROCESAR MENSAJE ----------
+  async function processUserMessage(message) {
+    const typingIndicator = showTyping();
+    const respuesta = await llamarGemini(message);
+    typingIndicator.remove();
+    addMessage(respuesta, 'received');
+  }
+
+  function sendMessage() {
+    const messageText = chatInput.value.trim();
+    if (!messageText) return;
+    addMessage(messageText, 'sent');
+    chatInput.value = '';
+    processUserMessage(messageText);
+  }
+
+  // ---------- EVENTOS ----------
+  if (toggleBtn) {
+    toggleBtn.addEventListener('click', function() {
+      chat.classList.toggle('active');
+      if (notification) notification.style.display = 'none';
+      if (chat.classList.contains('active') && chatInput) {
+        setTimeout(() => chatInput.focus(), 300);
+      }
+      scrollToBottom();
+    });
+  }
+
+  if (closeBtn) {
+    closeBtn.addEventListener('click', function() {
+      chat.classList.remove('active');
+    });
+  }
+
+  if (sendBtn) {
+    sendBtn.addEventListener('click', sendMessage);
+  }
+
+  if (chatInput) {
+    chatInput.addEventListener('keypress', function(e) {
+      if (e.key === 'Enter') {
+        e.preventDefault();
+        sendMessage();
+      }
+    });
+  }
+
+  // Notificación inicial
+  setTimeout(() => {
+    if (notification && !chat.classList.contains('active')) {
+      notification.style.display = 'flex';
+    }
+  }, 5000);
+});
+  </script>
 </body>
 </html>

@@ -24,8 +24,7 @@
   <meta name="description" content="Posicionamiento SEO y SEM para tu negocio. Aparece en los primeros resultados de Google. Servicios de posicionamiento web profesional.">
 
   <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-  <link rel="stylesheet" href="CSS/Bootstrap CSS/bootstrap.min.css">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   
   <title>Posicionamiento WEB - ManndarinKT</title>
@@ -71,10 +70,6 @@
       background-color: var(--text-light) !important;
       box-shadow: 0 2px 10px rgba(0,0,0,0.1);
       padding: 10px 0;
-      position: fixed;
-      width: 100%;
-      top: 0;
-      z-index: 1000;
     }
 
     .navbar-brand img {
@@ -100,7 +95,7 @@
     }
 
     /* Hero sections */
-    .bgimg-1, .bgimg-2 {
+    .bgimg-1, .bgimg-2, .bgimg-3 {
       position: relative;
       background-attachment: fixed;
       background-position: center;
@@ -114,7 +109,7 @@
 
      /* SOLUCIÓN PARA MÓVILES - Desactivar fixed */
       @media (max-width: 768px) {
-      .bgimg-1, .bgimg-2 {
+      .bgimg-1, .bgimg-2, .bgimg-3 {
       background-attachment: scroll;
       min-height: 60vh;
       }
@@ -203,318 +198,271 @@
       transform: translateY(-5px);
     }
 
-    /* ========================================== */
-    /* CHAT FLOTANTE CON DEEPSEEK HARNESS       */
-    /* ========================================== */
-    .dsh-chat-widget {
+    /* ===== CHAT FLOTANTE CON IA ===== */
+    .whatsapp-chat {
       position: fixed;
       bottom: 20px;
       right: 20px;
-      width: 380px;
+      width: 350px;
       max-width: 90vw;
       background: white;
-      border-radius: 20px;
-      box-shadow: 0 10px 40px rgba(0,0,0,0.25);
+      border-radius: 15px;
+      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
       overflow: hidden;
-      transform: translateY(20px) scale(0.95);
+      transform: translateY(20px);
       opacity: 0;
       visibility: hidden;
-      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-      z-index: 10000;
+      transition: all 0.3s ease;
+      z-index: 1000;
       display: flex;
       flex-direction: column;
-      height: 520px;
-      border: 3px solid #6C63FF;
+      height: 480px;
     }
     
-    .dsh-chat-widget.active {
-      transform: translateY(0) scale(1);
+    .whatsapp-chat.active {
+      transform: translateY(0);
       opacity: 1;
       visibility: visible;
     }
     
-    .dsh-header {
-      background: linear-gradient(135deg, #6C63FF, #5A52D5);
-      color: white;
-      padding: 15px 20px;
+    .whatsapp-header {
+      background: var(--whatsapp-dark);
+      color: var(--text-light);
+      padding: 15px;
       display: flex;
       align-items: center;
-      gap: 12px;
-      flex-shrink: 0;
+      gap: 10px;
     }
     
-    .dsh-avatar {
-      width: 45px;
-      height: 45px;
+    .whatsapp-avatar {
+      width: 40px;
+      height: 40px;
       border-radius: 50%;
-      background: white;
+      background: var(--primary-color);
       display: flex;
       align-items: center;
       justify-content: center;
       overflow: hidden;
-      border: 2px solid rgba(255,255,255,0.3);
     }
     
-    .dsh-avatar img {
+    .whatsapp-avatar img {
       width: 100%;
       height: 100%;
       object-fit: cover;
     }
     
-    .dsh-info {
+    .whatsapp-info {
       flex: 1;
     }
     
-    .dsh-name {
-      font-weight: 700;
-      font-size: 1rem;
-      line-height: 1.2;
+    .whatsapp-name {
+      font-weight: bold;
+      font-size: 1.5rem;
     }
     
-    .dsh-name .badge-harness {
-      background: rgba(255,255,255,0.2);
-      font-size: 0.55rem;
-      padding: 2px 8px;
-      border-radius: 10px;
-      margin-left: 6px;
-      font-weight: 600;
+    .whatsapp-status {
+      font-size: 1.5rem;
+      opacity: 0.8;
     }
     
-    .dsh-status {
-      font-size: 0.75rem;
-      opacity: 0.85;
+    .whatsapp-actions {
       display: flex;
-      align-items: center;
-      gap: 5px;
+      gap: 15px;
     }
     
-    .dsh-status-dot {
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
-      background: #4CAF50;
-      display: inline-block;
-      animation: pulse-dot 2s infinite;
-    }
-    
-    @keyframes pulse-dot {
-      0%, 100% { opacity: 1; }
-      50% { opacity: 0.3; }
-    }
-    
-    .dsh-close {
-      background: rgba(255,255,255,0.2);
+    .whatsapp-btn {
+      background: none;
       border: none;
-      color: white;
-      width: 30px;
-      height: 30px;
-      border-radius: 50%;
+      color: var(--text-light);
+      font-size: 1.2rem;
       cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: background 0.3s;
     }
     
-    .dsh-close:hover {
-      background: rgba(255,255,255,0.3);
-    }
-    
-    .dsh-body {
+    .whatsapp-body {
       flex: 1;
-      background: #f0f2f5;
-      padding: 15px;
+      background: #e5ddd5;
+      background-image: url("https://web.whatsapp.com/img/bg-chat-tile-light_a4be512e7195b6b733d9110b408f075d.png");
+      padding: 10px;
       overflow-y: auto;
       display: flex;
       flex-direction: column;
-      gap: 8px;
     }
     
-    .dsh-message {
-      max-width: 85%;
-      padding: 10px 14px;
-      border-radius: 12px;
-      font-size: 0.9rem;
+    .whatsapp-message {
+      max-width: 80%;
+      padding: 8px 12px;
+      border-radius: 7.5px;
+      margin-bottom: 10px;
+      position: relative;
+      animation: fadeIn 0.3s ease;
+      font-size: 1.5rem;
       line-height: 1.4;
       word-wrap: break-word;
-      animation: fadeInUp 0.3s ease;
     }
     
-    @keyframes fadeInUp {
+    .welcome-message {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      background: white;
+      padding: 10px 15px;
+      border-radius: 15px;
+      margin-bottom: 15px;
+      align-self: flex-start;
+      max-width: 85%;
+      box-shadow: 0 1px 0.5px rgba(0, 0, 0, 0.1);
+    }
+    
+    .welcome-avatar {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+    
+    .welcome-message p {
+      margin: 0;
+      font-size: 1.5rem;
+    }
+    
+    @keyframes fadeIn {
       from { opacity: 0; transform: translateY(10px); }
       to { opacity: 1; transform: translateY(0); }
     }
     
-    .dsh-message.user {
-      align-self: flex-end;
-      background: #6C63FF;
-      color: white;
-      border-bottom-right-radius: 4px;
-    }
-    
-    .dsh-message.bot {
+    .received {
       align-self: flex-start;
       background: white;
-      color: #333;
-      border-bottom-left-radius: 4px;
-      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+      border-top-left-radius: 0;
+      box-shadow: 0 1px 0.5px rgba(0, 0, 0, 0.1);
     }
     
-    .dsh-message.bot a {
-      color: #6C63FF;
-      text-decoration: underline;
+    .sent {
+      align-self: flex-end;
+      background: var(--whatsapp-light);
+      border-top-right-radius: 0;
+      box-shadow: 0 1px 0.5px rgba(0, 0, 0, 0.1);
     }
     
-    .dsh-message .time {
-      font-size: 0.6rem;
-      opacity: 0.6;
+    .message-time {
       float: right;
-      margin-left: 10px;
+      font-size: 0.65rem;
+      color: #667781;
+      margin-left: 8px;
       margin-top: 3px;
     }
     
-    .dsh-typing {
-      align-self: flex-start;
-      background: white;
-      padding: 12px 16px;
-      border-radius: 12px;
-      border-bottom-left-radius: 4px;
-      display: flex;
-      gap: 5px;
-      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
-    }
-    
-    .dsh-typing span {
-      width: 8px;
-      height: 8px;
-      background: #9ca3af;
-      border-radius: 50%;
-      animation: typingBounce 1.4s infinite ease-in-out;
-    }
-    
-    .dsh-typing span:nth-child(2) { animation-delay: 0.2s; }
-    .dsh-typing span:nth-child(3) { animation-delay: 0.4s; }
-    
-    @keyframes typingBounce {
-      0%, 60%, 100% { transform: translateY(0); }
-      30% { transform: translateY(-6px); }
-    }
-    
-    .dsh-footer {
-      background: white;
-      padding: 12px 15px;
+    .whatsapp-footer {
+      background: #f0f2f5;
+      padding: 10px;
       display: flex;
       align-items: center;
       gap: 10px;
-      border-top: 1px solid #e5e7eb;
-      flex-shrink: 0;
     }
     
-    .dsh-input {
+    .whatsapp-input {
       flex: 1;
       padding: 10px 15px;
-      border: 2px solid #e5e7eb;
-      border-radius: 25px;
-      outline: none;
-      font-size: 0.9rem;
-      transition: border-color 0.3s;
-    }
-    
-    .dsh-input:focus {
-      border-color: #6C63FF;
-    }
-    
-    .dsh-send {
-      width: 44px;
-      height: 44px;
-      border-radius: 50%;
-      background: linear-gradient(135deg, #6C63FF, #5A52D5);
-      color: white;
       border: none;
-      cursor: pointer;
+      border-radius: 20px;
+      outline: none;
+      font-size: 1.5rem;
+    }
+    
+    .whatsapp-send {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: var(--whatsapp-green);
+      color: var(--text-light);
+      border: none;
       display: flex;
       align-items: center;
       justify-content: center;
-      transition: transform 0.3s, box-shadow 0.3s;
-      flex-shrink: 0;
+      cursor: pointer;
+      transition: background 0.3s;
     }
     
-    .dsh-send:hover {
-      transform: scale(1.05);
-      box-shadow: 0 4px 15px rgba(108, 99, 255, 0.4);
+    .whatsapp-send:hover {
+      background: #128C7E;
     }
     
-    .dsh-send:disabled {
-      opacity: 0.5;
-      cursor: not-allowed;
-      transform: none;
-    }
-    
-    .dsh-toggle {
+    .whatsapp-toggle {
       position: fixed;
       bottom: 20px;
       right: 20px;
       width: 60px;
       height: 60px;
       border-radius: 50%;
+      background: var(--whatsapp-green);
       border: none;
+      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
       cursor: pointer;
-      z-index: 9999;
-      box-shadow: 0 4px 20px rgba(108, 99, 255, 0.4);
-      transition: transform 0.3s, box-shadow 0.3s;
-      padding: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 999;
+      transition: all 0.3s ease;
       overflow: hidden;
-      background: white;
-      border: 2px solid #6C63FF;
+      padding: 0;
     }
     
-    .dsh-toggle:hover {
-      transform: scale(1.08);
-      box-shadow: 0 6px 30px rgba(108, 99, 255, 0.6);
-    }
-    
-    .dsh-toggle img {
+    .whatsapp-toggle img {
       width: 100%;
       height: 100%;
       object-fit: cover;
     }
     
-    .dsh-badge {
+    .typing-indicator {
+      display: flex;
+      padding: 8px 12px;
+      background: white;
+      border-radius: 7.5px;
+      align-self: flex-start;
+      box-shadow: 0 1px 0.5px rgba(0, 0, 0, 0.1);
+      margin-bottom: 10px;
+      gap: 5px;
+    }
+    
+    .typing-dot {
+      width: 8px;
+      height: 8px;
+      background: #9ca3af;
+      border-radius: 50%;
+      animation: typingAnimation 1.4s infinite ease-in-out;
+    }
+    
+    .typing-dot:nth-child(1) { animation-delay: 0s; }
+    .typing-dot:nth-child(2) { animation-delay: 0.2s; }
+    .typing-dot:nth-child(3) { animation-delay: 0.4s; }
+    
+    @keyframes typingAnimation {
+      0%, 60%, 100% { transform: translateY(0); }
+      30% { transform: translateY(-5px); }
+    }
+    
+    .notification {
       position: absolute;
-      top: -4px;
-      right: -4px;
-      background: #ef4444;
+      top: -5px;
+      right: -5px;
+      background: red;
       color: white;
       border-radius: 50%;
-      width: 22px;
-      height: 22px;
-      font-size: 0.65rem;
+      width: 20px;
+      height: 20px;
       display: none;
       align-items: center;
       justify-content: center;
-      font-weight: 700;
-      animation: pulse-badge 2s infinite;
+      font-size: 1.5rem;
+      animation: pulse 1.5s infinite;
     }
     
-    @keyframes pulse-badge {
-      0%, 100% { transform: scale(1); }
-      50% { transform: scale(1.15); }
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.2); }
+      100% { transform: scale(1); }
     }
     
-    @media (max-width: 768px) {
-      .dsh-chat-widget {
-        width: 92vw;
-        right: 4vw;
-        height: 65vh;
-        bottom: 10px;
-      }
-      .dsh-toggle {
-        width: 55px;
-        height: 55px;
-      }
-    }
-
-    /* Estilos adicionales */
     .benefit-box {
       text-align: center;
       padding: 2rem;
@@ -580,6 +528,20 @@
         font-size: 1rem;
       }
       
+      .whatsapp-chat {
+        width: 90vw;
+        right: 5vw;
+        height: 70vh;
+        bottom: 10px;
+      }
+      
+      .whatsapp-toggle {
+        width: 50px !important;
+        height: 50px !important;
+        bottom: 10px !important;
+        right: 10px !important;
+      }
+      
       .navbar-brand img {
         height: 40px;
       }
@@ -611,59 +573,47 @@
 
 <body>
 
-  <!-- CHAT FLOTANTE CON DEEPSEEK HARNESS -->
-  <button class="dsh-toggle" id="dshToggle">
-    <img src="IMG/asistente2.jpg" alt="Aria">
-    <span class="dsh-badge" id="dshBadge">1</span>
-  </button>
-
-  <div class="dsh-chat-widget" id="dshChat">
-    <div class="dsh-header">
-      <div class="dsh-avatar">
-        <img src="IMG/asistente2.jpg" alt="Aria">
+  <!-- CHAT FLOTANTE CON IA -->
+  <div class="whatsapp-chat">
+    <div class="whatsapp-header">
+      <div class="whatsapp-avatar">
+        <img src="IMG/asistente2.jpg" alt="Aria - Asesora IA">
       </div>
-      <div class="dsh-info">
-        <div class="dsh-name">
-          Aria · Asistente IA
-          <span class="badge-harness">🚀 HARNESS</span>
-        </div>
-        <div class="dsh-status">
-          <span class="dsh-status-dot"></span> Online · IA Local
-        </div>
+      <div class="whatsapp-info">
+        <div class="whatsapp-name">Aria · Asistente</div>
+        <div class="whatsapp-status">● Online ·</div>
       </div>
-      <button class="dsh-close" id="dshClose">
-        <i class="fas fa-times"></i>
-      </button>
-    </div>
-    
-    <div class="dsh-body" id="dshBody">
-      <!-- Mensaje de bienvenida -->
-      <div class="dsh-message bot">
-        🎯¡Hola! Soy Aria con IA, tu asistente de ManndarinKT.<br>
+      <div class="whatsapp-actions">
+        <button class="whatsapp-btn close-btn" type="button"><i class="fas fa-times"></i></button>
       </div>
     </div>
-    
-    <div class="dsh-footer">
-      <input class="dsh-input" id="dshInput" placeholder="Escribe tu mensaje..." autocomplete="off">
-      <button class="dsh-send" id="dshSend">
-        <i class="fas fa-paper-plane"></i>
-      </button>
+    <div class="whatsapp-body">
+    </div>
+    <div class="whatsapp-footer">
+      <input type="text" class="whatsapp-input" placeholder="Escribe tu mensaje...">
+      <button class="whatsapp-send send-btn" type="button"><i class="fas fa-paper-plane"></i></button>
     </div>
   </div>
+  
+  <!-- BOTÓN FLOTANTE CON IMAGEN -->
+  <button class="whatsapp-toggle">
+    <img src="IMG/asistente2.jpg" alt="Aria">
+    <span class="notification">1</span>
+  </button>
 
   <!-- Barra de navegación -->
-  <nav class="navbar navbar-expand-lg navbar-light bg-light navbar-fixed-top">
+  <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
     <div class="container">
       <a class="navbar-brand" href="index.html">
         <img src="IMG/ManndarinKT Digital.png" alt="ManndarinKT" height="50">
       </a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
         aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <i class='fas fa-bars'></i>
       </button>
 
       <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav ml-auto">
+        <ul class="navbar-nav ms-auto">
           <li class="nav-item">
             <a class="nav-link" href="communitymanager.html">COMMUNITY MANAGER</a>
           </li>
@@ -820,153 +770,368 @@
     </div>
   </footer>
 
-  <script src="JS/Jquery.js"></script>
-  <script src="JS/Bootstrap JS/bootstrap.min.js"></script>
-  <script src="JS/Materialize JS/materialize.min.js"></script>
-  <script src="JS/main.js"></script>
+  <!-- Bootstrap 5 JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
-  <!-- ========================================== -->
-  <!-- LÓGICA DEL CHAT CON DEEPSEEK HARNESS       -->
-  <!-- ========================================== -->
   <script>
-    document.addEventListener('DOMContentLoaded', function() {
-      // --- CONFIGURACIÓN ---
-      const API_URL = 'http://localhost:3080/api/chat';
-      
-      // --- ELEMENTOS ---
-      const chat = document.getElementById('dshChat');
-      const toggleBtn = document.getElementById('dshToggle');
-      const closeBtn = document.getElementById('dshClose');
-      const sendBtn = document.getElementById('dshSend');
-      const chatInput = document.getElementById('dshInput');
-      const chatBody = document.getElementById('dshBody');
-      const badge = document.getElementById('dshBadge');
-      
-      let isOpen = false;
-      let isProcessing = false;
-      
-      function getTime() {
-        return new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
-      }
-      
-      function addMessage(text, type) {
-        const div = document.createElement('div');
-        div.className = `dsh-message ${type}`;
-        div.innerHTML = text.replace(/\n/g, '<br>') + `<span class="time">${getTime()}</span>`;
-        chatBody.appendChild(div);
-        chatBody.scrollTop = chatBody.scrollHeight;
-      }
-      
-      function showTyping() {
-        const div = document.createElement('div');
-        div.className = 'dsh-typing';
-        div.id = 'dshTyping';
-        div.innerHTML = '<span></span><span></span><span></span>';
-        chatBody.appendChild(div);
-        chatBody.scrollTop = chatBody.scrollHeight;
-      }
-      
-      function removeTyping() {
-        const el = document.getElementById('dshTyping');
-        if (el) el.remove();
-      }
-      
-      async function sendMessageToServer(message) {
-        try {
-          const response = await fetch(API_URL, {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({
-              messages: [{ role: 'user', content: message }]
-            })
-          });
-          
-          if (!response.ok) {
-            throw new Error('Error en el servidor');
-          }
-          
-          const data = await response.json();
-          return data.reply || data.content || 'Lo siento, no pude procesar tu solicitud.';
-        } catch (error) {
-          console.error('Error:', error);
-          return '⚠️ No puedo conectar con el servidor. Asegúrate de que el servidor esté corriendo.';
-        }
-      }
-      
-      async function processUserMessage(message) {
-        if (!message.trim() || isProcessing) return;
-        
-        isProcessing = true;
-        sendBtn.disabled = true;
-        
-        // Mostrar mensaje del usuario
-        addMessage(message, 'user');
-        chatInput.value = '';
-        
-        // Mostrar indicador de escritura
-        showTyping();
-        
-        try {
-          const response = await sendMessageToServer(message);
-          removeTyping();
-          addMessage(response, 'bot');
-        } catch (error) {
-          removeTyping();
-          addMessage('⚠️ Hubo un error. Por favor, intenta de nuevo.', 'bot');
-        }
-        
-        isProcessing = false;
-        sendBtn.disabled = false;
-        chatInput.focus();
-      }
-      
-      // --- EVENTOS ---
-      toggleBtn.addEventListener('click', function() {
-        isOpen = !isOpen;
-        chat.classList.toggle('active', isOpen);
-        if (badge) badge.style.display = 'none';
-        if (isOpen) {
-          setTimeout(() => chatInput.focus(), 300);
-          chatBody.scrollTop = chatBody.scrollHeight;
-        }
-      });
-      
-      closeBtn.addEventListener('click', function() {
-        isOpen = false;
-        chat.classList.remove('active');
-      });
-      
-      sendBtn.addEventListener('click', function() {
-        processUserMessage(chatInput.value);
-      });
-      
-      chatInput.addEventListener('keydown', function(e) {
-        if (e.key === 'Enter') {
-          e.preventDefault();
-          processUserMessage(chatInput.value);
-        }
-      });
-      
-      // Notificación inicial
-      setTimeout(() => {
-        if (badge) badge.style.display = 'flex';
-      }, 3000);
-      
-      // Cerrar con Escape
-      document.addEventListener('keydown', function(e) {
-        if (e.key === 'Escape' && isOpen) {
-          isOpen = false;
-          chat.classList.remove('active');
-        }
-      });
-      
-      console.log('🚀 Chat con DeepSeek Harness cargado correctamente');
-      console.log('📡 Conectando a:', API_URL);
-    });
-  </script>
+      // ============================================
+// CHATBOT ARIA CON GEMINI API
+// Especializado en POSICIONAMIENTO WEB (SEO) - ManndarinKT
+// ============================================
+document.addEventListener('DOMContentLoaded', function() {
 
+  // 🚨 API KEY
+  const GEMINI_API_KEY = 'TU_API_KEY_AQUI';
+  const GEMINI_MODEL = 'gemini-3.5-flash';
+  const GEMINI_URL = `https://generativelanguage.googleapis.com/v1beta/models/${GEMINI_MODEL}:generateContent`;
+
+  // Memoria de conversación
+  let historialConversacion = [];
+
+  // ==========================================
+  // GEMINI API
+  // ==========================================
+  async function generarRespuestaConGemini(pregunta) {
+    try {
+      const prompt = `Eres Aria, asesora virtual de ManndarinKT (agencia de marketing digital en México).
+
+PÁGINA ACTUAL: Posicionamiento Web (SEO)
+
+═══════════════════════════════════════════════
+REGLA PRINCIPAL - PRECIOS:
+═══════════════════════════════════════════════
+
+Si el cliente pregunta "precios", "cuánto cuesta", "cotización" o similar, responde EXACTAMENTE con esto (sin agregar nada más):
+
+"💰 **Precios SEO (Posicionamiento Web):**
+
+📌 Plan Anual: $5,000 MXN/mes (12 meses)
+📌 Plan Semestral: $8,284 MXN/mes (6 meses)
+
+✅ Incluye todo lo necesario para que tu negocio aparezca en Google.
+✅ **Nosotros hacemos TODO por ti.** Tú no necesitas saber nada técnico.
+
+🎁 Oferta especial: **Diagnóstico SEO GRATUITO**
+
+¿Te gustaría agendar tu diagnóstico?
+
+👉 <a href="https://api.whatsapp.com/send?phone=+525539935301&text=Hola,%20quiero%20posicionar%20mi%20negocio%20en%20Google" target="_blank">📲 Cotizar por WhatsApp</a>"
+
+═══════════════════════════════════════════════
+EXPLICACIONES SENCILLAS PARA CLIENTES:
+═══════════════════════════════════════════════
+
+🔹 ¿QUÉ ES SEO?
+Son las siglas de "Search Engine Optimization". Es el conjunto de técnicas para que tu página web aparezca en los PRIMEROS resultados de Google cuando alguien busca algo relacionado con tu negocio.
+
+EJEMPLO: Si tienes una heladería y alguien busca "dónde comprar helado cerca de mí", el SEO hace que TU heladería aparezca de las primeras.
+
+NOSOTROS HACEMOS TODO POR TI. Nosotros investigamos palabras clave, optimizamos tu web, creamos contenido y conseguimos enlaces.
+
+RESULTADOS: Los resultados se ven entre 3 y 6 meses y se mantienen en el tiempo.
+
+🔹 ¿QUÉ ES SEM / GOOGLE ADS?
+Es PUBLICIDAD PAGADA en Google. En vez de esperar a que Google te posicione orgánicamente, PAGAS para aparecer como anuncio.
+
+EJEMPLO: El SEO es como construir una tienda en una calle concurrida. El SEM es poner un cartel luminoso para que todos te vean YA.
+
+Nosotros gestionamos TODO por ti: elegimos palabras clave, escribimos anuncios y optimizamos el presupuesto.
+
+═══════════════════════════════════════════════
+PRECIOS SEO:
+═══════════════════════════════════════════════
+
+📌 Plan Anual: $5,000 MXN/mes (contrato 12 meses)
+📌 Plan Semestral: $8,284 MXN/mes (contrato 6 meses)
+
+Oferta especial: Diagnóstico SEO GRATUITO.
+
+Link de contacto: https://api.whatsapp.com/send?phone=+525539935301&text=Hola,%20quiero%20posicionar%20mi%20negocio%20en%20Google
+
+═══════════════════════════════════════════════
+HORARIO DE ATENCIÓN:
+═══════════════════════════════════════════════
+
+Lunes a Viernes: 9am - 7pm
+Sábado: 10am - 4pm
+Domingo: Cerrado
+
+═══════════════════════════════════════════════
+REGLAS DE RESPUESTA:
+═══════════════════════════════════════════════
+
+REGLA 1 - Si dicen "precios", "cuánto cuesta", "cotización" o similar, muestra DIRECTAMENTE los precios de SEO (con el formato de arriba). NO preguntes qué servicio quiere.
+
+REGLA 2 - Si preguntan "qué es SEO", explica con el ejemplo de la heladería. Enfatiza que NOSOTROS HACEMOS TODO.
+
+REGLA 3 - Si preguntan "qué es SEM" o "Google Ads", explica con el ejemplo del cartel.
+
+REGLA 4 - Si preguntan "diferencia entre SEO y SEM", explica: SEO = orgánico, largo plazo. SEM = pago, inmediato.
+
+REGLA 5 - Si dicen "diagnóstico", ofrece diagnóstico SEO gratuito + link.
+
+REGLA 6 - Si dicen "gracias" u "ok", responde amable.
+
+REGLA 7 - Si el cliente pregunta algo que no entiendes, o quiere hablar con un asesor humano, invítalo a contactar por WhatsApp con este link:
+👉 <a href="https://api.whatsapp.com/send?phone=+525539935301&text=Hola,%20quiero%20posicionar%20mi%20negocio%20en%20Google" target="_blank">📲 Contactar por WhatsApp</a>
+
+REGLA 8 - NUNCA escribas el número de teléfono "+52 55 3993 5301" en el chat. Siempre usa el link de WhatsApp.
+
+REGLA 9 - Si preguntan por el horario, di: "Lunes a Viernes 9am - 7pm y Sábado 10am - 4pm".
+
+REGLA 10 - Responde SIEMPRE en español, tono amable y cercano.
+REGLA 11 - Sé BREVE: máximo 4-5 líneas + links.
+REGLA 12 - Usa emojis con moderación.
+REGLA 13 - NUNCA inventes información fuera de este contexto.
+REGLA 14 - SIEMPRE enfatiza que ManndarinKT se encarga de TODO.
+REGLA 15 - SIEMPRE usa etiqueta <a> HTML para links, NUNCA Markdown.
+REGLA 16 - MEMORIA: Recuerda lo que el cliente dijo antes. Si dice "sí" u "ok", responde a la pregunta anterior. NUNCA repitas el saludo.
+REGLA 17 - Si NO entiendes la pregunta del cliente y ya hay conversación previa, pídele amablemente que la reformule. NUNCA repitas el saludo si ya hay conversación.
+
+═══════════════════════════════════════════════
+PREGUNTA DEL CLIENTE:
+═══════════════════════════════════════════════
+${pregunta}
+
+═══════════════════════════════════════════════
+TU RESPUESTA:
+═══════════════════════════════════════════════`;
+
+      const response = await fetch(
+        `${GEMINI_URL}?key=${GEMINI_API_KEY}`,
+        {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            contents: [{ parts: [{ text: prompt }] }],
+            generationConfig: {
+              temperature: 0.3,
+              maxOutputTokens: 800
+            }
+          })
+        }
+      );
+
+      const data = await response.json();
+
+      if (data.candidates && data.candidates.length > 0) {
+        return data.candidates[0].content.parts[0].text;
+      } else {
+        return generarRespuestaLocal(pregunta);
+      }
+
+    } catch (error) {
+      console.error('Error con Gemini:', error);
+      return generarRespuestaLocal(pregunta);
+    }
+  }
+
+  // ==========================================
+  // RESPALDO LOCAL
+  // ==========================================
+  const LINK_SEO = `\n\n👉 <a href="https://api.whatsapp.com/send?phone=+525539935301&text=Hola,%20quiero%20posicionar%20mi%20negocio%20en%20Google" target="_blank">📲 Cotizar por WhatsApp</a>`;
+
+  function generarRespuestaLocal(pregunta) {
+    const texto = pregunta.toLowerCase().trim();
+
+    // AFIRMACIONES
+    if (texto.match(/^(sí|si|claro|ok|vale|adelante|perfecto)/i)) {
+      return "¡Excelente! ¿Te gustaría agendar tu diagnóstico SEO GRATUITO o tienes alguna duda específica? 😊";
+    }
+
+    // SALUDOS (solo primer mensaje)
+    if (texto.match(/^(hola|buenos días|buenas tardes|buenas noches|hey|que tal|qué tal|saludos)/i)) {
+      if (historialConversacion.length <= 1) {
+        return "¡Hola! 👋 Soy Aria, tu asesora de ManndarinKT.\n\nEstamos en la sección de **Posicionamiento WEB** 🎯\n\n¿Te ayudo con **SEO**, **SEM**, **Google Ads** o alguna duda específica?";
+      } else {
+        return "¿En qué más te puedo ayudar? 😊";
+      }
+    }
+
+    // PRECIOS → DIRECTAMENTE LOS DE SEO
+    if (texto.includes('precio') || texto.includes('costo') || texto.includes('cuesta') || texto.includes('cuánto') || texto.includes('cuanto') || texto.includes('tarifa') || texto.includes('cotiza')) {
+      return `💰 **Precios SEO (Posicionamiento Web):**\n\n📌 Plan Anual: $5,000 MXN/mes (12 meses)\n📌 Plan Semestral: $8,284 MXN/mes (6 meses)\n\n✅ Incluye todo lo necesario para que tu negocio aparezca en Google.\n✅ **Nosotros hacemos TODO por ti.**\n\n🎁 Oferta especial: **Diagnóstico SEO GRATUITO**\n\n¿Te gustaría agendar tu diagnóstico?${LINK_SEO}`;
+    }
+
+    // QUÉ ES SEO
+    if (texto.includes('qué es seo') || texto.includes('que es seo') || texto.includes('cómo funciona seo') || texto.includes('como funciona seo')) {
+      return `🎯 **¿Qué es SEO?**\n\nSon las siglas de "Search Engine Optimization". Es el conjunto de técnicas para que tu página web aparezca en los **PRIMEROS resultados de Google**.\n\n**Ejemplo fácil:** Si tienes una heladería y alguien busca "dónde comprar helado cerca de mí", el SEO hace que TU heladería aparezca de las primeras.\n\n✅ **Nosotros hacemos TODO por ti.**\n\n💰 **Precios:** Plan Anual $5,000/mes · Plan Semestral $8,284/mes.\n\n¿Te gustaría un **diagnóstico SEO gratuito**? 🎁${LINK_SEO}`;
+    }
+
+    // QUÉ ES SEM / GOOGLE ADS
+    if (texto.includes('qué es sem') || texto.includes('que es sem') || texto.includes('google ads') || texto.includes('cómo funciona sem')) {
+      return `📢 **¿Qué es SEM / Google Ads?**\n\nEs **PUBLICIDAD PAGADA** en Google. En vez de esperar a que Google te posicione orgánicamente, PAGAS para aparecer como anuncio.\n\n**Ejemplo fácil:** El SEO es construir una tienda en una calle concurrida. El SEM es poner un **cartel luminoso** para que todos te vean YA.\n\n✅ **Nosotros gestionamos TODO por ti.**\n\n¿Te interesa saber cómo funciona para tu negocio? 😊${LINK_SEO}`;
+    }
+
+    // DIFERENCIA SEO vs SEM
+    if ((texto.includes('diferencia') || texto.includes(' vs ')) && texto.includes('seo') && texto.includes('sem')) {
+      return `📊 **Diferencia entre SEO y SEM:**\n\n• **SEO:** Orgánico, sin pagar por clic, resultados a largo plazo (3-6 meses).\n• **SEM:** Pago por clic, resultados inmediatos.\n\n💡 **Lo ideal:** Combinar ambas estrategias.\n\n¿Te gustaría que analicemos tu caso? 😊${LINK_SEO}`;
+    }
+
+    // DIAGNÓSTICO
+    if (texto.includes('diagnóstico') || texto.includes('diagnostico') || texto.includes('gratis') || texto.includes('análisis')) {
+      return `🎁 **Diagnóstico SEO GRATIS**\n\nRevisamos tu web y te damos:\n• Posicionamiento actual en Google\n• Palabras clave relevantes\n• Análisis de competencia\n• Recomendaciones personalizadas\n\n⚠️ Solo 5 plazas esta semana.\n\n¿Te gustaría agendar el tuyo? 😊${LINK_SEO}`;
+    }
+
+    // HORARIO
+    if (texto.includes('horario') || texto.includes('a qué hora') || texto.includes('abierto')) {
+      return `🕐 **Horario:**\n\n• Lunes a Viernes: 9am - 7pm\n• Sábado: 10am - 4pm\n• Domingo: Cerrado`;
+    }
+
+    // CONTACTO (SIN MOSTRAR NÚMERO)
+    if (texto.includes('contacto') || texto.includes('whatsapp') || texto.includes('teléfono') || texto.includes('llamar') || texto.includes('asesor') || texto.includes('humano')) {
+      return `📱 **Contáctanos por WhatsApp:**\n\n👉 <a href="https://api.whatsapp.com/send?phone=+525539935301&text=Hola,%20quiero%20posicionar%20mi%20negocio%20en%20Google" target="_blank">📲 Contactar por WhatsApp</a>\n\nHorario: Lunes a Viernes 9am - 7pm y Sábado 10am - 4pm.`;
+    }
+
+    // GRACIAS / OK
+    if (texto.includes('gracias') || texto.includes('thank')) {
+      return "¡A ti por escribirme! 😊 Me alegra ayudarte con el posicionamiento web.\n\n¿Hay algo más en lo que pueda asistirte? 🎯";
+    }
+
+    // DESPEDIDAS
+    if (texto.includes('adiós') || texto.includes('adios') || texto.includes('bye') || texto.includes('hasta luego')) {
+      return "¡Hasta luego! 👋 Que tengas un excelente día.";
+    }
+
+    // TIPOS DE NEGOCIO
+    const tiposNegocio = {
+      'restaurante|comida|bar|cafetería': 'restaurante',
+      'dentista|dental|odontologo': 'consultorio dental',
+      'abogado|bufete|legal': 'bufete legal',
+      'tienda|ecommerce|venta|productos': 'tienda',
+      'salón|salon|peluquería|barbería': 'salón de belleza',
+      'gimnasio|fitness|entrenador': 'gimnasio',
+      'consultora|consultor|coach': 'consultoría',
+      'inmobiliaria|inmuebles|propiedades': 'inmobiliaria'
+    };
+
+    for (let [patron, tipo] of Object.entries(tiposNegocio)) {
+      if (texto.match(new RegExp(patron, 'i'))) {
+        return `¡Excelente! Para negocios como ${tipo}s, el posicionamiento web es CLAVE 🎯\n\n💰 **Precios SEO:**\n📌 Plan Anual: $5,000 MXN/mes\n📌 Plan Semestral: $8,284 MXN/mes\n\n✅ **Nosotros hacemos TODO por ti.**\n\n🎁 ¿Te gustaría un diagnóstico gratuito para tu ${tipo}?${LINK_SEO}`;
+      }
+    }
+
+    // ==========================================
+    // CATCH-ALL - Si hay historial, pedir reformular
+    // ==========================================
+    if (historialConversacion.length > 1) {
+      return `🤔 No entiendo bien tu pregunta. ¿Podrías reformularla?\n\nPor ejemplo, puedes preguntarme sobre:\n\n🎯 Qué es SEO\n📢 Qué es SEM / Google Ads\n💰 Precios (Anual / Semestral)\n🎁 Diagnóstico SEO GRATUITO\n\nO si prefieres, escríbenos por WhatsApp:\n\n👉 <a href="https://api.whatsapp.com/send?phone=+525539935301&text=Hola,%20quiero%20posicionar%20mi%20negocio%20en%20Google" target="_blank">📲 Contactar por WhatsApp</a>`;
+    }
+
+    // Primer mensaje (sin historial) → saludo
+    return `🎯 **¡Hola! Soy Aria, tu asesora de ManndarinKT** 😊\n\nEstamos en la sección de **Posicionamiento WEB**.\n\n¿Quieres saber sobre:\n• **SEO** (qué es y cómo funciona)?\n• **SEM / Google Ads** (anuncios de pago)?\n• **Precios de SEO**?\n\nSi prefieres hablar con un asesor humano:\n\n👉 <a href="https://api.whatsapp.com/send?phone=+525539935301&text=Hola,%20quiero%20posicionar%20mi%20negocio%20en%20Google" target="_blank">📲 Contactar por WhatsApp</a>`;
+  }
+
+  // ==========================================
+  // ELEMENTOS DEL CHAT
+  // ==========================================
+  const chat = document.querySelector('.whatsapp-chat');
+  const toggleBtn = document.querySelector('.whatsapp-toggle');
+  const closeBtn = document.querySelector('.close-btn');
+  const sendBtn = document.querySelector('.send-btn');
+  const chatInput = document.querySelector('.whatsapp-input');
+  const chatBody = document.querySelector('.whatsapp-body');
+  const notification = document.querySelector('.notification');
+
+  function getCurrentTime() {
+    return new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+  }
+
+  function addMessage(text, type) {
+    const messageDiv = document.createElement('div');
+    messageDiv.className = `whatsapp-message ${type}`;
+
+    let safe = text
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;');
+
+    safe = safe
+      .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+      .replace(/\n/g, '<br>')
+      .replace(/&lt;a href="(.*?)"(.*?)&gt;(.*?)&lt;\/a&gt;/g,
+               '<a href="$1"$2>$3</a>');
+
+    messageDiv.innerHTML = safe + `<span class="message-time">${getCurrentTime()}</span>`;
+    chatBody.appendChild(messageDiv);
+    scrollToBottom();
+  }
+
+  function scrollToBottom() {
+    chatBody.scrollTop = chatBody.scrollHeight;
+  }
+
+  function mostrarIndicador() {
+    const typingIndicator = document.createElement('div');
+    typingIndicator.className = 'typing-indicator';
+    typingIndicator.id = 'typing-indicator';
+    typingIndicator.innerHTML = `<div class="typing-dot"></div><div class="typing-dot"></div><div class="typing-dot"></div>`;
+    chatBody.appendChild(typingIndicator);
+    scrollToBottom();
+  }
+
+  function ocultarIndicador() {
+    const indicator = document.getElementById('typing-indicator');
+    if (indicator) indicator.remove();
+  }
+
+  function sendMessage() {
+    const messageText = chatInput.value.trim();
+    if (messageText) {
+      addMessage(messageText, 'sent');
+      chatInput.value = '';
+      mostrarIndicador();
+      generarRespuestaConGemini(messageText)
+        .then(respuesta => {
+          ocultarIndicador();
+          addMessage(respuesta, 'received');
+        })
+        .catch(error => {
+          ocultarIndicador();
+          addMessage("Lo siento, hubo un error. ¿Puedes intentarlo de nuevo?", 'received');
+        });
+    }
+  }
+
+  // EVENTOS
+  if (toggleBtn) {
+    toggleBtn.addEventListener('click', function() {
+      chat.classList.toggle('active');
+      if (notification) notification.style.display = 'none';
+      if (chat.classList.contains('active') && chatInput) {
+        setTimeout(() => chatInput.focus(), 300);
+      }
+      scrollToBottom();
+    });
+  }
+
+  if (closeBtn) {
+    closeBtn.addEventListener('click', function() {
+      chat.classList.remove('active');
+    });
+  }
+
+  if (sendBtn) {
+    sendBtn.addEventListener('click', sendMessage);
+  }
+
+  if (chatInput) {
+    chatInput.addEventListener('keypress', function(e) {
+      if (e.key === 'Enter') {
+        e.preventDefault();
+        sendMessage();
+      }
+    });
+  }
+
+  // Notificación inicial
+  setTimeout(() => {
+    if (notification && !chat.classList.contains('active')) {
+      notification.style.display = 'flex';
+    }
+  }, 5000);
+});
+  </script>
 </body>
 </html>
 
