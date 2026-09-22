@@ -275,11 +275,11 @@
     }
 
     /* ===== CHAT FLOTANTE CON IA ===== */
-    .whatsapp-chat {
+   .whatsapp-chat {
       position: fixed;
       bottom: 20px;
       right: 20px;
-      width: 350px;
+      width:350px;
       max-width: 90vw;
       background: white;
       border-radius: 15px;
@@ -303,7 +303,7 @@
     
     .whatsapp-header {
       background: var(--whatsapp-dark);
-      color: var(--text-light);
+      color: white;
       padding: 15px;
       display: flex;
       align-items: center;
@@ -314,7 +314,7 @@
       width: 40px;
       height: 40px;
       border-radius: 50%;
-      background: var(--primary-color);
+      background: var(--whatsapp-gray);
       display: flex;
       align-items: center;
       justify-content: center;
@@ -323,8 +323,7 @@
     
     .whatsapp-avatar img {
       width: 100%;
-      height: 100%;
-      object-fit: cover;
+      height: auto;
     }
     
     .whatsapp-info {
@@ -333,11 +332,11 @@
     
     .whatsapp-name {
       font-weight: bold;
-      font-size: 0.95rem;
+      font-size: 1.5rem;
     }
     
     .whatsapp-status {
-      font-size: 0.75rem;
+      font-size: 1.4rem;
       opacity: 0.8;
     }
     
@@ -349,7 +348,7 @@
     .whatsapp-btn {
       background: none;
       border: none;
-      color: var(--text-light);
+      color: white;
       font-size: 1.2rem;
       cursor: pointer;
     }
@@ -371,9 +370,34 @@
       margin-bottom: 10px;
       position: relative;
       animation: fadeIn 0.3s ease;
-      font-size: 0.9rem;
+      font-size: 1.5rem;
       line-height: 1.4;
       word-wrap: break-word;
+    }
+    
+    .welcome-message {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      background: white;
+      padding: 10px 15px;
+      border-radius: 15px;
+      margin-bottom: 15px;
+      align-self: flex-start;
+      max-width: 85%;
+      box-shadow: 0 1px 0.5px rgba(0, 0, 0, 0.1);
+    }
+    
+    .welcome-avatar {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+    
+    .welcome-message p {
+      margin: 0;
+      font-size: 1.5rem;
     }
     
     @keyframes fadeIn {
@@ -397,23 +421,10 @@
     
     .message-time {
       float: right;
-      font-size: 0.65rem;
+      font-size: 0.7rem;
       color: #667781;
-      margin-left: 8px;
+      margin-left: 5px;
       margin-top: 3px;
-    }
-    
-    .whatsapp-message a {
-      color: #128C7E;
-      font-weight: 700;
-      text-decoration: underline;
-      word-break: break-word;
-      display: inline-block;
-      margin-top: 4px;
-    }
-    
-    .whatsapp-message a:hover {
-      color: #075E54;
     }
     
     .whatsapp-footer {
@@ -430,7 +441,7 @@
       border: none;
       border-radius: 20px;
       outline: none;
-      font-size: 0.9rem;
+      font-size: 1.5rem;
     }
     
     .whatsapp-send {
@@ -438,7 +449,7 @@
       height: 40px;
       border-radius: 50%;
       background: var(--whatsapp-green);
-      color: var(--text-light);
+      color: white;
       border: none;
       display: flex;
       align-items: center;
@@ -448,7 +459,7 @@
     }
     
     .whatsapp-send:hover {
-      background: #128C7E;
+      background: #3d4141;
     }
     
     .whatsapp-toggle {
@@ -459,6 +470,7 @@
       height: 60px;
       border-radius: 50%;
       background: var(--whatsapp-green);
+      color: white;
       border: none;
       box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
       cursor: pointer;
@@ -505,6 +517,7 @@
       30% { transform: translateY(-5px); }
     }
     
+    /* Efecto de notificación */
     .notification {
       position: absolute;
       top: -5px;
@@ -514,10 +527,10 @@
       border-radius: 50%;
       width: 20px;
       height: 20px;
-      display: none;
+      display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 0.7rem;
+      font-size: 1rem;
       animation: pulse 1.5s infinite;
     }
     
@@ -604,7 +617,7 @@
   <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
     <div class="container">
       <a class="navbar-brand" href="index.html">
-        <img src="IMG/ManndarinKT Digital.png" alt="ManndarinKT">
+        <img src="IMG/ManndarinKT.png" alt="ManndarinKT">
       </a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
         aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
