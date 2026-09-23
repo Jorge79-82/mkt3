@@ -27,6 +27,7 @@
 
   <title>ManndarinKT - Marketing Digital con IA</title>
   <style>
+    /* Variables de colores */
     :root {
       --primary-color: #d32e25;
       --primary-dark: #b52a22;
@@ -40,6 +41,7 @@
       --automation-color: #4A6FA5;
     }
     
+    /* Estilos generales */
     body {
       font-family: Arial, Helvetica, sans-serif;
       margin: 0;
@@ -58,6 +60,7 @@
       max-width: 1200px;
     }
 
+    /* Navegación */
     .navbar {
       background-color: var(--text-light) !important;
       box-shadow: 0 2px 10px rgba(0,0,0,0.1);
@@ -92,6 +95,7 @@
       box-shadow: none;
     }
 
+    /* Portada */
     .container-portada {
       width: 100%;
       height: 700px;
@@ -138,6 +142,7 @@
       font-weight: 400;
     }
 
+    /* Secciones de contenido */
     .content-section {
       padding: 5rem 0;
     }
@@ -155,6 +160,7 @@
       height: auto;
     }
 
+    /* Cards */
     .card {
       background-color: rgba(255, 255, 255, 0.95) !important;
       border: none;
@@ -198,6 +204,7 @@
       color: white;
     }
 
+    /* Benefit boxes */
     .benefit-box {
       text-align: center;
       padding: 2rem;
@@ -218,6 +225,7 @@
       margin-bottom: 1rem;
     }
 
+    /* CTA */
     .cta-section {
       background-color: var(--bg-light);
       padding: 4rem 0;
@@ -239,6 +247,7 @@
       transform: translateY(-2px);
     }
 
+    /* Footer */
     footer {
       background-color: var(--text-dark);
       color: var(--text-light);
@@ -265,11 +274,12 @@
       transform: translateY(-5px);
     }
 
-    .whatsapp-chat {
+    /* ===== CHAT FLOTANTE CON IA ===== */
+   .whatsapp-chat {
       position: fixed;
       bottom: 20px;
       right: 20px;
-      width: 350px;
+      width:350px;
       max-width: 90vw;
       background: white;
       border-radius: 15px;
@@ -304,7 +314,7 @@
       width: 40px;
       height: 40px;
       border-radius: 50%;
-      background: var(--primary-color);
+      background: var(--whatsapp-gray);
       display: flex;
       align-items: center;
       justify-content: center;
@@ -313,8 +323,7 @@
     
     .whatsapp-avatar img {
       width: 100%;
-      height: 100%;
-      object-fit: cover;
+      height: auto;
     }
     
     .whatsapp-info {
@@ -323,11 +332,11 @@
     
     .whatsapp-name {
       font-weight: bold;
-      font-size: 0.95rem;
+      font-size: 1.5rem;
     }
     
     .whatsapp-status {
-      font-size: 0.75rem;
+      font-size: 1.4rem;
       opacity: 0.8;
     }
     
@@ -361,9 +370,34 @@
       margin-bottom: 10px;
       position: relative;
       animation: fadeIn 0.3s ease;
-      font-size: 0.9rem;
+      font-size: 1.5rem;
       line-height: 1.4;
       word-wrap: break-word;
+    }
+    
+    .welcome-message {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      background: white;
+      padding: 10px 15px;
+      border-radius: 15px;
+      margin-bottom: 15px;
+      align-self: flex-start;
+      max-width: 85%;
+      box-shadow: 0 1px 0.5px rgba(0, 0, 0, 0.1);
+    }
+    
+    .welcome-avatar {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+    
+    .welcome-message p {
+      margin: 0;
+      font-size: 1.5rem;
     }
     
     @keyframes fadeIn {
@@ -387,23 +421,10 @@
     
     .message-time {
       float: right;
-      font-size: 0.65rem;
+      font-size: 0.7rem;
       color: #667781;
-      margin-left: 8px;
+      margin-left: 5px;
       margin-top: 3px;
-    }
-    
-    .whatsapp-message a {
-      color: #128C7E;
-      font-weight: 700;
-      text-decoration: underline;
-      word-break: break-word;
-      display: inline-block;
-      margin-top: 4px;
-    }
-    
-    .whatsapp-message a:hover {
-      color: #075E54;
     }
     
     .whatsapp-footer {
@@ -420,7 +441,7 @@
       border: none;
       border-radius: 20px;
       outline: none;
-      font-size: 0.9rem;
+      font-size: 1.5rem;
     }
     
     .whatsapp-send {
@@ -438,7 +459,7 @@
     }
     
     .whatsapp-send:hover {
-      background: #128C7E;
+      background: #3d4141;
     }
     
     .whatsapp-toggle {
@@ -496,6 +517,7 @@
       30% { transform: translateY(-5px); }
     }
     
+    /* Efecto de notificación */
     .notification {
       position: absolute;
       top: -5px;
@@ -505,10 +527,10 @@
       border-radius: 50%;
       width: 20px;
       height: 20px;
-      display: none;
+      display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 0.7rem;
+      font-size: 1rem;
       animation: pulse 1.5s infinite;
     }
     
@@ -518,6 +540,7 @@
       100% { transform: scale(1); }
     }
 
+    /* Responsive */
     @media (max-width: 768px) {
       .container-portada {
         background-attachment: scroll;
@@ -841,229 +864,250 @@
 
   <script>
     // ============================================
-    // CHATBOT ARIA CON GEMINI API - INDEX
-    // Home - ManndarinKT
-    // Guía al cliente con links a cada sección
-    // ============================================
-    document.addEventListener('DOMContentLoaded', function() {
+// CHATBOT ARIA CON GEMINI API - INDEX
+// Home - ManndarinKT
+// Guía al cliente con links a cada sección
+// ============================================
+document.addEventListener('DOMContentLoaded', function() {
 
-      // 🚨 API KEY
-      const API_CHAT_URL = '/api/chat';
-
-      // ==========================================
-      // FUNCIÓN PRINCIPAL DEL CHATBOT
-      // ==========================================
-      async function generarRespuestaConGemini(pregunta) {
-        try {
-          const response = await fetch(API_CHAT_URL, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({
-              mensaje: pregunta,
-              paginaActual: 'index'
-            })
-          });
-
-          const data = await response.json();
-
-          if (data.respuesta) {
-            return data.respuesta;
-          } else {
-            return generarRespuestaLocal(pregunta);
-          }
-
-        } catch (error) {
-          console.error('Error con la función serverless:', error);
-          return generarRespuestaLocal(pregunta);
-        }
-      }
-
-      // ==========================================
-      // RESPALDO LOCAL
-      // ==========================================
-      function generarRespuestaLocal(pregunta) {
-        const texto = pregunta.toLowerCase().trim();
-
-        if (texto.match(/^(hola|buenos días|buenas tardes|buenas noches|hey|que tal|qué tal|saludos)/i)) {
-          return "¡Hola! 👋 Soy Aria, tu asesora de ManndarinKT.\n\nSomos especialistas en **marketing digital y automatización con IA** 🚀\n\n¿Sobre qué servicio te gustaría saber?";
-        }
-
-        if (texto.includes('precio') || texto.includes('costo') || texto.includes('cuesta') || texto.includes('cuánto') || texto.includes('cuanto') || texto.includes('tarifa') || texto.includes('cotiza')) {
-          return `💰 **Claro, te ayudo con los precios.**\n\n📋 Dime ¿qué servicio te interesa?\n\n📄 <a href="paginaweb.html">Páginas Web</a>\n🚀 <a href="posicionamientoweb.html">Posicionamiento Web</a>\n📱 <a href="redessociales.html">Redes Sociales</a>\n👥 <a href="communitymanager.html">Community Manager</a>\n🤖 <a href="automatiza.html">Automatización con IA</a>\n\n¿Qué te gustaría cotizar? 😊`;
-        }
-
-        if (texto.includes('página web') || texto.includes('pagina web') || texto.includes('páginas web') || texto.includes('paginas web')) {
-          return `📄 **Páginas Web profesionales**\n\nCreamos tu sitio web con diseño a medida, hosting, dominio y SEO incluido. Todo lo que necesitas para tener presencia online.\n\n👉 <a href="paginaweb.html">📄 Ir a Páginas Web</a>\n\n¿Te acompaño? 😊`;
-        }
-
-        if (texto.includes('seo') || texto.includes('posicionamiento')) {
-          return `🚀 **Posicionamiento Web (SEO)**\n\nTe ayudamos a aparecer en los primeros resultados de Google para que más clientes te encuentren.\n\n👉 <a href="posicionamientoweb.html">🚀 Ir a Posicionamiento Web</a>\n\n¿Te acompaño? 😊`;
-        }
-
-        if (texto.includes('red social') || texto.includes('redes sociales') || texto.includes('facebook') || texto.includes('instagram') || texto.includes('tiktok')) {
-          return `📱 **Redes Sociales**\n\nGestionamos tus redes sociales con contenido estratégico para que aumentes seguidores y ventas.\n\n👉 <a href="redessociales.html">📱 Ir a Redes Sociales</a>\n\n¿Te acompaño? 😊`;
-        }
-
-        if (texto.includes('community') || texto.includes('community manager')) {
-          return `👥 **Community Manager**\n\nNos encargamos de tu comunidad online: creamos contenido, respondemos a tus seguidores y cuidamos tu reputación digital.\n\n👉 <a href="communitymanager.html">👥 Ir a Community Manager</a>\n\n¿Te acompaño? 😊`;
-        }
-
-        if (texto.includes('automatiz') || texto.includes('chatbot') || texto.includes('ia') || texto.includes('inteligencia artificial')) {
-          return `🤖 **Automatización con IA**\n\nChatbots inteligentes que atienden a tus clientes 24/7 y automatizan tareas repetitivas.\n\n👉 <a href="automatiza.html">🤖 Ir a Automatización con IA</a>\n\n¿Te acompaño? 😊`;
-        }
-
-        if (texto.includes('horario') || texto.includes('a qué hora') || texto.includes('abierto')) {
-          return `🕐 **Horario de atención:**\n\n• Lunes a Viernes: 9am - 7pm\n• Sábado: 10am - 4pm\n• Domingo: Cerrado\n\n¿Necesitas algo más? 😊`;
-        }
-
-        if (texto.includes('contacto') || texto.includes('whatsapp') || texto.includes('teléfono') || texto.includes('llamar') || texto.includes('asesor') || texto.includes('humano')) {
-          return `📱 **Contáctanos por WhatsApp:**\n\nHaz clic en el botón para hablar con un asesor:\n\n👉 <a href="https://api.whatsapp.com/send?phone=+525539935301&text=Hola,%20quiero%20información%20sobre%20sus%20servicios" target="_blank">📲 Contactar por WhatsApp</a>\n\nHorario: Lunes a Viernes 9am - 7pm y Sábado 10am - 4pm.\n\n¿Necesitas algo más? 😊`;
-        }
-
-        if (texto.includes('gracias') || texto.includes('thank') || texto.includes('ok') || texto.includes('perfecto')) {
-          return "¡A ti por escribirme! 😊 Me alegra ayudarte.\n\n✅ Recuerda: en ManndarinKT **nosotros hacemos TODO por ti**.\n\n¿Hay algo más en lo que pueda asistirte? 🚀";
-        }
-
-        if (texto.includes('adiós') || texto.includes('adios') || texto.includes('bye') || texto.includes('hasta luego')) {
-          return "¡Hasta luego! 👋 Que tengas un excelente día.\n\nSi quieres más info sobre nuestros servicios, aquí estoy. ¡Saludos! 🚀";
-        }
-
-        const tiposNegocio = {
-          'restaurante|comida|bar|cafetería': 'restaurante',
-          'dentista|dental|odontologo': 'consultorio dental',
-          'abogado|bufete|legal': 'bufete legal',
-          'tienda|ecommerce|venta|productos': 'tienda',
-          'salón|salon|peluquería|barbería': 'salón de belleza',
-          'gimnasio|fitness|entrenador': 'gimnasio',
-          'consultora|consultor|coach': 'consultoría',
-          'inmobiliaria|inmuebles|propiedades': 'inmobiliaria'
-        };
-
-        for (let [patron, tipo] of Object.entries(tiposNegocio)) {
-          if (texto.match(new RegExp(patron, 'i'))) {
-            return `¡Excelente! Para ${tipo}s tenemos soluciones digitales completas 🎯\n\n📄 <a href="paginaweb.html">Páginas Web</a>\n🚀 <a href="posicionamientoweb.html">Posicionamiento Web</a>\n📱 <a href="redessociales.html">Redes Sociales</a>\n👥 <a href="communitymanager.html">Community Manager</a>\n🤖 <a href="automatiza.html">Automatización con IA</a>\n\n✅ **Nosotros hacemos TODO por ti.**\n\n¿Sobre qué servicio quieres saber? 😊`;
-          }
-        }
-
-        if (historialConversacion && historialConversacion.length > 1) {
-          return `🤔 No entiendo bien tu pregunta. ¿Podrías reformularla?\n\nPor ejemplo, puedes preguntarme sobre:\n\n📄 <a href="paginaweb.html">Páginas Web</a>\n🚀 <a href="posicionamientoweb.html">Posicionamiento Web</a>\n📱 <a href="redessociales.html">Redes Sociales</a>\n👥 <a href="communitymanager.html">Community Manager</a>\n🤖 <a href="automatiza.html">Automatización con IA</a>\n\nO si prefieres, escríbenos por WhatsApp:\n\n👉 <a href="https://api.whatsapp.com/send?phone=+525539935301&text=Hola,%20quiero%20información%20sobre%20sus%20servicios" target="_blank">📲 Contactar por WhatsApp</a>`;
-        }
-
-        return `💼 **¡Hola! Soy Aria, tu asesora de ManndarinKT** 😊\n\nSomos especialistas en **marketing digital y automatización con IA**.\n\nTe ofrecemos:\n\n📄 <a href="paginaweb.html">Páginas Web</a>\n🚀 <a href="posicionamientoweb.html">Posicionamiento Web</a>\n📱 <a href="redessociales.html">Redes Sociales</a>\n👥 <a href="communitymanager.html">Community Manager</a>\n🤖 <a href="automatiza.html">Automatización con IA</a>\n\n¿Sobre qué servicio te gustaría saber? 🚀`;
-      }
-
-      // ==========================================
-      // ELEMENTOS DEL CHAT
-      // ==========================================
-      const chat = document.querySelector('.whatsapp-chat');
-      const toggleBtn = document.querySelector('.whatsapp-toggle');
-      const closeBtn = document.querySelector('.close-btn');
-      const sendBtn = document.querySelector('.send-btn');
-      const chatInput = document.querySelector('.whatsapp-input');
-      const chatBody = document.querySelector('.whatsapp-body');
-      const notification = document.querySelector('.notification');
-
-      let historialConversacion = [];
-
-      function getCurrentTime() {
-        return new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
-      }
-
-      function addMessage(text, type) {
-        const messageDiv = document.createElement('div');
-        messageDiv.className = `whatsapp-message ${type}`;
-
-        let safe = text
-          .replace(/&/g, '&amp;')
-          .replace(/</g, '&lt;')
-          .replace(/>/g, '&gt;');
-
-        safe = safe
-          .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
-          .replace(/\n/g, '<br>')
-          .replace(/&lt;a href="(.*?)"(.*?)&gt;(.*?)&lt;\/a&gt;/g,
-                   '<a href="$1"$2>$3</a>');
-
-        messageDiv.innerHTML = safe + `<span class="message-time">${getCurrentTime()}</span>`;
-        chatBody.appendChild(messageDiv);
-        scrollToBottom();
-
-        historialConversacion.push({ tipo: type, mensaje: text });
-      }
-
-      function scrollToBottom() {
-        chatBody.scrollTop = chatBody.scrollHeight;
-      }
-
-      function mostrarIndicador() {
-        const typingIndicator = document.createElement('div');
-        typingIndicator.className = 'typing-indicator';
-        typingIndicator.id = 'typing-indicator';
-        typingIndicator.innerHTML = `<div class="typing-dot"></div><div class="typing-dot"></div><div class="typing-dot"></div>`;
-        chatBody.appendChild(typingIndicator);
-        scrollToBottom();
-      }
-
-      function ocultarIndicador() {
-        const indicator = document.getElementById('typing-indicator');
-        if (indicator) indicator.remove();
-      }
-
-      function sendMessage() {
-        const messageText = chatInput.value.trim();
-        if (messageText) {
-          addMessage(messageText, 'sent');
-          chatInput.value = '';
-          mostrarIndicador();
-          generarRespuestaConGemini(messageText)
-            .then(respuesta => {
-              ocultarIndicador();
-              addMessage(respuesta, 'received');
-            })
-            .catch(error => {
-              ocultarIndicador();
-              addMessage("Lo siento, hubo un error. ¿Puedes intentarlo de nuevo?", 'received');
-            });
-        }
-      }
-
-      if (toggleBtn) {
-        toggleBtn.addEventListener('click', function() {
-          chat.classList.toggle('active');
-          if (notification) notification.style.display = 'none';
-          if (chat.classList.contains('active') && chatInput) {
-            setTimeout(() => chatInput.focus(), 300);
-          }
-          scrollToBottom();
-        });
-      }
-
-      if (closeBtn) {
-        closeBtn.addEventListener('click', function() {
-          chat.classList.remove('active');
-        });
-      }
-
-      if (sendBtn) {
-        sendBtn.addEventListener('click', sendMessage);
-      }
-
-      if (chatInput) {
-        chatInput.addEventListener('keypress', function(e) {
-          if (e.key === 'Enter') {
-            e.preventDefault();
-            sendMessage();
-          }
-        });
-      }
-
-      setTimeout(() => {
-        if (notification && !chat.classList.contains('active')) {
-          notification.style.display = 'flex';
-        }
-      }, 5000);
+  // 🚨 API KEY
+  const API_CHAT_URL = '/api/chat';
+  // ==========================================
+  // GEMINI API
+  // ==========================================
+  async function generarRespuestaConGemini(pregunta) {
+  try {
+    const response = await fetch(API_CHAT_URL, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        mensaje: pregunta,
+        paginaActual: 'index'
+      })
     });
-  </script>
+
+    const data = await response.json();
+
+    if (data.respuesta) {
+      return data.respuesta;
+    } else {
+      return generarRespuestaLocal(pregunta);
+    }
+
+  } catch (error) {
+    console.error('Error con la función serverless:', error);
+    return generarRespuestaLocal(pregunta);
+  }
+}
+
+  
+
+  // ==========================================
+  // RESPALDO LOCAL
+  // ==========================================
+  function generarRespuestaLocal(pregunta) {
+    const texto = pregunta.toLowerCase().trim();
+
+    // SALUDOS
+    if (texto.match(/^(hola|buenos días|buenas tardes|buenas noches|hey|que tal|qué tal|saludos)/i)) {
+      return "¡Hola! 👋 Soy Aria, tu asesora de ManndarinKT.\n\nSomos especialistas en **marketing digital y automatización con IA** 🚀\n\n¿Sobre qué servicio te gustaría saber?";
+    }
+
+    // PRECIOS → LISTA DE SERVICIOS CON LINKS
+    if (texto.includes('precio') || texto.includes('costo') || texto.includes('cuesta') || texto.includes('cuánto') || texto.includes('cuanto') || texto.includes('tarifa') || texto.includes('cotiza')) {
+      return `💰 **Claro, te ayudo con los precios.**\n\n📋 Dime ¿qué servicio te interesa?\n\n📄 <a href="paginaweb.html">Páginas Web</a>\n🚀 <a href="posicionamientoweb.html">Posicionamiento Web</a>\n📱 <a href="redessociales.html">Redes Sociales</a>\n👥 <a href="communitymanager.html">Community Manager</a>\n🤖 <a href="automatiza.html">Automatización con IA</a>\n\n¿Qué te gustaría cotizar? 😊`;
+    }
+
+    // PÁGINAS WEB
+    if (texto.includes('página web') || texto.includes('pagina web') || texto.includes('páginas web') || texto.includes('paginas web')) {
+      return `📄 **Páginas Web profesionales**\n\nCreamos tu sitio web con diseño a medida, hosting, dominio y SEO incluido. Todo lo que necesitas para tener presencia online.\n\n👉 <a href="paginaweb.html">📄 Ir a Páginas Web</a>\n\n¿Te acompaño? 😊`;
+    }
+
+    // SEO / POSICIONAMIENTO
+    if (texto.includes('seo') || texto.includes('posicionamiento')) {
+      return `🚀 **Posicionamiento Web (SEO)**\n\nTe ayudamos a aparecer en los primeros resultados de Google para que más clientes te encuentren.\n\n👉 <a href="posicionamientoweb.html">🚀 Ir a Posicionamiento Web</a>\n\n¿Te acompaño? 😊`;
+    }
+
+    // REDES SOCIALES
+    if (texto.includes('red social') || texto.includes('redes sociales') || texto.includes('facebook') || texto.includes('instagram') || texto.includes('tiktok')) {
+      return `📱 **Redes Sociales**\n\nGestionamos tus redes sociales con contenido estratégico para que aumentes seguidores y ventas.\n\n👉 <a href="redessociales.html">📱 Ir a Redes Sociales</a>\n\n¿Te acompaño? 😊`;
+    }
+
+    // COMMUNITY MANAGER
+    if (texto.includes('community') || texto.includes('community manager')) {
+      return `👥 **Community Manager**\n\nNos encargamos de tu comunidad online: creamos contenido, respondemos a tus seguidores y cuidamos tu reputación digital.\n\n👉 <a href="communitymanager.html">👥 Ir a Community Manager</a>\n\n¿Te acompaño? 😊`;
+    }
+
+    // AUTOMATIZACIÓN
+    if (texto.includes('automatiz') || texto.includes('chatbot') || texto.includes('ia') || texto.includes('inteligencia artificial')) {
+      return `🤖 **Automatización con IA**\n\nChatbots inteligentes que atienden a tus clientes 24/7 y automatizan tareas repetitivas.\n\n👉 <a href="automatiza.html">🤖 Ir a Automatización con IA</a>\n\n¿Te acompaño? 😊`;
+    }
+
+    // HORARIO
+    if (texto.includes('horario') || texto.includes('a qué hora') || texto.includes('abierto')) {
+      return `🕐 **Horario de atención:**\n\n• Lunes a Viernes: 9am - 7pm\n• Sábado: 10am - 4pm\n• Domingo: Cerrado\n\n¿Necesitas algo más? 😊`;
+    }
+
+    // CONTACTO
+    if (texto.includes('contacto') || texto.includes('whatsapp') || texto.includes('teléfono') || texto.includes('llamar') || texto.includes('asesor') || texto.includes('humano')) {
+      return `📱 **Contáctanos por WhatsApp:**\n\nHaz clic en el botón para hablar con un asesor:\n\n👉 <a href="https://api.whatsapp.com/send?phone=+525539935301&text=Hola,%20quiero%20información%20sobre%20sus%20servicios" target="_blank">📲 Contactar por WhatsApp</a>\n\nHorario: Lunes a Viernes 9am - 7pm y Sábado 10am - 4pm.\n\n¿Necesitas algo más? 😊`;
+    }
+
+    // GRACIAS
+    if (texto.includes('gracias') || texto.includes('thank') || texto.includes('ok') || texto.includes('perfecto')) {
+      return "¡A ti por escribirme! 😊 Me alegra ayudarte.\n\n✅ Recuerda: en ManndarinKT **nosotros hacemos TODO por ti**.\n\n¿Hay algo más en lo que pueda asistirte? 🚀";
+    }
+
+    // DESPEDIDAS
+    if (texto.includes('adiós') || texto.includes('adios') || texto.includes('bye') || texto.includes('hasta luego')) {
+      return "¡Hasta luego! 👋 Que tengas un excelente día.\n\nSi quieres más info sobre nuestros servicios, aquí estoy. ¡Saludos! 🚀";
+    }
+
+    // TIPOS DE NEGOCIO
+    const tiposNegocio = {
+      'restaurante|comida|bar|cafetería': 'restaurante',
+      'dentista|dental|odontologo': 'consultorio dental',
+      'abogado|bufete|legal': 'bufete legal',
+      'tienda|ecommerce|venta|productos': 'tienda',
+      'salón|salon|peluquería|barbería': 'salón de belleza',
+      'gimnasio|fitness|entrenador': 'gimnasio',
+      'consultora|consultor|coach': 'consultoría',
+      'inmobiliaria|inmuebles|propiedades': 'inmobiliaria'
+    };
+
+    for (let [patron, tipo] of Object.entries(tiposNegocio)) {
+      if (texto.match(new RegExp(patron, 'i'))) {
+        return `¡Excelente! Para ${tipo}s tenemos soluciones digitales completas 🎯\n\n📄 <a href="paginaweb.html">Páginas Web</a>\n🚀 <a href="posicionamientoweb.html">Posicionamiento Web</a>\n📱 <a href="redessociales.html">Redes Sociales</a>\n👥 <a href="communitymanager.html">Community Manager</a>\n🤖 <a href="automatiza.html">Automatización con IA</a>\n\n✅ **Nosotros hacemos TODO por ti.**\n\n¿Sobre qué servicio quieres saber? 😊`;
+      }
+    }
+
+    // ==========================================
+    // CATCH-ALL - Si hay historial, pedir reformular
+    // ==========================================
+    if (historialConversacion && historialConversacion.length > 1) {
+      return `🤔 No entiendo bien tu pregunta. ¿Podrías reformularla?\n\nPor ejemplo, puedes preguntarme sobre:\n\n📄 <a href="paginaweb.html">Páginas Web</a>\n🚀 <a href="posicionamientoweb.html">Posicionamiento Web</a>\n📱 <a href="redessociales.html">Redes Sociales</a>\n👥 <a href="communitymanager.html">Community Manager</a>\n🤖 <a href="automatiza.html">Automatización con IA</a>\n\nO si prefieres, escríbenos por WhatsApp:\n\n👉 <a href="https://api.whatsapp.com/send?phone=+525539935301&text=Hola,%20quiero%20información%20sobre%20sus%20servicios" target="_blank">📲 Contactar por WhatsApp</a>`;
+    }
+
+    // DEFAULT (primer mensaje)
+    return `💼 **¡Hola! Soy Aria, tu asesora de ManndarinKT** 😊\n\nSomos especialistas en **marketing digital y automatización con IA**.\n\nTe ofrecemos:\n\n📄 <a href="paginaweb.html">Páginas Web</a>\n🚀 <a href="posicionamientoweb.html">Posicionamiento Web</a>\n📱 <a href="redessociales.html">Redes Sociales</a>\n👥 <a href="communitymanager.html">Community Manager</a>\n🤖 <a href="automatiza.html">Automatización con IA</a>\n\n¿Sobre qué servicio te gustaría saber? 🚀`;
+  }
+
+  // ==========================================
+  // ELEMENTOS DEL CHAT
+  // ==========================================
+  const chat = document.querySelector('.whatsapp-chat');
+  const toggleBtn = document.querySelector('.whatsapp-toggle');
+  const closeBtn = document.querySelector('.close-btn');
+  const sendBtn = document.querySelector('.send-btn');
+  const chatInput = document.querySelector('.whatsapp-input');
+  const chatBody = document.querySelector('.whatsapp-body');
+  const notification = document.querySelector('.notification');
+
+  // 🔥 Variable global del historial (necesaria para el catch-all)
+  let historialConversacion = [];
+
+  function getCurrentTime() {
+    return new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+  }
+
+  function addMessage(text, type) {
+    const messageDiv = document.createElement('div');
+    messageDiv.className = `whatsapp-message ${type}`;
+
+    let safe = text
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;');
+
+    safe = safe
+      .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+      .replace(/\n/g, '<br>')
+      .replace(/&lt;a href="(.*?)"(.*?)&gt;(.*?)&lt;\/a&gt;/g,
+               '<a href="$1"$2>$3</a>');
+
+    messageDiv.innerHTML = safe + `<span class="message-time">${getCurrentTime()}</span>`;
+    chatBody.appendChild(messageDiv);
+    scrollToBottom();
+
+    // 🔥 Guardar en el historial
+    historialConversacion.push({ tipo: type, mensaje: text });
+  }
+
+  function scrollToBottom() {
+    chatBody.scrollTop = chatBody.scrollHeight;
+  }
+
+  function mostrarIndicador() {
+    const typingIndicator = document.createElement('div');
+    typingIndicator.className = 'typing-indicator';
+    typingIndicator.id = 'typing-indicator';
+    typingIndicator.innerHTML = `<div class="typing-dot"></div><div class="typing-dot"></div><div class="typing-dot"></div>`;
+    chatBody.appendChild(typingIndicator);
+    scrollToBottom();
+  }
+
+  function ocultarIndicador() {
+    const indicator = document.getElementById('typing-indicator');
+    if (indicator) indicator.remove();
+  }
+
+  function sendMessage() {
+    const messageText = chatInput.value.trim();
+    if (messageText) {
+      addMessage(messageText, 'sent');
+      chatInput.value = '';
+      mostrarIndicador();
+      generarRespuestaConGemini(messageText)
+        .then(respuesta => {
+          ocultarIndicador();
+          addMessage(respuesta, 'received');
+        })
+        .catch(error => {
+          ocultarIndicador();
+          addMessage("Lo siento, hubo un error. ¿Puedes intentarlo de nuevo?", 'received');
+        });
+    }
+  }
+
+  // EVENTOS
+  if (toggleBtn) {
+    toggleBtn.addEventListener('click', function() {
+      chat.classList.toggle('active');
+      if (notification) notification.style.display = 'none';
+      if (chat.classList.contains('active') && chatInput) {
+        setTimeout(() => chatInput.focus(), 300);
+      }
+      scrollToBottom();
+    });
+  }
+
+  if (closeBtn) {
+    closeBtn.addEventListener('click', function() {
+      chat.classList.remove('active');
+    });
+  }
+
+  if (sendBtn) {
+    sendBtn.addEventListener('click', sendMessage);
+  }
+
+  if (chatInput) {
+    chatInput.addEventListener('keypress', function(e) {
+      if (e.key === 'Enter') {
+        e.preventDefault();
+        sendMessage();
+      }
+    });
+  }
+
+  // Notificación inicial
+  setTimeout(() => {
+    if (notification && !chat.classList.contains('active')) {
+      notification.style.display = 'flex';
+    }
+  }, 5000);
+});
+</script>
 </body>
 </html>
 
