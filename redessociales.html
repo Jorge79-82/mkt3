@@ -734,18 +734,49 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
   <script>
-   // ============================================
-// CHATBOT ARIA CON GEMINI API
-// Especializado en REDES SOCIALES - ManndarinKT
+  // ============================================
+// CHATBOT ARIA CON GEMINI API - REDES SOCIALES
+// ManndarinKT
 // ============================================
 document.addEventListener('DOMContentLoaded', function() {
 
   // 🚨 API KEY
-  const GEMINI_API_KEY = 'TU_API_KEY_AQUI';
-  const GEMINI_MODEL = 'gemini-3.5-flash';
-  const GEMINI_URL = `https://generativelanguage.googleapis.com/v1beta/models/${GEMINI_MODEL}:generateContent`;
+  const API_CHAT_URL = '/api/chat';
 
-  // ---------- RESPUESTAS LOCALES ----------
+  // Memoria de conversación
+  let historialConversacion = [];
+
+  // ==========================================
+  // FUNCIÓN PRINCIPAL DEL CHATBOT (SERVERLESS)
+  // ==========================================
+  async function generarRespuestaConGemini(pregunta) {
+    try {
+      const response = await fetch(API_CHAT_URL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          mensaje: pregunta,
+          paginaActual: 'redessociales'
+        })
+      });
+
+      const data = await response.json();
+
+      if (data.respuesta) {
+        return data.respuesta;
+      } else {
+        return respuestaLocal(pregunta);
+      }
+
+    } catch (error) {
+      console.error('Error con la función serverless:', error);
+      return respuestaLocal(pregunta);
+    }
+  }
+
+  // ==========================================
+  // RESPUESTAS LOCALES (RESPALDO)
+  // ==========================================
   const RESPUESTAS_LOCALES = {
     saludo: `¡Hola! 👋 Soy **Aria**, tu asesora de ManndarinKT.\n\n¿Buscas gestionar tus **redes sociales**? Cuéntame, ¿qué red te interesa más: Facebook, Instagram o TikTok?`,
 
@@ -766,89 +797,41 @@ document.addEventListener('DOMContentLoaded', function() {
     noEntiendo: `🤔 No entiendo bien tu pregunta. ¿Podrías reformularla?\n\nPor ejemplo, puedes preguntarme sobre:\n\n📱 Digital (Facebook) · $750/mes\n📱 Update (FB+IG) · $975/mes\n📱 Plus (FB+IG+TikTok) · $1,270/mes\n\nO si prefieres, escríbenos por WhatsApp:\n\n👉 <a href="https://api.whatsapp.com/send?phone=+525539935301&text=Hola,%20quiero%20contratar%20servicios%20de%20redes%20sociales" target="_blank">📲 Contactar por WhatsApp</a>`
   };
 
-  // ---------- SYSTEM PROMPT ----------
-  const SYSTEM_PROMPT = `Eres Aria, asesora virtual de ManndarinKT, agencia mexicana especializada en redes sociales y marketing digital.
+  // ==========================================
+  // FUNCIÓN DE RESPALDO LOCAL
+  // ==========================================
+  function respuestaLocal(mensaje) {
+    const t = mensaje.toLowerCase().trim();
 
-NOTA IMPORTANTE: "Digital", "Update" y "Plus" son NOMBRES DE PLANES de ManndarinKT. Cuando el usuario escriba alguna de estas palabras (solas o dentro de una frase), SIEMPRE interpreta que se refiere al plan correspondiente y responde con sus precios completos.
+    // AFIRMACIONES
+    if (/^(si|sí|claro|ok|vale|adelante|perfecto)/.test(t)) {
+      return RESPUESTAS_LOCALES.planes;
+    }
 
-SERVICIO PRINCIPAL: Gestión profesional de Redes Sociales.
+    // PLANES ESPECÍFICOS
+    if (/digital/.test(t)) return RESPUESTAS_LOCALES.digital;
+    if (/update/.test(t)) return RESPUESTAS_LOCALES.update;
+    if (/plus|tiktok/.test(t)) return RESPUESTAS_LOCALES.plus;
 
-PLANES DISPONIBLES:
+    // SERVICIOS GENERALES
+    if (/horario|a qué hora|abierto/.test(t)) return RESPUESTAS_LOCALES.horario;
+    if (/contacto|whatsapp|telefono|teléfono|llamar|asesor|humano/.test(t)) return RESPUESTAS_LOCALES.contacto;
+    if (/precio|costo|cuesta|cuanto|cuánto|tarifa/.test(t)) return RESPUESTAS_LOCALES.precios;
+    if (/plan|paquete/.test(t)) return RESPUESTAS_LOCALES.planes;
+    if (/^(hola|buenas|hey|qué tal|que tal)/.test(t)) return RESPUESTAS_LOCALES.saludo;
 
-📱 PLAN DIGITAL: Facebook · 8 publicaciones/mes
-   - 12 meses $750/mes | 6 meses $950/mes | 3 meses $1,200/mes
+    // CATCH-ALL: Si hay historial, pedir reformular
+    if (historialConversacion.length > 1) {
+      return RESPUESTAS_LOCALES.noEntiendo;
+    }
 
-📱 PLAN UPDATE: Facebook + Instagram · 16 publicaciones/mes
-   - 12 meses $975/mes | 6 meses $1,200/mes | 3 meses $1,400/mes
+    // Primer mensaje
+    return RESPUESTAS_LOCALES.saludo;
+  }
 
-📱 PLAN PLUS: Facebook + Instagram + TikTok · 24 publicaciones/mes
-   - 12 meses $1,270/mes | 6 meses $1,500/mes | 3 meses $1,800/mes
-
-BENEFICIOS: mayor visibilidad, conexión con clientes, aumento de ventas, fidelización, contenido profesional.
-OFERTA: Diagnóstico de Redes Sociales gratuito (5 plazas por semana).
-
-Link de contacto: https://api.whatsapp.com/send?phone=+525539935301&text=Hola,%20quiero%20contratar%20servicios%20de%20redes%20sociales
-
-═══════════════════════════════════════════════
-HORARIO DE ATENCIÓN:
-═══════════════════════════════════════════════
-
-Lunes a Viernes: 9am - 7pm
-Sábado: 10am - 4pm
-Domingo: Cerrado
-
-═══════════════════════════════════════════════
-REGLAS DE CONVERSACIÓN (MUY IMPORTANTE):
-═══════════════════════════════════════════════
-
-1. Responde SIEMPRE en español, tono amable, cercano y profesional.
-2. Sé BREVE: máximo 2-3 frases cortas por mensaje.
-3. HAZ PREGUNTAS: guía al usuario paso a paso.
-4. Cuando el usuario mencione un PLAN ESPECÍFICO (Digital, Update o Plus), responde así:
-   - Confirma el plan con una frase.
-   - Da LOS 3 PRECIOS según duración (3, 6 y 12 meses).
-   - Termina preguntando qué duración prefiere.
-   - Añade SIEMPRE un link de WhatsApp al final.
-
-   Ejemplo si dice "Update" (copia EXACTAMENTE este formato):
-   "¡Excelente! El Plan Update incluye Facebook + Instagram 📱
-
-   💰 Precios:
-   • 12 meses: $975/mes
-   • 6 meses: $1,200/mes
-   • 3 meses: $1,400/mes
-
-   ¿Qué duración te interesa?
-
-   👉 <a href="https://api.whatsapp.com/send?phone=+525539935301&text=Hola,%20quiero%20el%20Plan%20Update" target="_blank">📲 Cotizar por WhatsApp</a>"
-
-5. Si el usuario menciona un plan con palabra clave:
-   - "digital" o "facebook solo" → Plan Digital
-   - "update", "instagram", "fb + ig" → Plan Update
-   - "plus", "tiktok", "completo", "todo" → Plan Plus
-
-6. Si preguntan por precios SIN mencionar plan, pregunta primero qué red social quiere.
-7. Si preguntan "¿qué planes tienen?", lista SOLO los nombres:
-   "📱 Digital (Facebook) · 📱 Update (FB+IG) · 📱 Plus (FB+IG+TikTok). ¿Cuál te llama más la atención?"
-8. Si muestran interés, invítalos al diagnóstico gratis o a WhatsApp.
-9. Usa emojis con moderación (1-2 por mensaje).
-10. Nunca inventes información fuera de este contexto.
-11. SIEMPRE que des información de un plan con precios, termina con un link de WhatsApp.
-    Usa EXACTAMENTE este formato HTML:
-    👉 <a href="https://api.whatsapp.com/send?phone=+525539935301&text=Hola,%20quiero%20el%20Plan%20[NOMBRE]" target="_blank">📲 Cotizar por WhatsApp</a>
-    Donde [NOMBRE] es Digital, Update o Plus según corresponda.
-    NO uses Markdown para links, usa SIEMPRE la etiqueta <a> HTML.
-12. NUNCA escribas el número de teléfono "+52 55 3993 5301" en el chat. Siempre usa el link de WhatsApp.
-13. Si preguntan por el horario, di: "Lunes a Viernes 9am - 7pm y Sábado 10am - 4pm".
-14. Si el cliente pregunta algo que no entiendes, o quiere hablar con un asesor humano, invítalo a contactar por WhatsApp:
-    👉 <a href="https://api.whatsapp.com/send?phone=+525539935301&text=Hola,%20quiero%20contratar%20servicios%20de%20redes%20sociales" target="_blank">📲 Contactar por WhatsApp</a>
-15. MEMORIA: Recuerda lo que el cliente dijo antes. Si dice "sí" u "ok", responde a la pregunta anterior. NUNCA repitas el saludo.
-16. Si NO entiendes la pregunta del cliente y ya hay conversación previa, pídele amablemente que la reformule. NUNCA repitas el saludo si ya hay conversación.`;
-
-  // ---------- HISTORIAL ----------
-  let historialConversacion = [];
-
-  // ---------- ELEMENTOS DEL CHAT ----------
+  // ==========================================
+  // ELEMENTOS DEL CHAT
+  // ==========================================
   const chat = document.querySelector('.whatsapp-chat');
   const toggleBtn = document.querySelector('.whatsapp-toggle');
   const closeBtn = document.querySelector('.close-btn');
@@ -857,7 +840,9 @@ REGLAS DE CONVERSACIÓN (MUY IMPORTANTE):
   const chatBody = document.querySelector('.whatsapp-body');
   const notification = document.querySelector('.notification');
 
-  // ---------- UTILIDADES ----------
+  // ==========================================
+  // UTILIDADES
+  // ==========================================
   function getCurrentTime() {
     return new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
   }
@@ -896,114 +881,12 @@ REGLAS DE CONVERSACIÓN (MUY IMPORTANTE):
     return typingIndicator;
   }
 
-  // ---------- FALLBACK LOCAL ----------
-  function respuestaLocal(mensaje) {
-    const t = mensaje.toLowerCase().trim();
-
-    // AFIRMACIONES
-    if (/^(si|sí|claro|ok|vale|adelante|perfecto)/.test(t)) {
-      return RESPUESTAS_LOCALES.planes;
-    }
-
-    // PLANES ESPECÍFICOS
-    if (/digital/.test(t)) return RESPUESTAS_LOCALES.digital;
-    if (/update/.test(t)) return RESPUESTAS_LOCALES.update;
-    if (/plus|tiktok/.test(t)) return RESPUESTAS_LOCALES.plus;
-
-    // SERVICIOS GENERALES
-    if (/horario|a qué hora|abierto/.test(t)) return RESPUESTAS_LOCALES.horario;
-    if (/contacto|whatsapp|telefono|teléfono|llamar|asesor|humano/.test(t)) return RESPUESTAS_LOCALES.contacto;
-    if (/precio|costo|cuesta|cuanto|cuánto|tarifa/.test(t)) return RESPUESTAS_LOCALES.precios;
-    if (/plan|paquete/.test(t)) return RESPUESTAS_LOCALES.planes;
-    if (/^(hola|buenas|hey|qué tal|que tal)/.test(t)) return RESPUESTAS_LOCALES.saludo;
-
-    // CATCH-ALL: Si hay historial, pedir reformular
-    if (historialConversacion.length > 1) {
-      return RESPUESTAS_LOCALES.noEntiendo;
-    }
-
-    // Primer mensaje
-    return RESPUESTAS_LOCALES.saludo;
-  }
-
-  // ---------- LLAMADA A GEMINI ----------
-  async function llamarGemini(mensajeUsuario) {
-    if (!GEMINI_API_KEY || GEMINI_API_KEY === 'TU_API_KEY_AQUI') {
-      console.warn('⚠️ API Key de Gemini no configurada. Usando respuestas locales.');
-      return respuestaLocal(mensajeUsuario);
-    }
-
-    historialConversacion.push({
-      role: 'user',
-      parts: [{ text: mensajeUsuario }]
-    });
-
-    if (historialConversacion.length > 10) {
-      historialConversacion = historialConversacion.slice(-10);
-    }
-
-    const payload = {
-      system_instruction: {
-        parts: [{ text: SYSTEM_PROMPT }]
-      },
-      contents: historialConversacion,
-      generationConfig: {
-        temperature: 0.3,
-        maxOutputTokens: 400,
-        topP: 0.95
-      }
-    };
-
-    const controller = new AbortController();
-    const timeoutId = setTimeout(() => controller.abort(), 15000);
-
-    try {
-      const response = await fetch(`${GEMINI_URL}?key=${GEMINI_API_KEY}`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(payload),
-        signal: controller.signal
-      });
-
-      clearTimeout(timeoutId);
-
-      if (!response.ok) {
-        const errorData = await response.json().catch(() => ({}));
-        console.error('❌ Error Gemini API:', response.status);
-        console.error('Detalle:', JSON.stringify(errorData, null, 2));
-        throw new Error(`HTTP ${response.status}`);
-      }
-
-      const data = await response.json();
-      const respuestaTexto = data?.candidates?.[0]?.content?.parts?.[0]?.text;
-
-      if (!respuestaTexto) {
-        console.warn('⚠️ Gemini devolvió respuesta vacía.');
-        throw new Error('Respuesta vacía');
-      }
-
-      historialConversacion.push({
-        role: 'model',
-        parts: [{ text: respuestaTexto }]
-      });
-
-      return respuestaTexto;
-
-    } catch (error) {
-      clearTimeout(timeoutId);
-      if (error.name === 'AbortError') {
-        console.error('❌ Timeout: Gemini tardó más de 15 segundos.');
-      } else {
-        console.error('❌ Error Gemini:', error.message);
-      }
-      return respuestaLocal(mensajeUsuario);
-    }
-  }
-
-  // ---------- PROCESAR MENSAJE ----------
+  // ==========================================
+  // PROCESAR MENSAJE
+  // ==========================================
   async function processUserMessage(message) {
     const typingIndicator = showTyping();
-    const respuesta = await llamarGemini(message);
+    const respuesta = await generarRespuestaConGemini(message);
     typingIndicator.remove();
     addMessage(respuesta, 'received');
   }
@@ -1016,7 +899,9 @@ REGLAS DE CONVERSACIÓN (MUY IMPORTANTE):
     processUserMessage(messageText);
   }
 
-  // ---------- EVENTOS ----------
+  // ==========================================
+  // EVENTOS
+  // ==========================================
   if (toggleBtn) {
     toggleBtn.addEventListener('click', function() {
       chat.classList.toggle('active');
