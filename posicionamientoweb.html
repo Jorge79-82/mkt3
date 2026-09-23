@@ -774,154 +774,42 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
   <script>
-      // ============================================
-// CHATBOT ARIA CON GEMINI API
-// Especializado en POSICIONAMIENTO WEB (SEO) - ManndarinKT
+    // ============================================
+// CHATBOT ARIA CON GEMINI API - POSICIONAMIENTO WEB
+// ManndarinKT
 // ============================================
 document.addEventListener('DOMContentLoaded', function() {
 
   // 🚨 API KEY
-  const GEMINI_API_KEY = 'TU_API_KEY_AQUI';
-  const GEMINI_MODEL = 'gemini-3.5-flash';
-  const GEMINI_URL = `https://generativelanguage.googleapis.com/v1beta/models/${GEMINI_MODEL}:generateContent`;
+  const API_CHAT_URL = '/api/chat';
 
   // Memoria de conversación
   let historialConversacion = [];
 
   // ==========================================
-  // GEMINI API
+  // FUNCIÓN PRINCIPAL DEL CHATBOT (SERVERLESS)
   // ==========================================
   async function generarRespuestaConGemini(pregunta) {
     try {
-      const prompt = `Eres Aria, asesora virtual de ManndarinKT (agencia de marketing digital en México).
-
-PÁGINA ACTUAL: Posicionamiento Web (SEO)
-
-═══════════════════════════════════════════════
-REGLA PRINCIPAL - PRECIOS:
-═══════════════════════════════════════════════
-
-Si el cliente pregunta "precios", "cuánto cuesta", "cotización" o similar, responde EXACTAMENTE con esto (sin agregar nada más):
-
-"💰 **Precios SEO (Posicionamiento Web):**
-
-📌 Plan Anual: $5,000 MXN/mes (12 meses)
-📌 Plan Semestral: $8,284 MXN/mes (6 meses)
-
-✅ Incluye todo lo necesario para que tu negocio aparezca en Google.
-✅ **Nosotros hacemos TODO por ti.** Tú no necesitas saber nada técnico.
-
-🎁 Oferta especial: **Diagnóstico SEO GRATUITO**
-
-¿Te gustaría agendar tu diagnóstico?
-
-👉 <a href="https://api.whatsapp.com/send?phone=+525539935301&text=Hola,%20quiero%20posicionar%20mi%20negocio%20en%20Google" target="_blank">📲 Cotizar por WhatsApp</a>"
-
-═══════════════════════════════════════════════
-EXPLICACIONES SENCILLAS PARA CLIENTES:
-═══════════════════════════════════════════════
-
-🔹 ¿QUÉ ES SEO?
-Son las siglas de "Search Engine Optimization". Es el conjunto de técnicas para que tu página web aparezca en los PRIMEROS resultados de Google cuando alguien busca algo relacionado con tu negocio.
-
-EJEMPLO: Si tienes una heladería y alguien busca "dónde comprar helado cerca de mí", el SEO hace que TU heladería aparezca de las primeras.
-
-NOSOTROS HACEMOS TODO POR TI. Nosotros investigamos palabras clave, optimizamos tu web, creamos contenido y conseguimos enlaces.
-
-RESULTADOS: Los resultados se ven entre 3 y 6 meses y se mantienen en el tiempo.
-
-🔹 ¿QUÉ ES SEM / GOOGLE ADS?
-Es PUBLICIDAD PAGADA en Google. En vez de esperar a que Google te posicione orgánicamente, PAGAS para aparecer como anuncio.
-
-EJEMPLO: El SEO es como construir una tienda en una calle concurrida. El SEM es poner un cartel luminoso para que todos te vean YA.
-
-Nosotros gestionamos TODO por ti: elegimos palabras clave, escribimos anuncios y optimizamos el presupuesto.
-
-═══════════════════════════════════════════════
-PRECIOS SEO:
-═══════════════════════════════════════════════
-
-📌 Plan Anual: $5,000 MXN/mes (contrato 12 meses)
-📌 Plan Semestral: $8,284 MXN/mes (contrato 6 meses)
-
-Oferta especial: Diagnóstico SEO GRATUITO.
-
-Link de contacto: https://api.whatsapp.com/send?phone=+525539935301&text=Hola,%20quiero%20posicionar%20mi%20negocio%20en%20Google
-
-═══════════════════════════════════════════════
-HORARIO DE ATENCIÓN:
-═══════════════════════════════════════════════
-
-Lunes a Viernes: 9am - 7pm
-Sábado: 10am - 4pm
-Domingo: Cerrado
-
-═══════════════════════════════════════════════
-REGLAS DE RESPUESTA:
-═══════════════════════════════════════════════
-
-REGLA 1 - Si dicen "precios", "cuánto cuesta", "cotización" o similar, muestra DIRECTAMENTE los precios de SEO (con el formato de arriba). NO preguntes qué servicio quiere.
-
-REGLA 2 - Si preguntan "qué es SEO", explica con el ejemplo de la heladería. Enfatiza que NOSOTROS HACEMOS TODO.
-
-REGLA 3 - Si preguntan "qué es SEM" o "Google Ads", explica con el ejemplo del cartel.
-
-REGLA 4 - Si preguntan "diferencia entre SEO y SEM", explica: SEO = orgánico, largo plazo. SEM = pago, inmediato.
-
-REGLA 5 - Si dicen "diagnóstico", ofrece diagnóstico SEO gratuito + link.
-
-REGLA 6 - Si dicen "gracias" u "ok", responde amable.
-
-REGLA 7 - Si el cliente pregunta algo que no entiendes, o quiere hablar con un asesor humano, invítalo a contactar por WhatsApp con este link:
-👉 <a href="https://api.whatsapp.com/send?phone=+525539935301&text=Hola,%20quiero%20posicionar%20mi%20negocio%20en%20Google" target="_blank">📲 Contactar por WhatsApp</a>
-
-REGLA 8 - NUNCA escribas el número de teléfono "+52 55 3993 5301" en el chat. Siempre usa el link de WhatsApp.
-
-REGLA 9 - Si preguntan por el horario, di: "Lunes a Viernes 9am - 7pm y Sábado 10am - 4pm".
-
-REGLA 10 - Responde SIEMPRE en español, tono amable y cercano.
-REGLA 11 - Sé BREVE: máximo 4-5 líneas + links.
-REGLA 12 - Usa emojis con moderación.
-REGLA 13 - NUNCA inventes información fuera de este contexto.
-REGLA 14 - SIEMPRE enfatiza que ManndarinKT se encarga de TODO.
-REGLA 15 - SIEMPRE usa etiqueta <a> HTML para links, NUNCA Markdown.
-REGLA 16 - MEMORIA: Recuerda lo que el cliente dijo antes. Si dice "sí" u "ok", responde a la pregunta anterior. NUNCA repitas el saludo.
-REGLA 17 - Si NO entiendes la pregunta del cliente y ya hay conversación previa, pídele amablemente que la reformule. NUNCA repitas el saludo si ya hay conversación.
-
-═══════════════════════════════════════════════
-PREGUNTA DEL CLIENTE:
-═══════════════════════════════════════════════
-${pregunta}
-
-═══════════════════════════════════════════════
-TU RESPUESTA:
-═══════════════════════════════════════════════`;
-
-      const response = await fetch(
-        `${GEMINI_URL}?key=${GEMINI_API_KEY}`,
-        {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({
-            contents: [{ parts: [{ text: prompt }] }],
-            generationConfig: {
-              temperature: 0.3,
-              maxOutputTokens: 800
-            }
-          })
-        }
-      );
+      const response = await fetch(API_CHAT_URL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          mensaje: pregunta,
+          paginaActual: 'posicionamientoweb'
+        })
+      });
 
       const data = await response.json();
 
-      if (data.candidates && data.candidates.length > 0) {
-        return data.candidates[0].content.parts[0].text;
+      if (data.respuesta) {
+        return data.respuesta;
       } else {
         return generarRespuestaLocal(pregunta);
       }
 
     } catch (error) {
-      console.error('Error con Gemini:', error);
+      console.error('Error con la función serverless:', error);
       return generarRespuestaLocal(pregunta);
     }
   }
@@ -948,7 +836,7 @@ TU RESPUESTA:
       }
     }
 
-    // PRECIOS → DIRECTAMENTE LOS DE SEO
+    // PRECIOS
     if (texto.includes('precio') || texto.includes('costo') || texto.includes('cuesta') || texto.includes('cuánto') || texto.includes('cuanto') || texto.includes('tarifa') || texto.includes('cotiza')) {
       return `💰 **Precios SEO (Posicionamiento Web):**\n\n📌 Plan Anual: $5,000 MXN/mes (12 meses)\n📌 Plan Semestral: $8,284 MXN/mes (6 meses)\n\n✅ Incluye todo lo necesario para que tu negocio aparezca en Google.\n✅ **Nosotros hacemos TODO por ti.**\n\n🎁 Oferta especial: **Diagnóstico SEO GRATUITO**\n\n¿Te gustaría agendar tu diagnóstico?${LINK_SEO}`;
     }
@@ -978,12 +866,12 @@ TU RESPUESTA:
       return `🕐 **Horario:**\n\n• Lunes a Viernes: 9am - 7pm\n• Sábado: 10am - 4pm\n• Domingo: Cerrado`;
     }
 
-    // CONTACTO (SIN MOSTRAR NÚMERO)
+    // CONTACTO
     if (texto.includes('contacto') || texto.includes('whatsapp') || texto.includes('teléfono') || texto.includes('llamar') || texto.includes('asesor') || texto.includes('humano')) {
       return `📱 **Contáctanos por WhatsApp:**\n\n👉 <a href="https://api.whatsapp.com/send?phone=+525539935301&text=Hola,%20quiero%20posicionar%20mi%20negocio%20en%20Google" target="_blank">📲 Contactar por WhatsApp</a>\n\nHorario: Lunes a Viernes 9am - 7pm y Sábado 10am - 4pm.`;
     }
 
-    // GRACIAS / OK
+    // GRACIAS
     if (texto.includes('gracias') || texto.includes('thank')) {
       return "¡A ti por escribirme! 😊 Me alegra ayudarte con el posicionamiento web.\n\n¿Hay algo más en lo que pueda asistirte? 🎯";
     }
@@ -1011,14 +899,12 @@ TU RESPUESTA:
       }
     }
 
-    // ==========================================
-    // CATCH-ALL - Si hay historial, pedir reformular
-    // ==========================================
+    // CATCH-ALL
     if (historialConversacion.length > 1) {
       return `🤔 No entiendo bien tu pregunta. ¿Podrías reformularla?\n\nPor ejemplo, puedes preguntarme sobre:\n\n🎯 Qué es SEO\n📢 Qué es SEM / Google Ads\n💰 Precios (Anual / Semestral)\n🎁 Diagnóstico SEO GRATUITO\n\nO si prefieres, escríbenos por WhatsApp:\n\n👉 <a href="https://api.whatsapp.com/send?phone=+525539935301&text=Hola,%20quiero%20posicionar%20mi%20negocio%20en%20Google" target="_blank">📲 Contactar por WhatsApp</a>`;
     }
 
-    // Primer mensaje (sin historial) → saludo
+    // Primer mensaje
     return `🎯 **¡Hola! Soy Aria, tu asesora de ManndarinKT** 😊\n\nEstamos en la sección de **Posicionamiento WEB**.\n\n¿Quieres saber sobre:\n• **SEO** (qué es y cómo funciona)?\n• **SEM / Google Ads** (anuncios de pago)?\n• **Precios de SEO**?\n\nSi prefieres hablar con un asesor humano:\n\n👉 <a href="https://api.whatsapp.com/send?phone=+525539935301&text=Hola,%20quiero%20posicionar%20mi%20negocio%20en%20Google" target="_blank">📲 Contactar por WhatsApp</a>`;
   }
 
@@ -1124,7 +1010,6 @@ TU RESPUESTA:
     });
   }
 
-  // Notificación inicial
   setTimeout(() => {
     if (notification && !chat.classList.contains('active')) {
       notification.style.display = 'flex';
