@@ -1,6 +1,8 @@
+import { GoogleGenAI } from '@google/genai';
+
 // ============================================
 // FUNCIÓN SERVERLESS - CHATBOT ARIA CON GEMINI
-// ManndarinKT
+// ManndarinKT (con SDK oficial)
 // ============================================
 
 export default async function handler(req, res) {
@@ -9,20 +11,17 @@ export default async function handler(req, res) {
   res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
   res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
 
-  // Responder a preflight requests
   if (req.method === 'OPTIONS') {
     res.status(200).end();
     return;
   }
 
-  // Solo aceptar POST
   if (req.method !== 'POST') {
     res.status(405).json({ error: 'Método no permitido' });
     return;
   }
 
   try {
-    // 1. Recibir el mensaje del usuario
     const { mensaje, paginaActual } = req.body;
 
     if (!mensaje) {
@@ -30,50 +29,37 @@ export default async function handler(req, res) {
       return;
     }
 
-    // 2. Obtener la API Key desde las variables de entorno
     const apiKey = process.env.GEMINI_API_KEY;
-
     if (!apiKey) {
       res.status(500).json({ error: 'API Key no configurada' });
       return;
     }
 
-    // 3. Construir el prompt según la página
+    // 1. Inicializar el cliente de Google GenAI
+    const ai = new GoogleGenAI({ apiKey });
+
+    // 2. Construir el prompt
     const prompt = construirPrompt(mensaje, paginaActual);
 
-    // 4. Llamar a Gemini
-    const url = `https://generativelanguage.googleapis.com/v1/models/gemini-1.5-flash:generateContent?key=${apiKey}`;
-
-    const respuestaGemini = await fetch(url, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        contents: [{ parts: [{ text: prompt }] }],
-        generationConfig: {
-          maxOutputTokens: 800
-        }
-      })
+    // 3. Llamar a Gemini con el modelo correcto
+    const response = await ai.models.generateContent({
+      model: 'gemini-2.5-flash',
+      contents: prompt,
+      config: {
+        maxOutputTokens: 800,
+      }
     });
-  
-    const data = await respuestaGemini.json();
 
-    // 🔍 LOG PARA DIAGNÓSTICO - Eliminar después
-    console.log('=== RESPUESTA DE GEMINI ===');
-    console.log(JSON.stringify(data, null, 2));
-    console.log('=== FIN RESPUESTA ===');
-
-    // 5. Devolver la respuesta
-    if (data.candidates && data.candidates.length > 0) {
-      res.status(200).json({
-        respuesta: data.candidates[0].content.parts[0].text
-      });
+    // 4. Devolver la respuesta
+    if (response.text) {
+      res.status(200).json({ respuesta: response.text });
     } else {
       res.status(200).json({
         respuesta: 'Lo siento, no pude procesar tu mensaje.',
-        debug: data // 🔍 Incluir la respuesta de Gemini para ver el error
+        debug: response
       });
     }
-    
+
   } catch (error) {
     console.error('Error:', error);
     res.status(500).json({
@@ -95,13 +81,6 @@ function construirPrompt(mensaje, paginaActual) {
     'posicionamientoweb': 'Eres Aria, asesora de ManndarinKT. Ayuda con Posicionamiento SEO. Responde breve y amable.',
     'redessociales': 'Eres Aria, asesora de ManndarinKT. Ayuda con Redes Sociales. Responde breve y amable.'
   };
-
   const contexto = prompts[paginaActual] || prompts['index'];
-
-  return `${contexto}
-
-PREGUNTA DEL CLIENTE:
-${mensaje}
-
-TU RESPUESTA:`;
+  return `${contexto}\n\nPREGUNTA DEL CLIENTE:\n${mensaje}\n\nTU RESPUESTA:`;
 }
