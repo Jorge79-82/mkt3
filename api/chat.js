@@ -42,7 +42,7 @@ export default async function handler(req, res) {
     const prompt = construirPrompt(mensaje, paginaActual);
 
     // 4. Llamar a Gemini
-    const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${apiKey}`;
+    const url = `https://generativelanguage.googleapis.com/v1/models/gemini-1.5-flash:generateContent?key=${apiKey}`;
 
     const respuestaGemini = await fetch(url, {
       method: 'POST',
