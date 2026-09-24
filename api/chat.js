@@ -54,8 +54,13 @@ export default async function handler(req, res) {
         }
       })
     });
-
+  
     const data = await respuestaGemini.json();
+
+    // 🔍 LOG PARA DIAGNÓSTICO - Eliminar después
+    console.log('=== RESPUESTA DE GEMINI ===');
+    console.log(JSON.stringify(data, null, 2));
+    console.log('=== FIN RESPUESTA ===');
 
     // 5. Devolver la respuesta
     if (data.candidates && data.candidates.length > 0) {
@@ -64,10 +69,11 @@ export default async function handler(req, res) {
       });
     } else {
       res.status(200).json({
-        respuesta: 'Lo siento, no pude procesar tu mensaje.'
+        respuesta: 'Lo siento, no pude procesar tu mensaje.',
+        debug: data // 🔍 Incluir la respuesta de Gemini para ver el error
       });
     }
-
+    
   } catch (error) {
     console.error('Error:', error);
     res.status(500).json({
