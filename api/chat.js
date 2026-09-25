@@ -1,17 +1,6 @@
-import { GoogleGenAI } from '@google/genai';
-
 // ============================================
 // FUNCIÓN SERVERLESS - CHATBOT ARIA CON GEMINI
-// ManndarinKT (con SDK oficial)
-//
-// ⚠️ IMPORTANTE:
-// - Modelo actual: gemini-2.5-flash
-// - Probamos otros modelos:
-//   ❌ gemini-1.5-flash (no funcionó con clave AQ.)
-//   ❌ gemini-3.5-flash (no existe en la API)
-//   ✅ gemini-2.5-flash (FUNCIONA)
-// - NO cambiar el modelo sin probar primero.
-// - Esta función sirve para las 6 páginas.
+// ManndarinKT (fetch + encabezado x-goog-api-key)
 // ============================================
 
 export default async function handler(req, res) {
@@ -44,28 +33,37 @@ export default async function handler(req, res) {
       return;
     }
 
-    // 1. Inicializar el cliente de Google GenAI
-    const ai = new GoogleGenAI({ apiKey });
-
-    // 2. Construir el prompt
+    // 1. Construir el prompt
     const prompt = construirPrompt(mensaje, paginaActual);
 
-    // 3. Llamar a Gemini con el modelo correcto
-    const response = await ai.models.generateContent({
-      model: 'gemini-2.5-flash',
-      contents: prompt,
-      config: {
-        maxOutputTokens: 800,
-      }
+    // 2. Llamar a Gemini con el encabezado x-goog-api-key
+    const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent`;
+
+    const respuestaGemini = await fetch(url, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'x-goog-api-key': apiKey
+      },
+      body: JSON.stringify({
+        contents: [{ parts: [{ text: prompt }] }],
+        generationConfig: {
+          maxOutputTokens: 800
+        }
+      })
     });
 
-    // 4. Devolver la respuesta
-    if (response.text) {
-      res.status(200).json({ respuesta: response.text });
+    const data = await respuestaGemini.json();
+
+    // 3. Devolver la respuesta
+    if (data.candidates && data.candidates.length > 0) {
+      res.status(200).json({
+        respuesta: data.candidates[0].content.parts[0].text
+      });
     } else {
       res.status(200).json({
         respuesta: 'Lo siento, no pude procesar tu mensaje.',
-        debug: response
+        debug: data
       });
     }
 
@@ -136,4 +134,3 @@ REGLAS:
   const contexto = prompts[paginaActual] || prompts['index'];
   return `${contexto}\n\nPREGUNTA DEL CLIENTE:\n${mensaje}\n\nTU RESPUESTA:`;
 }
-
