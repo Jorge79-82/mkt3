@@ -1,9 +1,1 @@
-{
-  "name": "manndarinkt-chatbot",
-  "version": "1.0.0",
-  "description": "Chatbot Aria con Gemini para ManndarinKT",
-  "type": "module",
-  "dependencies": {
-    "@google/genai": "^0.21.0"
-  }
-}
+
