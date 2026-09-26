@@ -1,6 +1,6 @@
 // ============================================
 // FUNCIÓN SERVERLESS - CHATBOT ARIA CON GEMINI
-// ManndarinKT (fetch + query param key)
+// ManndarinKT (fetch + query param key + reintentos)
 // ============================================
 
 export default async function handler(req, res) {
@@ -33,32 +33,52 @@ export default async function handler(req, res) {
     }
 
     const prompt = construirPrompt(mensaje, paginaActual);
-
     const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-3.8-flash:generateContent?key=${apiKey}`;
-    
-    const respuestaGemini = await fetch(url, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({
-        contents: [{ parts: [{ text: prompt }] }],
-        generationConfig: {
-          maxOutputTokens: 800
+
+    // Reintentar hasta 3 veces si Gemini devuelve vacío
+    let respuestaTexto = null;
+    let ultimoDebug = null;
+
+    for (let intento = 1; intento <= 3; intento++) {
+      try {
+        const respuestaGemini = await fetch(url, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            contents: [{ parts: [{ text: prompt }] }],
+            generationConfig: {
+              maxOutputTokens: 800,
+              temperature: 0.4
+            }
+          })
+        });
+
+        const data = await respuestaGemini.json();
+        ultimoDebug = data;
+
+        if (data.candidates && data.candidates.length > 0 && 
+            data.candidates[0].content && 
+            data.candidates[0].content.parts && 
+            data.candidates[0].content.parts[0].text) {
+          respuestaTexto = data.candidates[0].content.parts[0].text;
+          break;
         }
-      })
-    });
 
-    const data = await respuestaGemini.json();
+        // Esperar 1 segundo antes del siguiente intento
+        if (intento < 3) {
+          await new Promise(r => setTimeout(r, 1000));
+        }
+      } catch (e) {
+        ultimoDebug = { error: e.message };
+      }
+    }
 
-    if (data.candidates && data.candidates.length > 0) {
-      res.status(200).json({
-        respuesta: data.candidates[0].content.parts[0].text
-      });
+    if (respuestaTexto) {
+      res.status(200).json({ respuesta: respuestaTexto });
     } else {
       res.status(200).json({
-        respuesta: 'Lo siento, no pude procesar tu mensaje.',
-        debug: data
+        respuesta: 'Lo siento, no pude procesar tu mensaje. Intenta de nuevo por favor.',
+        debug: ultimoDebug
       });
     }
 
@@ -116,14 +136,12 @@ Una vez que lo llenes, te llegará un correo de confirmación y podrás enviarno
 REGLAS:
 - Responde SIEMPRE en español, tono amable.
 - Sé BREVE: máximo 4-5 líneas + links.
-- NUNCA envíes el link de pago si el cliente no ha llenado el formulario.
-- NUNCA des el link de pago si el cliente solo preguntó precios.
-- SIEMPRE usa etiqueta <a> HTML para links, NUNCA Markdown.
-- MEMORIA: Recuerda la etapa de la conversación y sigue el flujo.`,
+- SIEMPRE usa etiqueta <a> HTML para links, NUNCA Markdown.`,
     'posicionamientoweb': 'Eres Aria, asesora de ManndarinKT. Ayuda con Posicionamiento SEO. Responde breve y amable.',
     'redessociales': 'Eres Aria, asesora de ManndarinKT. Ayuda con Redes Sociales. Responde breve y amable.'
   };
   const contexto = prompts[paginaActual] || prompts['index'];
   return `${contexto}\n\nPREGUNTA DEL CLIENTE:\n${mensaje}\n\nTU RESPUESTA:`;
 }
+
 
