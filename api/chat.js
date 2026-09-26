@@ -37,14 +37,13 @@ export default async function handler(req, res) {
     const prompt = construirPrompt(mensaje, paginaActual);
 
     // 2. Llamar a Gemini con el encabezado x-goog-api-key
-    const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent`;
-
+    const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${apiKey}`;
+    
     const respuestaGemini = await fetch(url, {
       method: 'POST',
       headers: {
-        'Content-Type': 'application/json',
-        'x-goog-api-key': apiKey
-      },
+        'Content-Type': 'application/json'
+      }
       body: JSON.stringify({
         contents: [{ parts: [{ text: prompt }] }],
         generationConfig: {
