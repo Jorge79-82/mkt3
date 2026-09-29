@@ -1,6 +1,6 @@
 // ============================================
-// FUNCIÓN SERVERLESS - CHATBOT ARIA CON GEMINI
-// ManndarinKT (fetch + query param key + reintentos)
+// FUNCIÓN SERVERLESS - CHATBOT ARIA CON GROQ
+// ManndarinKT (fetch + API key en header)
 // ============================================
 
 export default async function handler(req, res) {
@@ -26,45 +26,47 @@ export default async function handler(req, res) {
       return;
     }
 
-    const apiKey = process.env.GEMINI_API_KEY;
+    const apiKey = process.env.GROQ_API_KEY;
     if (!apiKey) {
       res.status(500).json({ error: 'API Key no configurada' });
       return;
     }
 
     const prompt = construirPrompt(mensaje, paginaActual);
-    const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-3.8-flash:generateContent?key=${apiKey}`;
 
-    // Reintentar hasta 3 veces si Gemini devuelve vacío
+    const url = 'https://api.groq.com/openai/v1/chat/completions';
+
     let respuestaTexto = null;
     let ultimoDebug = null;
 
     for (let intento = 1; intento <= 3; intento++) {
       try {
-        const respuestaGemini = await fetch(url, {
+        const respuestaGroq = await fetch(url, {
           method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': 'Bearer ' + apiKey
+          },
           body: JSON.stringify({
-            contents: [{ parts: [{ text: prompt }] }],
-            generationConfig: {
-              maxOutputTokens: 800,
-              temperature: 0.4
-            }
+            model: 'llama-3.3-70b-versatile',
+            messages: [
+              { role: 'user', content: prompt }
+            ],
+            temperature: 0.4,
+            max_tokens: 800
           })
         });
 
-        const data = await respuestaGemini.json();
+        const data = await respuestaGroq.json();
         ultimoDebug = data;
 
-        if (data.candidates && data.candidates.length > 0 && 
-            data.candidates[0].content && 
-            data.candidates[0].content.parts && 
-            data.candidates[0].content.parts[0].text) {
-          respuestaTexto = data.candidates[0].content.parts[0].text;
+        if (data.choices && data.choices.length > 0 && 
+            data.choices[0].message && 
+            data.choices[0].message.content) {
+          respuestaTexto = data.choices[0].message.content;
           break;
         }
 
-        // Esperar 1 segundo antes del siguiente intento
         if (intento < 3) {
           await new Promise(r => setTimeout(r, 1000));
         }
@@ -94,8 +96,11 @@ export default async function handler(req, res) {
 function construirPrompt(mensaje, paginaActual) {
   const prompts = {
     'index': 'Eres Aria, asesora de ManndarinKT. Guía al cliente a la sección correcta. Responde breve y amable.',
+
     'automatiza': 'Eres Aria, asesora de ManndarinKT. Ayuda con automatización con IA. Responde breve y amable.',
+
     'communitymanager': 'Eres Aria, asesora de ManndarinKT. Ayuda con Community Manager. Responde breve y amable.',
+
     'paginaweb': `Eres Aria, asesora de ManndarinKT. Ayuda con Páginas Web. Responde breve y amable.
 
 FLUJO DE CONVERSACIÓN:
@@ -133,7 +138,9 @@ REGLAS:
 - Responde SIEMPRE en español, tono amable.
 - Sé BREVE: máximo 4-5 líneas + links.
 - SIEMPRE usa etiqueta <a> HTML para links, NUNCA Markdown.`,
+
     'posicionamientoweb': 'Eres Aria, asesora de ManndarinKT. Ayuda con Posicionamiento SEO. Responde breve y amable.',
+
     'redessociales': 'Eres Aria, asesora de ManndarinKT. Ayuda con Redes Sociales. Responde breve y amable.'
   };
   const contexto = prompts[paginaActual] || prompts['index'];
