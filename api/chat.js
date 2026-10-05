@@ -4,6 +4,21 @@
 // ============================================
 
 const FORM_URL = 'https://docs.google.com/forms/d/e/1FAIpQLScRYcO7h379Inmk3FPfZl_L76rs1EqRa0UhTwPL3DLFU20VuQ/viewform';
+const WA_URL = 'https://api.whatsapp.com/send?phone=+525539935301&text=Hola,%20quiero%20informaci%C3%B3n%20de%20ManndarinKT';
+
+const REGLA_LINKS = `
+
+REGLA CRÍTICA - LINKS (OBLIGATORIO):
+- NUNCA inventes URLs ni links.
+- Si no tienes un link real que dar, responde SIN link.
+- NO uses links tipo "example.com", "blog/...", "más-informacion", "mas-info", "#", etc.
+- Los ÚNICOS links permitidos son:
+  • El formulario: <a href="${FORM_URL}" target="_blank">📝 Llenar formulario</a>
+  • Links internos del sitio: paginaweb.html, posicionamientoweb.html, redessociales.html, automatiza.html, communitymanager.html, index.html
+  • WhatsApp: <a href="${WA_URL}" target="_blank">📲 WhatsApp</a>
+- SI EL CLIENTE PIDE "MÁS INFORMACIÓN": da más detalle del servicio, y termina ofreciéndole el formulario. NO mandes a ningún otro lado.
+- SIEMPRE usa etiqueta <a> HTML para links. NUNCA uses Markdown [texto](url).
+`;
 
 export default async function handler(req, res) {
   res.setHeader('Access-Control-Allow-Origin', '*');
@@ -117,19 +132,18 @@ SERVICIOS DISPONIBLES:
 
 FLUJO:
 - Si el cliente pregunta "¿Qué hacen?" o "¿Qué servicios tienen?", responde con la lista de servicios y pregúntale cuál le interesa.
-- Si el cliente pregunta por un servicio específico, dale un resumen MUY breve del precio y sugiérele ir a la página de ese servicio para más info:
+- Si el cliente pregunta por un servicio específico, dale un resumen MUY breve del precio y sugiérele ir a la página de ese servicio:
   - Páginas Web → <a href="paginaweb.html" target="_blank">📄 Ver Páginas Web</a>
   - Posicionamiento Web → <a href="posicionamientoweb.html" target="_blank">🚀 Ver Posicionamiento Web</a>
   - Redes Sociales → <a href="redessociales.html" target="_blank">📱 Ver Redes Sociales</a>
   - Automatización con IA → <a href="automatiza.html" target="_blank">🤖 Ver Automatización</a>
   - Community Manager → <a href="communitymanager.html" target="_blank">👥 Ver Community Manager</a>
-- Si el cliente no sabe qué necesita, hazle 2-3 preguntas para orientarlo (¿tienes página web? ¿usas redes sociales? ¿qué quieres lograr?).
+- Si el cliente no sabe qué necesita, hazle 2-3 preguntas para orientarlo.
 
 REGLAS:
-- Responde SIEMPRE en español, tono amable y cercano.
+- Responde SIEMPRE en español, tono amable.
 - Sé BREVE: máximo 4-5 líneas.
-- SIEMPRE usa etiqueta <a> HTML para links, NUNCA Markdown.
-- NO mandes al formulario desde aquí, solo guía a la página correcta.`,
+- NO mandes al formulario desde aquí, solo guía a la página correcta.${REGLA_LINKS}`,
 
     // ============================================
     // PÁGINAS WEB
@@ -169,8 +183,7 @@ Una vez que lo llenes, te contactaremos por WhatsApp. 🚀"
 
 REGLAS:
 - Responde SIEMPRE en español, tono amable.
-- Sé BREVE: máximo 4-5 líneas + links.
-- SIEMPRE usa etiqueta <a> HTML para links, NUNCA Markdown.`,
+- Sé BREVE: máximo 4-5 líneas + links.${REGLA_LINKS}`,
 
     // ============================================
     // POSICIONAMIENTO WEB (SEO)
@@ -205,8 +218,7 @@ Una vez que lo llenes, te contactaremos por WhatsApp. 🚀"
 REGLAS:
 - Responde SIEMPRE en español, tono amable.
 - Sé BREVE: máximo 4-5 líneas + links.
-- SIEMPRE usa etiqueta <a> HTML para links, NUNCA Markdown.
-- Si te preguntan "¿Qué es SEO?" o "¿Cómo funciona?", explica breve y luego ofrece los precios.`,
+- Si te preguntan "¿Qué es SEO?" o "¿Cómo funciona?", explica breve y luego ofrece los precios.${REGLA_LINKS}`,
 
     // ============================================
     // REDES SOCIALES
@@ -249,8 +261,7 @@ Una vez que lo llenes, te contactaremos por WhatsApp. 🚀"
 
 REGLAS:
 - Responde SIEMPRE en español, tono amable.
-- Sé BREVE: máximo 4-5 líneas + links.
-- SIEMPRE usa etiqueta <a> HTML para links, NUNCA Markdown.`,
+- Sé BREVE: máximo 4-5 líneas + links.${REGLA_LINKS}`,
 
     // ============================================
     // AUTOMATIZACIÓN CON IA
@@ -286,8 +297,7 @@ Una vez que lo llenes, te contactaremos por WhatsApp. 🚀"
 
 REGLAS:
 - Responde SIEMPRE en español, tono amable.
-- Sé BREVE: máximo 4-5 líneas + links.
-- SIEMPRE usa etiqueta <a> HTML para links, NUNCA Markdown.`,
+- Sé BREVE: máximo 4-5 líneas + links.${REGLA_LINKS}`,
 
     // ============================================
     // COMMUNITY MANAGER
@@ -323,8 +333,7 @@ Una vez que lo llenes, te contactaremos por WhatsApp. 🚀"
 
 REGLAS:
 - Responde SIEMPRE en español, tono amable.
-- Sé BREVE: máximo 4-5 líneas + links.
-- SIEMPRE usa etiqueta <a> HTML para links, NUNCA Markdown.`
+- Sé BREVE: máximo 4-5 líneas + links.${REGLA_LINKS}`
   };
 
   const contexto = prompts[paginaActual] || prompts['index'];
