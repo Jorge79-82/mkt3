@@ -791,18 +791,27 @@ document.addEventListener('DOMContentLoaded', function() {
   // ==========================================
   async function generarRespuestaConGemini(pregunta) {
     try {
+      // Recuperar historial guardado en esta sesión (memoria temporal)
+      const historialGuardado = JSON.parse(sessionStorage.getItem('aria_historial_posicionamientoweb') || '[]');
+
       const response = await fetch(API_CHAT_URL, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           mensaje: pregunta,
-          paginaActual: 'posicionamientoweb'
+          paginaActual: 'posicionamientoweb',
+          historial: historialGuardado
         })
       });
 
       const data = await response.json();
 
       if (data.respuesta) {
+        // Guardar la nueva interacción en el historial
+        historialGuardado.push({ rol: 'user', contenido: pregunta });
+        historialGuardado.push({ rol: 'assistant', contenido: data.respuesta });
+        sessionStorage.setItem('aria_historial_posicionamientoweb', JSON.stringify(historialGuardado));
+
         return data.respuesta;
       } else {
         return generarRespuestaLocal(pregunta);
