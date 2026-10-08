@@ -853,25 +853,34 @@ document.addEventListener('DOMContentLoaded', function() {
   // ==========================================
   // FUNCIÓN PRINCIPAL DEL CHATBOT (SERVERLESS)
   // ==========================================
-  async function generarRespuestaConGemini(pregunta) {
+ async function generarRespuestaConGemini(pregunta) {
     try {
+      // Recuperar historial guardado en esta sesión (memoria temporal)
+      const historialGuardado = JSON.parse(sessionStorage.getItem('aria_historial_paginaweb') || '[]');
+
       const response = await fetch(API_CHAT_URL, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           mensaje: pregunta,
-          paginaActual: 'paginaweb'
+          paginaActual: 'paginaweb',
+          historial: historialGuardado
         })
       });
 
       const data = await response.json();
 
       if (data.respuesta) {
+        // Guardar la nueva interacción en el historial
+        historialGuardado.push({ rol: 'user', contenido: pregunta });
+        historialGuardado.push({ rol: 'assistant', contenido: data.respuesta });
+        sessionStorage.setItem('aria_historial_paginaweb', JSON.stringify(historialGuardado));
+
         return data.respuesta;
       } else {
         return generarRespuestaLocal(pregunta);
       }
-
+      
     } catch (error) {
       console.error('Error con la función serverless:', error);
       return generarRespuestaLocal(pregunta);
