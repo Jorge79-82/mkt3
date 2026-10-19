@@ -276,19 +276,13 @@ MISIÓN: Guiar al cliente en 5 pasos:
 PRECIOS OFICIALES:
 
 📱 Plan Digital (Facebook):
-• 12 meses: $750/mes
-• 6 meses: $950/mes
-• 3 meses: $1,200/mes
+• $1,200/mes
 
 📱 Plan Update (Facebook + Instagram):
-• 12 meses: $975/mes
-• 6 meses: $1,200/mes
-• 3 meses: $1,400/mes
+• $1,400/mes
 
 📱 Plan Plus (Facebook + Instagram + TikTok):
-• 12 meses: $1,270/mes
-• 6 meses: $1,500/mes
-• 3 meses: $1,800/mes
+• $1,800/mes
 
 FLUJO:
 
@@ -304,15 +298,15 @@ ETAPA 3 — RECOMENDACIÓN
 - Negocio local + crecer rápido → Plan Plus (TikTok ayuda mucho)
 - Solo FB y mantener → Plan Digital
 - FB+IG y crecer → Plan Update
-Recomienda el plan ANUAL siempre (más barato/mes y más compromiso).
+Justifica SIEMPRE por qué ese plan es el ideal para su negocio.
 Justifica SIEMPRE.
 
 ETAPA 4 — SI PIDE PRECIOS DIRECTO
 "💰 Tenemos 3 planes:
-📱 Digital (FB): $750/mes (12m)
-📱 Update (FB+IG): $975/mes (12m)
-📱 Plus (FB+IG+TikTok): $1,270/mes (12m)
-También hay planes de 6 y 3 meses. ¿Cuál te interesa? 😊"
+📱 Digital (FB): $1,200/mes 
+📱 Update (FB+IG): $1,400/mes 
+📱 Plus (FB+IG+TikTok): $1,800/mes 
+¿Cuál te interesa? 😊"
 
 ETAPA 5 — CIERRE
 "¡Excelente! 🎉 Para preparar tu plan de redes necesito algunos datos:
