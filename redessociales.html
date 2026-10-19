@@ -2,26 +2,31 @@
 <html lang="es">
 
 <head>
-  <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=AW-16454880527"></script>
+  <!-- Google tag (gtag.js) - Combinados -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-1NQWV1H3KG"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
+    gtag('config', 'G-1NQWV1H3KG');
     gtag('config', 'AW-16454880527');
+    gtag('config', 'AW-676345576');
+    
+    // Evento de conversión
+    gtag('event', 'conversion', {'send_to': 'AW-676345576/MGq1CLf0vc0BEOjtwMIC'});
   </script>
 
   <link rel="icon" href="IMG/Mandarina.png">
-
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta content="text/html; charset=iso-8859-2" http-equiv="Content-Type">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <meta name="description" content="Gestión de redes sociales para tu negocio. Planes Digital, Update y Plus. Facebook, Instagram, TikTok. Precios accesibles.">
+  <meta name="description" content="Gestión profesional de Redes Sociales. Planes mensuales sin contratos forzosos. Community Manager experto.">
 
   <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  
   <title>Redes Sociales - ManndarinKT</title>
   <style>
     /* Variables de colores */
@@ -36,7 +41,7 @@
       --bg-light: #f8f9fa;
       --bg-dark: #282E34;
     }
-
+    
     /* Estilos generales */
     body {
       font-family: Arial, Helvetica, sans-serif;
@@ -47,7 +52,7 @@
       padding-top: 76px;
     }
 
-      h1, h2, h3, h4, h5, h6 {
+    h1, h2, h3, h4, h5, h6 {
       font-weight: 700;
       color: var(--primary-color);
     }
@@ -65,6 +70,10 @@
       background-color: var(--text-light) !important;
       box-shadow: 0 2px 10px rgba(0,0,0,0.1);
       padding: 10px 0;
+      position: fixed;
+      width: 100%;
+      top: 0;
+      z-index: 1000;
     }
 
     .navbar-brand img {
@@ -88,8 +97,8 @@
     .navbar-toggler {
       border: none;
     }
-    
-    /* Imágenes de fondo */
+
+    /* Hero sections */
     .bgimg-1, .bgimg-2, .bgimg-3 {
       position: relative;
       background-attachment: fixed;
@@ -101,95 +110,72 @@
       align-items: center;
       justify-content: center;
     }
-    
-    .bgimg-1 {
-      background-image: url("IMG/Redes Sociales/social-media-3758364_1920.jpg");
-      min-height: 70vh;
-    }
 
-    .bgimg-2 {
-      background-image: url("IMG/Redes Sociales/icon-2486501_1920.png");
-      min-height: 35vh;
-    }
-
-    .bgimg-3 {
-      background-image: url("IMG/Redes Sociales/tablet-3423712_1920.png");
-      min-height: 30vh;
-    }
-
-    .caption {
-      position: absolute;
-      left: 0;
-      top: 50%;
-      width: 100%;
-      text-align: center;
-      color: #000;
-    }
-
-    .caption span.border {
-      background-color: #111;
-      color: #fff;
-      padding: 18px;
-      font-size: 25px;
-      letter-spacing: 10px;
-    }
-
-    @media only screen and (max-device-width: 1024px) {
-      .bgimg-1, 
-      .bgimg-2, 
-      .bgimg-3 {
+    @media (max-width: 768px) {
+      .bgimg-1, .bgimg-2, .bgimg-3 {
         background-attachment: scroll;
+        min-height: 60vh;
       }
     }
 
-    /* Cards de planes */
-    .card {
-      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-      border-radius: 50px;
-      transition: transform 0.3s, box-shadow 0.3s;
-      margin-bottom: 20px;
-      overflow: hidden;
-      height: 100%;
+    /* Imágenes originales restauradas */
+    .bgimg-1 {
+      background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url("IMG/Paginas web/coputadoras-con-logo.png");
     }
 
-    .card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+    .bgimg-2 {
+      background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url("IMG/Paginas web/internet-4463031_1920.jpg");
     }
 
-    .card img {
-      width: 100%;
-      height: 200px;
-      object-fit: cover;
+    .bgimg-3 {
+      background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url("IMG/Paginas web/programming-gee7fd8358_1920.jpeg");
+      min-height: 50vh;
     }
 
-    .card h2 {
-      color: var(--primary-color);
-      font-size: 1.5rem;
-      margin: 15px 0;
-    }
-
-    .card h4 {
-      font-size: 1rem;
-      margin: 8px 0;
-      color: var(--text-dark);
-    }
-
-    .card button {
-      border: none;
-      outline: 0;
-      padding: 12px;
-      color: white;
-      background-color: var(--primary-color);
+    .caption {
       text-align: center;
-      cursor: pointer;
-      width: 100%;
-      font-size: 18px;
-      transition: background-color 0.3s;
+      color: var(--text-light);
+      padding: 2rem;
     }
 
-    .card button:hover {
-      background-color: var(--primary-dark);
+    .caption h1 {
+      color: var(--text-light);
+      font-size: 3rem;
+      margin-bottom: 1rem;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+    }
+
+    .caption p {
+      font-size: 1.5rem;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    /* Secciones de contenido */
+    .content-section {
+      padding: 5rem 0;
+    }
+
+    .content-section h2 {
+      margin-bottom: 2rem;
+      text-align: center;
+    }
+
+    .img-fluid {
+      border-radius: 10px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      max-width: 100%;
+      height: auto;
+    }
+
+    .dark-section {
+      background-color: var(--bg-dark);
+      color: var(--text-light);
+      padding: 4rem 0;
+    }
+
+    .dark-section h2, .dark-section h3, .dark-section h4 {
+      color: var(--text-light);
     }
 
     /* Footer */
@@ -218,8 +204,8 @@
     .social-icons a:hover {
       transform: translateY(-5px);
     }
-    
-    /* ===== CHAT FLOTANTE CON IA - CON TUS TAMAÑOS ORIGINALES (1.5rem) ===== */
+
+    /* ===== CHAT FLOTANTE (Letra original restaurada) ===== */
     .whatsapp-chat {
       position: fixed;
       bottom: 20px;
@@ -256,8 +242,8 @@
     }
     
     .whatsapp-avatar {
-      width: 45px;
-      height: 45px;
+      width: 40px;
+      height: 40px;
       border-radius: 50%;
       background: var(--primary-color);
       display: flex;
@@ -321,31 +307,6 @@
       word-wrap: break-word;
     }
     
-    .welcome-message {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      background: white;
-      padding: 10px 15px;
-      border-radius: 15px;
-      margin-bottom: 15px;
-      align-self: flex-start;
-      max-width: 85%;
-      box-shadow: 0 1px 0.5px rgba(0, 0, 0, 0.1);
-    }
-    
-    .welcome-avatar {
-      width: 40px;
-      height: 40px;
-      border-radius: 50%;
-      object-fit: cover;
-    }
-    
-    .welcome-message p {
-      margin: 0;
-      font-size: 1.5rem;
-    }
-    
     @keyframes fadeIn {
       from { opacity: 0; transform: translateY(10px); }
       to { opacity: 1; transform: translateY(0); }
@@ -367,7 +328,7 @@
     
     .message-time {
       float: right;
-      font-size: 0.65rem;
+      font-size: 1.5rem;
       color: #667781;
       margin-left: 8px;
       margin-top: 3px;
@@ -461,7 +422,7 @@
       0%, 60%, 100% { transform: translateY(0); }
       30% { transform: translateY(-5px); }
     }
-
+    
     .notification {
       position: absolute;
       top: -5px;
@@ -474,7 +435,7 @@
       display: none;
       align-items: center;
       justify-content: center;
-      font-size: 1rem;
+      font-size: 0.7rem;
       animation: pulse 1.5s infinite;
     }
     
@@ -484,48 +445,117 @@
       100% { transform: scale(1); }
     }
     
-    /* Responsive */
+    /* Beneficios y Planes */
+    .benefit-box {
+      text-align: center;
+      padding: 2rem;
+      border-radius: 10px;
+      margin-bottom: 2rem;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      transition: transform 0.3s;
+      background: var(--text-light);
+      height: 100%;
+      position: relative;
+    }
+
+    .benefit-box:hover {
+      transform: translateY(-5px);
+    }
+
+    .benefit-box i {
+      font-size: 3rem;
+      color: var(--primary-color);
+      margin-bottom: 1rem;
+    }
+
+    .plan-card { border: 2px solid #eee; }
+    .plan-destacado { border: 2px solid var(--primary-color); transform: scale(1.05); }
+    .plan-destacado:hover { transform: scale(1.05) translateY(-5px); }
+    .badge-popular {
+      position: absolute; top: -15px; left: 50%; transform: translateX(-50%);
+      background: var(--primary-color); color: white; padding: 5px 15px;
+      border-radius: 20px; font-size: 0.9rem; font-weight: bold;
+    }
+    .plan-price { font-size: 2.5rem; color: var(--text-dark); font-weight: bold; margin: 1rem 0; }
+    .plan-price small { font-size: 1rem; color: #666; font-weight: normal; }
+    .plan-features { list-style: none; padding: 0; text-align: left; margin-bottom: 2rem; }
+    .plan-features li { margin-bottom: 10px; font-size: 0.95rem; }
+    
+    .aviso-cancelacion {
+      background: #e3f2fd; border-left: 5px solid #2196f3; padding: 15px 20px;
+      border-radius: 5px; color: #0d47a1; text-align: left; max-width: 800px; margin: 0 auto;
+    }
+
+    .cta-section {
+      background-color: var(--bg-light);
+      padding: 4rem 0;
+      text-align: center;
+    }
+
+    .btn-primary {
+      background-color: var(--primary-color);
+      border-color: var(--primary-color);
+      padding: 0.8rem 2rem;
+      font-weight: 600;
+      border-radius: 30px;
+      transition: all 0.3s;
+    }
+
+    .btn-primary:hover {
+      background-color: var(--primary-dark);
+      border-color: var(--primary-dark);
+      transform: translateY(-2px);
+    }
+    
+    a:focus {
+      outline: 2px solid var(--primary-color);
+      outline-offset: 2px;
+    }
+    
+    @media (max-width: 992px) {
+      .caption h1 { font-size: 2.5rem; }
+      .caption p { font-size: 1.2rem; }
+    }
+    
     @media (max-width: 768px) {
-      .whatsapp-chat {
-        width: 90vw;
-        right: 5vw;
-        height: 70vh;
-        bottom: 10px;
-      }
-      
-      .whatsapp-toggle {
-        width: 50px !important;
-        height: 50px !important;
-        bottom: 10px !important;
-        right: 10px !important;
-      }
-      
-      .navbar-brand img {
-        height: 40px;
-      }
+      .caption h1 { font-size: 2rem; }
+      .caption p { font-size: 1rem; }
+      .whatsapp-chat { width: 90vw; right: 5vw; height: 70vh; bottom: 10px; }
+      .whatsapp-toggle { width: 50px; height: 50px; }
+      .navbar-brand img { height: 40px; }
+      .content-section { padding: 3rem 0; }
+      .social-icons a { margin: 5px; }
+      .plan-destacado { transform: scale(1); } .plan-destacado:hover { transform: translateY(-5px); }
+    }
+    
+    @media (max-width: 576px) {
+      .caption h1 { font-size: 1.8rem; }
+      .benefit-box { padding: 1.5rem; }
+      .benefit-box i { font-size: 2.5rem; }
     }
   </style>
   <!-- Meta Pixel Code -->
-<script>
-!function(f,b,e,v,n,t,s)
-{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-n.queue=[];t=b.createElement(e);t.async=!0;
-t.src=v;s=b.getElementsByTagName(e)[0];
-s.parentNode.insertBefore(t,s)}(window, document,'script',
-'https://connect.facebook.net/en_US/fbevents.js');
-fbq('init', '1031463307192132');
-fbq('track', 'PageView');
-</script>
-<noscript><img height="1" width="1" style="display:none"
-src="https://www.facebook.com/tr?id=1031463307192132&ev=PageView&noscript=1"
-/></noscript>
-<!-- End Meta Pixel Code -->
+  <script>
+  !function(f,b,e,v,n,t,s)
+  {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+  n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+  if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+  n.queue=[];t=b.createElement(e);t.async=!0;
+  t.src=v;s=b.getElementsByTagName(e)[0];
+  s.parentNode.insertBefore(t,s)}(window, document,'script',
+  'https://connect.facebook.net/en_US/fbevents.js');
+  fbq('init', '1031463307192132');
+  fbq('track', 'PageView');
+  </script>
+  <noscript><img height="1" width="1" style="display:none"
+  src="https://www.facebook.com/tr?id=1031463307192132&ev=PageView&noscript=1"
+  /></noscript>
+  <!-- End Meta Pixel Code -->
 </head>
 
 <body>
-  <!-- CHAT FLOTANTE CON IA -->
+
+  <!-- CHAT FLOTANTE -->
   <div class="whatsapp-chat">
     <div class="whatsapp-header">
       <div class="whatsapp-avatar">
@@ -547,12 +577,12 @@ src="https://www.facebook.com/tr?id=1031463307192132&ev=PageView&noscript=1"
     </div>
   </div>
   
-  <!-- BOTÓN FLOTANTE CON IMAGEN -->
-  <button class="whatsapp-toggle">
+  <button class="whatsapp-toggle" type="button">
     <img src="IMG/asistente2.jpg" alt="Aria">
     <span class="notification">1</span>
   </button>
 
+  <!-- Barra de navegación -->
   <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
     <div class="container">
       <a class="navbar-brand" href="index.html">
@@ -581,7 +611,7 @@ src="https://www.facebook.com/tr?id=1031463307192132&ev=PageView&noscript=1"
             <a class="nav-link" href="paginaweb.html">PÁGINAS WEB</a>
           </li>
           <li class="nav-item">
-            <a href="https://api.whatsapp.com/send?phone=+525539935301&text=Hola,%20quiero%20contratar%20servicios%20de%20redes%20sociales" target="_blank" class="nav-link">
+            <a href="https://api.whatsapp.com/send?phone=+525539935301&text=" target="_blank" class="nav-link">
               <i class="fab fa-whatsapp" style="font-size:34px;color:var(--whatsapp-green)"></i>
             </a>
           </li>
@@ -590,380 +620,344 @@ src="https://www.facebook.com/tr?id=1031463307192132&ev=PageView&noscript=1"
     </div>
   </nav>
 
+  <!-- Hero Section -->
   <div class="bgimg-1">
     <div class="caption">
+      <h1>Las Redes Sociales</h1>
+      <p>Son un medio de comunicación e información entre distintas personas o instituciones.</p>
     </div>
   </div>
 
-  <div class="container mt-5 mb-5">
-    <div class="row justify-content-center">
-      <h1 class="text-center mb-4" style="color: var(--primary-color);">Las Redes Sociales</h1>
+  <!-- Sección de Introducción -->
+  <section class="content-section">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12 text-center mb-5">
+          <h2>Nuestro Trabajo</h2>
+          <h4 class="mb-4">Estrategias que conectan con tu audiencia</h4>
+          <p class="lead">Consiste en crear una estrategia en redes sociales en la cual puedas elegir las plataformas que requieres, para comunicar lo que desees en base a tus contenidos para obtener más clientes y engagement con tu audiencia.</p>
+        </div>
+      </div>
     </div>
-    <p class="lead text-justify">
-      Son un medio de comunicación e información entre distintas personas o instituciones, 
-      quienes con un interés en común, crean comunidades o sociedades virtuales. Hoy en día, 
-      son una poderosa arma de información y de promoción para las empresas ya que les permite 
-      tener un contacto directo en tiempo real con su público o audiencia por un bajo costo.
-    </p>
-    
-    <div class="row justify-content-center mt-5">
-      <h2 class="text-center mb-4" style="color: var(--primary-color);">Nuestro Trabajo</h2>
-    </div>
-    
-    <p class="lead text-justify">
-      Consiste en crear una estrategia en redes sociales en la cual puedas elegir las plataformas que 
-      requieres, para comunicar lo que desees en base a tus contenidos para obtener más 
-      clientes y engagement con tu audiencia.
-    </p>
-  </div>
+  </section>
 
+  <!-- Sección de Ventajas -->
   <div class="bgimg-2">
     <div class="caption">
+      <h1>Beneficios de una Estrategia</h1>
+      <p>Descubre por qué tu negocio necesita una presencia online profesional</p>
     </div>
-  </div>
-  
-  <div class="container mt-5 mb-5">
-    <div class="row justify-content-center">
-      <h2 class="text-center mb-4" style="color: var(--primary-color);">Beneficios de tener una Estrategia en Redes Sociales</h2>
-    </div>
-    
-    <p class="lead text-justify">
-      Te podemos ofrecer diferentes redes en las cuales tú puedes elegir como Facebook,
-      WhatsApp, Twitter, Instagram y otras más. Éstas te ayudarán a mejorar tu imagen 
-      y tener una mejor comunicación con tus clientes para que aumentes tus ventas por 
-      medio de publicaciones programadas y estrategias de contenido efectivas.
-    </p>
   </div>
 
-  <div class="bgimg-3">
-    <div class="caption">
-    </div>
-  </div>
-  
-  <div class="container mt-5 mb-5">
-    <div class="row justify-content-center">
-      <h2 class="text-center mb-4" style="color: var(--primary-color);">¡¡¡ Elige tu plan!!!</h2>
-    </div>
-
-    <div class="row">
-      <div class="col-md-4">
-        <div class="card">
-          <img src="IMG/Redes Sociales/notebook-614213_1920.jpg" alt="Plan Digital" style="width:100%; height:200px; object-fit:cover;">
-          <div class="card-body">
-            <h3 style="text-align:center">Plan Digital</h3>
-            <div class="container">
-              <h4><i class="fas fa-check-circle" style="color:var(--primary-color);"></i> Facebook</h4>
-              <h4><i class="fas fa-check-circle" style="color:var(--primary-color);"></i> Define tu Objetivo Principal</h4>
-              <h4><i class="fas fa-check-circle" style="color:var(--primary-color);"></i> Atiende y contesta a tus clientes</h4>
-              <h4><i class="fas fa-check-circle" style="color:var(--primary-color);"></i> Ventas posts con enlaces directos</h4> 
-              <h4><i class="fas fa-check-circle" style="color:var(--primary-color);"></i> Hashtags estratégicos</h4>
-              <h4><i class="fas fa-check-circle" style="color:var(--primary-color);"></i> Plan 3, 6, o 12 Meses</h4>
-            </div>
-            <p><button><h4>Posts e Historias en total 8 - Precios en el chat</h4></button></p>
+  <section class="content-section">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12 text-center mb-5">
+          <h2>Beneficios de tener una Estrategia en Redes Sociales</h2>
+        </div>
+      </div>
+      
+      <div class="row">
+        <div class="col-md-4 mb-4">
+          <div class="benefit-box">
+            <i class="fas fa-share-alt"></i>
+            <h4>1. Mayor Alcance</h4>
+            <p>Te ofrecemos diferentes redes para mejorar tu imagen y comunicación.</p>
+          </div>
+        </div>
+        <div class="col-md-4 mb-4">
+          <div class="benefit-box">
+            <i class="fas fa-comments"></i>
+            <h4>2. Comunicación Directa</h4>
+            <p>Contacto en tiempo real con tu público o audiencia por un bajo costo.</p>
+          </div>
+        </div>
+        <div class="col-md-4 mb-4">
+          <div class="benefit-box">
+            <i class="fas fa-chart-line"></i>
+            <h4>3. Aumento de Ventas</h4>
+            <p>Publicaciones programadas y estrategias de contenido efectivas.</p>
           </div>
         </div>
       </div>
       
-      <div class="col-md-4">
-        <div class="card">
-          <img src="IMG/Redes Sociales/update-1672346_1920.png" alt="Plan Update" style="width:100%; height:200px; object-fit:cover;">
-          <div class="card-body">
-            <h3 style="text-align:center">Plan Update</h3>
-            <div class="container">
-              <h4><i class="fas fa-check-circle" style="color:var(--primary-color);"></i> Facebook - Instagram</h4>
-              <h4><i class="fas fa-check-circle" style="color:var(--primary-color);"></i> Mejorar tu Imagen</h4>
-              <h4><i class="fas fa-check-circle" style="color:var(--primary-color);"></i> Atender a tus clientes</h4>
-              <h4><i class="fas fa-check-circle" style="color:var(--primary-color);"></i> Catalogo y servicios</h4>
-              <h4><i class="fas fa-check-circle" style="color:var(--primary-color);"></i> Vídeos (15-30 segundos)</h4>
-              <h4><i class="fas fa-check-circle" style="color:var(--primary-color);"></i> Plan 3, 6, o 12 Meses</h4>
-            </div>
-            <p><button><h4>Posts, Historias y Reels en total 16 - Precios en el chat</h4></button></p>
+      <div class="row">
+        <div class="col-md-4 mb-4">
+          <div class="benefit-box">
+            <i class="fas fa-users"></i>
+            <h4>4. Comunidad</h4>
+            <p>Creación de comunidades o sociedades virtuales con intereses en común.</p>
           </div>
         </div>
-      </div>
-
-      <div class="col-md-4">
-        <div class="card">
-          <img src="IMG/Redes Sociales/media-998990_1920.jpg" alt="Plan Plus" style="width:100%; height:200px; object-fit:cover;">
-          <div class="card-body">
-            <h3 style="text-align:center">Plan Plus</h3>
-            <div class="container">
-              <h4><i class="fas fa-check-circle" style="color:var(--primary-color);"></i> Facebook - Instagram - TikTok</h4>
-              <h4><i class="fas fa-check-circle" style="color:var(--primary-color);"></i> Códigos QR</h4>
-              <h4><i class="fas fa-check-circle" style="color:var(--primary-color);"></i> Carousel</h4>
-              <h4><i class="fas fa-check-circle" style="color:var(--primary-color);"></i> Mostrar tus productos</h4>
-              <h4><i class="fas fa-check-circle" style="color:var(--primary-color);"></i> Vídeos (15-30 segundos)</h4>
-              <h4><i class="fas fa-check-circle" style="color:var(--primary-color);"></i> Plan 3, 6, o 12 Meses</h4>
-            </div>
-            <p><button><h4>Posts, Historias y Reels en total 24 - Precios en el chat</h4></button></p>
+        <div class="col-md-4 mb-4">
+          <div class="benefit-box">
+            <i class="fas fa-bullhorn"></i>
+            <h4>5. Promoción</h4>
+            <p>Una poderosa arma de información y promoción para las empresas.</p>
+          </div>
+        </div>
+        <div class="col-md-4 mb-4">
+          <div class="benefit-box">
+            <i class="fas fa-clock"></i>
+            <h4>6. Disponibilidad 24/7</h4>
+            <p>Mantén informados a tus clientes a cualquier hora del día.</p>
           </div>
         </div>
       </div>
     </div>
+  </section>
+
+  <!-- Sección de Nuestro Servicio -->
+  <div class="bgimg-3">
+    <div class="caption">
+      <h1>Community Manager</h1>
+      <p>Gestión profesional de tus redes sociales para crear comunidades virtuales sólidas</p>
+    </div>
   </div>
 
-  <footer class="bg-dark text-white p-4">
+  <section class="content-section">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12 text-center mb-5">
+          <h2>Nuestro Servicio</h2>
+          <p class="lead">Creamos Estrategias de Redes Sociales de acuerdo a las necesidades de tus usuarios, para garantizarles una experiencia cómoda e interactiva mientras navegan.</p>
+          <p>Diseñamos tu presencia digital con calidad profesional. Ya sea que estés promocionando tu negocio, mostrando tu trabajo o abriendo tu tienda online, nosotros te podemos ayudar.</p>
+        </div>
+      </div>
+      
+      <div class="row align-items-center">
+        <div class="col-md-7">
+          <img src="IMG/Paginas web/computadoras.png" alt="Desarrollo web" class="img-fluid">
+        </div>
+        <div class="col-md-5">
+          <h3>Estrategias con tecnologías modernas</h3>
+          <p>Nuestro equipo tiene años de experiencia trabajando con creadores de contenido, diseñadores y estrategas digitales, para desarrollar las mejores campañas y publicaciones personalizadas para tu marca.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Sección de Precios -->
+  <section class="cta-section" id="precios">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12 text-center">
+          <h2>Nuestros Planes Mensuales</h2>
+          <p class="lead mb-5">Elige el plan que mejor se adapte a tu negocio.</p>
+
+          <div class="row justify-content-center">
+            <!-- Plan Digital -->
+            <div class="col-md-4 mb-4">
+              <div class="benefit-box plan-card">
+                <h3>Plan Digital</h3>
+                <p class="plan-price">$1,200 <small>MXN/mes</small></p>
+                <hr>
+                <ul class="plan-features">
+                  <li><i class="fas fa-check-circle text-success"></i> Gestión de Facebook</li>
+                  <li><i class="fas fa-check-circle text-success"></i> Publicaciones programadas</li>
+                  <li><i class="fas fa-check-circle text-success"></i> Diseño de imágenes</li>
+                  <li><i class="fas fa-check-circle text-success"></i> Reporte mensual</li>
+                </ul>
+                <a href="https://docs.google.com/forms/d/e/1FAIpQLScRYcO7h379Inmk3FPfZl_L76rs1EqRa0UhTwPL3DLFU20VuQ/viewform" target="_blank" class="btn btn-primary w-100">Contratar Plan →</a>
+              </div>
+            </div>
+
+            <!-- Plan Update -->
+            <div class="col-md-4 mb-4">
+              <div class="benefit-box plan-card plan-destacado">
+                <span class="badge-popular">🔥 Más popular</span>
+                <h3>Plan Update</h3>
+                <p class="plan-price">$1,400 <small>MXN/mes</small></p>
+                <hr>
+                <ul class="plan-features">
+                  <li><i class="fas fa-check-circle text-success"></i> Facebook + Instagram</li>
+                  <li><i class="fas fa-check-circle text-success"></i> Publicaciones programadas</li>
+                  <li><i class="fas fa-check-circle text-success"></i> Diseño + Copywriting</li>
+                  <li><i class="fas fa-check-circle text-success"></i> Reporte mensual</li>
+                </ul>
+                <a href="https://docs.google.com/forms/d/e/1FAIpQLScRYcO7h379Inmk3FPfZl_L76rs1EqRa0UhTwPL3DLFU20VuQ/viewform" target="_blank" class="btn btn-primary w-100">Contratar Plan →</a>
+              </div>
+            </div>
+
+            <!-- Plan Plus -->
+            <div class="col-md-4 mb-4">
+              <div class="benefit-box plan-card">
+                <h3>Plan Plus</h3>
+                <p class="plan-price">$1,800 <small>MXN/mes</small></p>
+                <hr>
+                <ul class="plan-features">
+                  <li><i class="fas fa-check-circle text-success"></i> Facebook + Instagram + TikTok</li>
+                  <li><i class="fas fa-check-circle text-success"></i> Publicaciones programadas</li>
+                  <li><i class="fas fa-check-circle text-success"></i> Diseño + Copywriting</li>
+                  <li><i class="fas fa-check-circle text-success"></i> Reporte mensual</li>
+                </ul>
+                <a href="https://docs.google.com/forms/d/e/1FAIpQLScRYcO7h379Inmk3FPfZl_L76rs1EqRa0UhTwPL3DLFU20VuQ/viewform" target="_blank" class="btn btn-primary w-100">Contratar Plan →</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Información adicional -->
+  <section class="content-section">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12 text-center">
+          <h2>¿Sabías que una buena estrategia en redes sociales ayuda a mejorar las ventas de tu empresa?</h2>
+          <p class="lead">Lograr que tu marca consiga mayor visibilidad, obtener tráfico hacia tu negocio y convertir a tus seguidores en clientes.</p>
+          <p class="lead">Aquí encontrarás un representante, en el cual puedes comentar tus necesidades para adaptarlas a tu negocio. Contáctanos para más información.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+ <!-- Footer Compacto (Como la 2da captura) -->
+  <footer class="page-footer" style="padding: 2rem 0;">
     <div class="container">
       <div class="row mb-3">
         <div class="col-md-12 text-center">
-          <h2>Contáctanos</h2>
-          <h4>Te atendemos solo haz clic en el logo de WhatsApp</h4>
+          <h2 style="font-size: 1.8rem; margin-bottom: 0.5rem;">Contáctanos</h2>
+          <h4 style="font-size: 1.1rem; font-weight: 400;">Te atendemos con gusto. Solo haz clic en el logo de WhatsApp</h4>
         </div>
       </div>
       
-      <div class="row justify-content-center">
-        <div class="col-auto">
-          <a href="https://api.whatsapp.com/send?phone=+525539935301&text=Hola,%20quiero%20contratar%20servicios%20de%20redes%20sociales" target="_blank" aria-label="WhatsApp">
-            <i class="fab fa-whatsapp" style="font-size:36px;color:var(--whatsapp-green)"></i>
-          </a>
-        </div>
-        <div class="col-auto">
-          <a href="https://www.facebook.com/ManndarinKT/" target="_blank" aria-label="Facebook">
-            <i class="fab fa-facebook-square" style="font-size:36px;color:rgb(24, 119, 242)"></i>
-          </a>
-        </div>
-        <div class="col-auto">
-          <a href="https://www.instagram.com/manndarinkt/" target="_blank" aria-label="Instagram">
-            <i class="fab fa-instagram" style="font-size:36px;color:rgb(235, 21, 21)"></i>
-          </a>
-        </div>
-        <div class="col-auto">
-           <a href="https://x.com/Manndarin_KT" target="_blank">
-              <i class="fab fa-x-twitter" style="font-size:36px;color: #FFFFFF;"></i>
+      <div class="row">
+        <div class="col-md-12">
+          <div class="social-icons" style="margin: 0.5rem 0;">
+            <a href="https://api.whatsapp.com/send?phone=+525539935301&text=Hola,%20quiero%20redes%20sociales" target="_blank" aria-label="WhatsApp">
+              <i class="fab fa-whatsapp" style="font-size:32px;color:var(--whatsapp-green)"></i>
             </a>
-        </div>
-        <div class="col-auto">
-          <a href="https://www.tiktok.com/@manndarinkt.com/" target="_blank">
-              <i class="fab fa-tiktok" style="font-size:36px;color: #FF00E7;"></i>
+            <a href="https://www.facebook.com/ManndarinKT/" target="_blank" aria-label="Facebook">
+              <i class="fab fa-facebook-square" style="font-size:32px;color:rgb(24, 119, 242)"></i>
             </a>
+            <a href="https://www.instagram.com/manndarinkt/" target="_blank" aria-label="Instagram">
+              <i class="fab fa-instagram" style="font-size:32px;color:rgb(235, 21, 21)"></i>
+            </a>
+             <a href="https://x.com/Manndarin_KT" target="_blank">
+              <i class="fab fa-x-twitter" style="font-size:32px;color: #FFFFFF;"></i>
+            </a>
+            <a href="https://www.tiktok.com/@manndarinkt.com/" target="_blank">
+              <i class="fab fa-tiktok" style="font-size:32px;color: #FF00E7;"></i>
+            </a>
+          </div>
         </div>
       </div>
       
-      <div class="row mt-3">
+      <div class="row mt-2">
         <div class="col-md-12 text-center">
-          <p>© ManndarinKT - Especialistas en Redes Sociales · +50 Negocios en México</p>
+          <div class="footer-copyright" style="font-size: 0.9rem;">
+            © ManndarinKT - Especialistas en Redes Sociales y Marketing Digital · +50 Negocios en México
+          </div>
         </div>
       </div>
     </div>
   </footer>
 
+
   <!-- Bootstrap 5 JS -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
+  <!-- SCRIPT DEL CHAT (Aria) -->
   <script>
-  // ============================================
-// CHATBOT ARIA CON GEMINI API - REDES SOCIALES
-// ManndarinKT
-// ============================================
-document.addEventListener('DOMContentLoaded', function() {
+    document.addEventListener('DOMContentLoaded', function() {
+      const API_CHAT_URL = '/api/chat';
+      let historialConversacion = [];
 
-  // 🚨 API KEY
-  const API_CHAT_URL = '/api/chat';
-
-  // Memoria de conversación
-  let historialConversacion = [];
-
-  // ==========================================
-  // FUNCIÓN PRINCIPAL DEL CHATBOT (SERVERLESS)
-  // ==========================================
-  async function generarRespuestaConGemini(pregunta) {
-    try {
-      // Recuperar historial guardado en esta sesión (memoria temporal)
-      const historialGuardado = JSON.parse(sessionStorage.getItem('aria_historial_redessociales') || '[]');
-
-      const response = await fetch(API_CHAT_URL, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          mensaje: pregunta,
-          paginaActual: 'redessociales',
-          historial: historialGuardado
-        })
-      });
-
-      const data = await response.json();
-
-      if (data.respuesta) {
-        // Guardar la nueva interacción en el historial
-        historialGuardado.push({ rol: 'user', contenido: pregunta });
-        historialGuardado.push({ rol: 'assistant', contenido: data.respuesta });
-        sessionStorage.setItem('aria_historial_redessociales', JSON.stringify(historialGuardado));
-
-        return data.respuesta;
-      } else {
-        return respuestaLocal(pregunta);
+      async function generarRespuestaConGemini(pregunta) {
+        try {
+          const historialGuardado = JSON.parse(sessionStorage.getItem('aria_historial_redes') || '[]');
+          const response = await fetch(API_CHAT_URL, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ mensaje: pregunta, paginaActual: 'redessociales', historial: historialGuardado })
+          });
+          const data = await response.json();
+          if (data.respuesta) {
+            historialGuardado.push({ rol: 'user', contenido: pregunta });
+            historialGuardado.push({ rol: 'assistant', contenido: data.respuesta });
+            sessionStorage.setItem('aria_historial_redes', JSON.stringify(historialGuardado));
+            return data.respuesta;
+          } else {
+            return generarRespuestaLocal(pregunta);
+          }
+        } catch (error) {
+          return generarRespuestaLocal(pregunta);
+        }
       }
 
-    } catch (error) {
-      console.error('Error con la función serverless:', error);
-      return respuestaLocal(pregunta);
-    }
-  }
-  // ==========================================
-  // RESPUESTAS LOCALES (RESPALDO)
-  // ==========================================
-  const RESPUESTAS_LOCALES = {
-    saludo: `¡Hola! 👋 Soy **Aria**, tu asesora de ManndarinKT.\n\n¿Buscas gestionar tus **redes sociales**? Cuéntame, ¿qué red te interesa más: Facebook, Instagram o TikTok?`,
+      const LINK_WEB = `\n\n👉 <a href="https://api.whatsapp.com/send?phone=+525539935301&text=Hola,%20quiero%20informes%20de%20redes%20sociales" target="_blank">📲 Cotizar por WhatsApp</a>`;
 
-    planes: `Tenemos 3 planes 📱\n\n• **Digital** → Facebook\n• **Update** → Facebook + Instagram\n• **Plus** → Facebook + Instagram + TikTok\n\n¿Cuál te llama más la atención?`,
+      function generarRespuestaLocal(pregunta) {
+        const texto = pregunta.toLowerCase().trim();
+        
+        // SALUDOS
+        if (texto.match(/^(hola|buenos días|buenas tardes|buenas noches|hey|que tal)/i)) {
+          return "¡Hola! 👋 Soy Aria. Estás en la sección de **Redes Sociales** 📱\n\n¿Te interesa saber sobre **precios**, **qué incluye** o **cómo contratar**?";
+        }
+        
+        // PRECIOS
+        if (texto.includes('precio') || texto.includes('costo') || texto.includes('cuánto') || texto.includes('cuanto') || texto.includes('tarifa') || texto.includes('plan')) {
+          return `💰 **Nuestros Planes Mensuales:**\n\n• **Digital** (Facebook): $1,200 MXN/mes\n• **Update** (Facebook + Instagram): $1,400 MXN/mes\n• **Plus** (Facebook + Instagram + TikTok): $1,800 MXN/mes\n\n✅ **Sin contratos forzosos:** El servicio es mes a mes, puedes cancelar cuando quieras avisándonos.${LINK_WEB}`;
+        }
 
-    precios: `Los precios varían según el **plan** y la **duración** del contrato.\n\nPara darte el mejor precio, primero dime: ¿qué red social quieres gestionar? 📱`,
+        // PLAN DIGITAL
+        if (texto.includes('digital')) {
+          return `¡Excelente! El **Plan Digital** es para **Facebook** 📱\n\n💰 **Precio:**\n• $1,200 MXN/mes\n\n✅ **Sin contratos forzosos.** Pagas mes a mes y puedes cancelar cuando quieras.${LINK_WEB}`;
+        }
 
-    digital: `¡Excelente! El **Plan Digital** es para **Facebook** 📱\n\n💰 **Precios:**\n• 12 meses: $750/mes\n• 6 meses: $950/mes\n• 3 meses: $1,200/mes\n\n¿Qué duración te interesa?\n\n👉 <a href="https://api.whatsapp.com/send?phone=+525539935301&text=Hola,%20quiero%20el%20Plan%20Digital" target="_blank">📲 Cotizar por WhatsApp</a>`,
+        // PLAN UPDATE
+        if (texto.includes('update')) {
+          return `¡Excelente! El **Plan Update** es para **Facebook + Instagram** 📱📸\n\n💰 **Precio:**\n• $1,400 MXN/mes\n\n✅ **Sin contratos forzosos.** Pagas mes a mes y puedes cancelar cuando quieras.${LINK_WEB}`;
+        }
 
-    update: `¡Excelente! El **Plan Update** incluye **Facebook + Instagram** 📱\n\n💰 **Precios:**\n• 12 meses: $975/mes\n• 6 meses: $1,200/mes\n• 3 meses: $1,400/mes\n\n¿Qué duración te interesa?\n\n👉 <a href="https://api.whatsapp.com/send?phone=+525539935301&text=Hola,%20quiero%20el%20Plan%20Update" target="_blank">📲 Cotizar por WhatsApp</a>`,
+        // PLAN PLUS
+        if (texto.includes('plus')) {
+          return `¡Excelente! El **Plan Plus** es para **Facebook + Instagram + TikTok** 🚀\n\n💰 **Precio:**\n• $1,800 MXN/mes\n\n✅ **Sin contratos forzosos.** Pagas mes a mes y puedes cancelar cuando quieras.${LINK_WEB}`;
+        }
 
-    plus: `¡Excelente! El **Plan Plus** incluye **Facebook + Instagram + TikTok** 📱\n\n💰 **Precios:**\n• 12 meses: $1,270/mes\n• 6 meses: $1,500/mes\n• 3 meses: $1,800/mes\n\n¿Qué duración te interesa?\n\n👉 <a href="https://api.whatsapp.com/send?phone=+525539935301&text=Hola,%20quiero%20el%20Plan%20Plus" target="_blank">📲 Cotizar por WhatsApp</a>`,
+        // DURACIÓN O CONTRATOS
+        if (texto.includes('duración') || texto.includes('duracion') || texto.includes('meses') || texto.includes('contrato')) {
+          return `Nuestros planes son **100% mensuales** y **sin contratos forzosos**. 😊\n\nPuedes cancelar o pausar tu servicio en cualquier momento avisándonos, sin ningún tipo de penalización.${LINK_WEB}`;
+        }
 
-    contacto: `📱 **Contáctanos por WhatsApp:**\n\n👉 <a href="https://api.whatsapp.com/send?phone=+525539935301&text=Hola,%20quiero%20contratar%20servicios%20de%20redes%20sociales" target="_blank">📲 Contactar por WhatsApp</a>\n\nHorario: Lunes a Viernes 9am - 7pm y Sábado 10am - 4pm.`,
-
-    horario: `🕐 **Horario:**\n\n• Lunes a Viernes: 9am - 7pm\n• Sábado: 10am - 4pm\n• Domingo: Cerrado`,
-
-    noEntiendo: `🤔 No entiendo bien tu pregunta. ¿Podrías reformularla?\n\nPor ejemplo, puedes preguntarme sobre:\n\n📱 Digital (Facebook) · $750/mes\n📱 Update (FB+IG) · $975/mes\n📱 Plus (FB+IG+TikTok) · $1,270/mes\n\nO si prefieres, escríbenos por WhatsApp:\n\n👉 <a href="https://api.whatsapp.com/send?phone=+525539935301&text=Hola,%20quiero%20contratar%20servicios%20de%20redes%20sociales" target="_blank">📲 Contactar por WhatsApp</a>`
-  };
-
-  // ==========================================
-  // FUNCIÓN DE RESPALDO LOCAL
-  // ==========================================
-  function respuestaLocal(mensaje) {
-    const t = mensaje.toLowerCase().trim();
-
-    // AFIRMACIONES
-    if (/^(si|sí|claro|ok|vale|adelante|perfecto)/.test(t)) {
-      return RESPUESTAS_LOCALES.planes;
-    }
-
-    // PLANES ESPECÍFICOS
-    if (/digital/.test(t)) return RESPUESTAS_LOCALES.digital;
-    if (/update/.test(t)) return RESPUESTAS_LOCALES.update;
-    if (/plus|tiktok/.test(t)) return RESPUESTAS_LOCALES.plus;
-
-    // SERVICIOS GENERALES
-    if (/horario|a qué hora|abierto/.test(t)) return RESPUESTAS_LOCALES.horario;
-    if (/contacto|whatsapp|telefono|teléfono|llamar|asesor|humano/.test(t)) return RESPUESTAS_LOCALES.contacto;
-    if (/precio|costo|cuesta|cuanto|cuánto|tarifa/.test(t)) return RESPUESTAS_LOCALES.precios;
-    if (/plan|paquete/.test(t)) return RESPUESTAS_LOCALES.planes;
-    if (/^(hola|buenas|hey|qué tal|que tal)/.test(t)) return RESPUESTAS_LOCALES.saludo;
-
-    // CATCH-ALL: Si hay historial, pedir reformular
-    if (historialConversacion.length > 1) {
-      return RESPUESTAS_LOCALES.noEntiendo;
-    }
-
-    // Primer mensaje
-    return RESPUESTAS_LOCALES.saludo;
-  }
-
-  // ==========================================
-  // ELEMENTOS DEL CHAT
-  // ==========================================
-  const chat = document.querySelector('.whatsapp-chat');
-  const toggleBtn = document.querySelector('.whatsapp-toggle');
-  const closeBtn = document.querySelector('.close-btn');
-  const sendBtn = document.querySelector('.send-btn');
-  const chatInput = document.querySelector('.whatsapp-input');
-  const chatBody = document.querySelector('.whatsapp-body');
-  const notification = document.querySelector('.notification');
-
-  // ==========================================
-  // UTILIDADES
-  // ==========================================
-  function getCurrentTime() {
-    return new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
-  }
-
-  function addMessage(text, type) {
-    const messageDiv = document.createElement('div');
-    messageDiv.className = `whatsapp-message ${type}`;
-
-    let safe = text
-      .replace(/&/g, '&amp;')
-      .replace(/</g, '&lt;')
-      .replace(/>/g, '&gt;');
-
-    safe = safe
-      .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
-      .replace(/\n/g, '<br>')
-      .replace(/&lt;a href="(.*?)"(.*?)&gt;(.*?)&lt;\/a&gt;/g,
-               '<a href="$1"$2>$3</a>');
-
-    messageDiv.innerHTML = safe + `<span class="message-time">${getCurrentTime()}</span>`;
-    chatBody.appendChild(messageDiv);
-    scrollToBottom();
-  }
-
-  function scrollToBottom() {
-    chatBody.scrollTop = chatBody.scrollHeight;
-  }
-
-  function showTyping() {
-    const typingIndicator = document.createElement('div');
-    typingIndicator.className = 'typing-indicator';
-    typingIndicator.id = 'aria-typing';
-    typingIndicator.innerHTML = `<div class="typing-dot"></div><div class="typing-dot"></div><div class="typing-dot"></div>`;
-    chatBody.appendChild(typingIndicator);
-    scrollToBottom();
-    return typingIndicator;
-  }
-
-  // ==========================================
-  // PROCESAR MENSAJE
-  // ==========================================
-  async function processUserMessage(message) {
-    const typingIndicator = showTyping();
-    const respuesta = await generarRespuestaConGemini(message);
-    typingIndicator.remove();
-    addMessage(respuesta, 'received');
-  }
-
-  function sendMessage() {
-    const messageText = chatInput.value.trim();
-    if (!messageText) return;
-    addMessage(messageText, 'sent');
-    chatInput.value = '';
-    processUserMessage(messageText);
-  }
-
-  // ==========================================
-  // EVENTOS
-  // ==========================================
-  if (toggleBtn) {
-    toggleBtn.addEventListener('click', function() {
-      chat.classList.toggle('active');
-      if (notification) notification.style.display = 'none';
-      if (chat.classList.contains('active') && chatInput) {
-        setTimeout(() => chatInput.focus(), 300);
+        // CATCH-ALL
+        return `Para más detalles sobre nuestros servicios de Community Manager, por favor contáctanos:${LINK_WEB}`;
       }
-      scrollToBottom();
-    });
-  }
 
-  if (closeBtn) {
-    closeBtn.addEventListener('click', function() {
-      chat.classList.remove('active');
-    });
-  }
+      const chat = document.querySelector('.whatsapp-chat');
+      const toggleBtn = document.querySelector('.whatsapp-toggle');
+      const closeBtn = document.querySelector('.close-btn');
+      const sendBtn = document.querySelector('.send-btn');
+      const chatInput = document.querySelector('.whatsapp-input');
+      const chatBody = document.querySelector('.whatsapp-body');
 
-  if (sendBtn) {
-    sendBtn.addEventListener('click', sendMessage);
-  }
-
-  if (chatInput) {
-    chatInput.addEventListener('keypress', function(e) {
-      if (e.key === 'Enter') {
-        e.preventDefault();
-        sendMessage();
+      function addMessage(text, type) {
+        const messageDiv = document.createElement('div');
+        messageDiv.className = `whatsapp-message ${type}`;
+        let safe = text.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+        safe = safe.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>').replace(/\n/g, '<br>').replace(/&lt;a href="(.*?)"(.*?)&gt;(.*?)&lt;\/a&gt;/g, '<a href="$1"$2>$3</a>');
+        messageDiv.innerHTML = safe + `<span class="message-time">${new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}</span>`;
+        chatBody.appendChild(messageDiv);
+        chatBody.scrollTop = chatBody.scrollHeight;
       }
-    });
-  }
 
-  // Notificación inicial
-  setTimeout(() => {
-    if (notification && !chat.classList.contains('active')) {
-      notification.style.display = 'flex';
-    }
-  }, 5000);
-});
+      function sendMessage() {
+        const messageText = chatInput.value.trim();
+        if (messageText) {
+          addMessage(messageText, 'sent');
+          chatInput.value = '';
+          generarRespuestaConGemini(messageText).then(respuesta => addMessage(respuesta, 'received'));
+        }
+      }
+
+      if (toggleBtn) toggleBtn.addEventListener('click', () => { chat.classList.toggle('active'); chatBody.scrollTop = chatBody.scrollHeight; });
+      if (closeBtn) closeBtn.addEventListener('click', () => chat.classList.remove('active'));
+      if (sendBtn) sendBtn.addEventListener('click', sendMessage);
+      if (chatInput) chatInput.addEventListener('keypress', (e) => { if (e.key === 'Enter') { e.preventDefault(); sendMessage(); } });
+    });
   </script>
 </body>
 </html>
