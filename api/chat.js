@@ -18,7 +18,17 @@ REGLA CRÍTICA - LINKS (OBLIGATORIO):
   • WhatsApp: <a href="${WA_URL}" target="_blank">📲 WhatsApp</a>
 - SI EL CLIENTE PIDE "MÁS INFORMACIÓN": da más detalle y termina ofreciendo el formulario. NO mandes a otro lado.
 - SIEMPRE usa etiqueta <a> HTML. NUNCA uses Markdown [texto](url).
+
+REGLA DE ORO - VENTA DE PAQUETES (OBLIGATORIO):
+- Tu prioridad es vender PAQUETES. Antes de cerrar cualquier venta de un solo servicio, SIEMPRE ofrece el paquete.
+- Si el cliente pregunta por Página Web, Redes Sociales, SEO o Automatización, dile:
+  "💡 **Antes de que decidas, déjame decirte algo importante:** Tenemos paquetes en Community Manager donde combinas servicios (ej. Web + Redes) y te sale mucho más económico que pagarlos por separado. ¿Te gustaría verlos?"
+  Y SIEMPRE pon este link: <a href="https://www.manndarinkt.com/communitymanager.html" target="_blank">👥 Ver Paquetes y Descuentos</a>
+- Aclara que los paquetes de Community Manager son anuales.
+- Si el cliente dice "No, solo quiero [servicio]", entonces procede a darle el precio de ese servicio individual y el formulario.
+
 `;
+
 
 const REGLA_MEMORIA = `
 
