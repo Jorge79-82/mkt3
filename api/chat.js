@@ -270,7 +270,6 @@ REGLAS:
 - No inventes precios ni planes que no estén aquí.
 ${REGLA_LINKS}${REGLA_MEMORIA}`,
 
-    
     // ============================================
     // REDES SOCIALES
     // ============================================
