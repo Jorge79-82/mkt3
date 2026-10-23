@@ -434,3 +434,8 @@ REGLAS:
 - BREVE: máx 4-6 líneas.
 - NUNCA des un nombre de paquete sin decir su precio.
 ${REGLA_LINKS}${REGLA_MEMORIA}`,
+};
+
+  return prompts[paginaActual] || prompts['index'];
+}
+    
