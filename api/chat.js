@@ -119,8 +119,8 @@ FLUJO:
 2. Cuando te responda, haz SOLO esta pregunta: "¿Ya tienes página web o redes sociales?"
 3. Cuando te responda, recomienda el paquete ideal con su precio.
 
-SI EL CLIENTE QUIERE PAGAR: Dale el link de pago y luego el formulario: 
 👉 <a href="${PAY_URL}">💳 Pagar</a> y <a href="${FORM_URL}">📝 Llenar formulario</a>.`
+  };
 
   return prompts[paginaActual] + `\n\n${REGLA_LINKS}\n\n${REGLA_MEMORIA}`;
 }
